@@ -44,7 +44,7 @@ def parse_sample(name, source, attr2idx, type2idx):
 
 def parse_sample_python_graphs(name, source):
     graph = program_graph.get_program_graph(source)
-    render(graph, f"graphs/python_graphs_{name}.pdf")
+    render(graph, f"./pythonProject7/graphs/parsed_pythongraphs_{name}.pdf")
 
 
 def parse_sample_ogb(name, source, attr2idx, type2idx):
@@ -55,7 +55,7 @@ def parse_sample_ogb(name, source, attr2idx, type2idx):
 
     ogd_data, (ast_nodes, ast_edges) = py2graph(source)
 
-    ogb_render(ast_nodes, ast_edges, path=f"graphs/ogb_{name}.pdf")
+    ogb_render(ast_nodes, ast_edges, path=f"./pythonProject7/graphs/ogb_{name}.pdf")
 
     print("\nOGB Code2 generated:")
     for key, value in ogd_data.items():
@@ -225,6 +225,13 @@ def f1_score(pred, label):
     precision = tp / (tp + fp)
     recall = tp / (tp + fn)
     return 2 * (recall * precision) / (recall + precision)
+
+
+def test_function():
+    i = 0
+    while i < 5:
+        print(f"Iteration {i}")
+        i += 1
 
 
 # Here as string to avoid linting errors
@@ -435,7 +442,8 @@ cases = [
     # (while_break_continue.__name__, inspect.getsource(while_break_continue)),
     # (write.__name__, inspect.getsource(write)),
     # ('set_author_11836', set_author_11836)  # Example of OGB function
-    (f1_score.__name__, inspect.getsource(f1_score))
+    # (f1_score.__name__, inspect.getsource(f1_score))
+    (test_function.__name__, inspect.getsource(test_function))
 ]
 if __name__ == "__main__":
     # For the OGB parser
