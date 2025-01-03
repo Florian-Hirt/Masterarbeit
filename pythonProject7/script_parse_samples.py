@@ -1,3 +1,6 @@
+### MODIFIED VERSION OF THE ORIGINAL FILE 
+
+
 """Graphviz visualizations of sample Program Graphs."""
 
 import functools
@@ -16,13 +19,120 @@ import six
 from digraph_transformer import dataflow_parser
 import ogb_parser
 
+####################################################################################################
+####################################################################################################
+####################################################################################################
+### My modifications:
+import ast
+####################################################################################################
+####################################################################################################
+####################################################################################################
+
 
 # pylint: skip-file
+
+####################################################################################################
+####################################################################################################
+####################################################################################################
+### My modifications:
+
+class ASTOrder(ast.NodeVisitor):
+    def __init__(self, graph):
+        self.index = 0
+        self.node_to_order = {}
+        self.graph = graph
+
+    def visit(self, node):
+        self.node_to_order[id(node)] = self.index
+        self.index += 1
+        self.generic_visit(node)
+
+    def reorder_graph(self):
+        edges_to_remove = []
+        for edge in self.graph.edges:
+            print(self.graph.nodes)
+            print(self.graph.nodes[edge.id1])
+            print(self.graph.nodes[edge.id1].ast_node)
+            print(id(self.graph.nodes[edge.id1].ast_node))
+            print(self.node_to_order[id(self.graph.nodes[edge.id1].ast_node)])
+
+            if (self.node_to_order[id(self.graph.nodes[edge.id1].ast_node)] > self.node_to_order[id(self.graph.nodes[edge.id2].ast_node)]) or (edge.id1 == edge.id2):
+                edges_to_remove.append(edge)
+        
+        for edge in edges_to_remove:
+            self.graph.edges.remove(edge)
+
+
+def add_control_block_dependencies(graph):
+    for node_id in graph.nodes:
+        ast_node = graph.get_node(node_id).ast_node
+        if ast_node.__class__.__name__ in ["If", "For", "Try", "While"]:
+            # Collect all nodes inside the body, orelse, and handlers
+            body_node_ids = [graph.get_node_by_ast_node(stmt).id for stmt in ast_node.body]
+            orelse_node_ids = [graph.get_node_by_ast_node(stmt).id for stmt in ast_node.orelse]
+            handler_node_ids = []
+            if ast_node.__class__.__name__ == "Try":
+                for handler in ast_node.handlers:
+                    handler_node_ids.extend([graph.get_node_by_ast_node(stmt).id for stmt in handler.body])
+
+            # Collect the node for the condition (test) or loop variable and iterable (target and iter)
+            if ast_node.__class__.__name__ == "If":
+                control_node_ids = [graph.get_node_by_ast_node(ast_node.test).id]
+            elif ast_node.__class__.__name__ == "For":
+                control_node_ids = [graph.get_node_by_ast_node(ast_node.target).id, graph.get_node_by_ast_node(ast_node.iter).id]
+            elif ast_node.__class__.__name__ == "While":
+                control_node_ids = [graph.get_node_by_ast_node(ast_node.test).id]
+            else:  # Try
+                control_node_ids = []
+
+            # Combine body, orelse, handlers, and control nodes as the block
+            block_nodes = set(body_node_ids + orelse_node_ids + handler_node_ids + control_node_ids)
+
+            print(f"{ast_node.__class__.__name__} block nodes: {block_nodes.__str__()}")
+            node_names = [graph.get_node(node_id).ast_node.__class__.__name__ for node_id in block_nodes]
+            print(f"Node names in {ast_node.__class__.__name__} block: {node_names}")
+
+            # Check dependencies for each inner node
+            for inner_node_id in block_nodes:
+                for edge in graph.edges:
+                    if edge.id2 == inner_node_id:  # Check if there is an incoming dependency
+                        if edge.id1 not in block_nodes and edge.id1 != node_id:  # From outside the block and not the block node itself
+                            # Create a pb.Edge object
+                            new_edge = pb.Edge(id1=edge.id1, id2=node_id, type=edge.type)
+                            if not any(e.id1 == new_edge.id1 and e.id2 == new_edge.id2 and e.type == new_edge.type for e in graph.edges):
+                                graph.add_edge(new_edge)
+                                print(f"Added edge: {new_edge}")
+                                node1_name = graph.get_node(new_edge.id1).ast_node.__class__.__name__
+                                node2_name = graph.get_node(new_edge.id2).ast_node.__class__.__name__
+                                print(f"Edge connects node {new_edge.id1} ({node1_name}) to node {new_edge.id2} ({node2_name})")
+
+####################################################################################################
+####################################################################################################
+####################################################################################################
+
+
 
 
 def parse_sample(name, source, attr2idx, type2idx):
     """Parse source code with our graph construction procedure."""
+    print(source)
     graph, tree = dataflow_parser.get_program_graph(source)
+
+    ####################################################################################################
+    ####################################################################################################
+    ####################################################################################################
+    ### My modifications:
+    # Add control block dependencies
+    add_control_block_dependencies(graph)
+    
+    ast_order = ASTOrder(graph)
+    ast_order.visit(tree)
+    # Reorder the graph to drop cycles
+    ast_order.reorder_graph()
+
+    ####################################################################################################
+    ####################################################################################################
+    ####################################################################################################
 
     ogd_data, label = dataflow_parser.py2ogbgraph(source, attr2idx, type2idx)
 
@@ -447,7 +557,7 @@ cases = [
 ]
 if __name__ == "__main__":
     # For the OGB parser
-    mapping_dir = "~/Downloads/code2/mapping"
+    mapping_dir = "~/Masterarbeit/pythonProject7/code2/mapping"
     attr2idx_ = dict()
     type2idx_ = dict()
     for line in pd.read_csv(os.path.join(mapping_dir, "attridx2attr.csv.gz")).values:
@@ -459,3 +569,5 @@ if __name__ == "__main__":
         parse_sample(name_, source_, attr2idx_, type2idx_)
         parse_sample_python_graphs(name_, source_)
         parse_sample_ogb(name_, source_, attr2idx_, type2idx_)
+
+ 
