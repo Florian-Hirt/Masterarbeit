@@ -1,0 +1,16 @@
+{
+  "4672": {
+    "min_score": 4,
+    "max_score": 4,
+    "mean_score": 4.0,
+    "median_score": 4,
+    "score_variance": 0.0,
+    "min_confidence": 1.0,
+    "max_confidence": 1.0,
+    "mean_confidence": 1.0,
+    "median_confidence": 1.0,
+    "confidence_variance": 0.0,
+    "score_confidence_correlation": NaN,
+    "count": 5
+  }
+}

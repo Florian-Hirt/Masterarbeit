@@ -1,0 +1,24 @@
+{
+  "sample_count": 1,
+  "original_scores": {
+    "average": 4.0,
+    "median": 4.0,
+    "min": 4.0,
+    "max": 4.0
+  },
+  "adversarial_scores": {
+    "average": 4.0,
+    "median": 4.0,
+    "min": 4.0,
+    "max": 4.0
+  },
+  "comparison": {
+    "average_difference": 0.0,
+    "worse_count": 0,
+    "worse_percentage": 0.0,
+    "same_count": 1,
+    "same_percentage": 100.0,
+    "better_count": 0,
+    "better_percentage": 0.0
+  }
+}

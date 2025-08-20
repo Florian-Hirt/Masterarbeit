@@ -1,0 +1,24 @@
+conda_env/# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv/ venv/ .env
+*.egg-info/ dist/ build/
+.ipynb_checkpoints/
+
+# Editors
+.vscode/ .idea/
+
+# Conda
+conda_env/
+
+# Project artifacts / caches / logs
+debug/ cache.json model_cache.json evaluation_debug.log
+results_*/ safim_outputs*/ Log/
+**/build/
+
+# Big local installers / datasets / generated mappings
+Miniconda3-latest-Linux-x86_64.sh
+pythonProject7/code2/mapping/graphidx2code.json
+pythonProject7/code2/mapping/graphidx2code.json.gz
+pythonProject7/code2/raw/edge.csv.gz

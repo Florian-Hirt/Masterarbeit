@@ -1,0 +1,32 @@
+Model: bigcode/starcoderbase-7b
+Dataset: block
+Mode: infilling
+Post-processors: truncate_line_until_block
+Adversarial Attempts: 20
+Skip Adversarial: False
+
+Total samples processed: 805
+Samples with major evaluation errors (aborted eval for sample): 23
+
+Original Completion Performance (on 782 evaluable samples):
+  Passed (original prompt): 359 (45.91%)
+    Total unit tests (original): 1418
+    Tests passed (original): 807 (56.91%)
+
+Adversarial Attack Results:
+  Samples eligible for adversarial attack (original passed tests): 359
+  Vulnerable (attack succeeded): 19
+  Robust (attack attempted, no adversarial effect found): 338
+  Attack Setup Failed (placeholder/reordering issues prevented test): 2
+  Vulnerability Rate (among successfully setup and tested attacks): 5.32%
+  Robustness Rate (among successfully setup and tested attacks): 94.68%
+Adversarial attack skipped because original completion failed: 423
+Adversarial attack skipped for other reasons on original passes (e.g., manual, no GT/tests): 0
+    Specifically: Manually skipped: 0
+    Specifically: Skipped due to no GT/tests: 0
+    Specifically: Not applicable (non-Python/no tests): 0
+
+For VULNERABLE samples:
+  Total adversarial tests attempted: 33
+  Total adversarial tests failed: 30 (90.91%)
+  Average tests failed per vulnerable sample: 1.58 / 1.74

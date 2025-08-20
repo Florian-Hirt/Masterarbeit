@@ -1,0 +1,5 @@
+# Release note for ogbg-code2
+
+### v1
+
+Feb 23, 2021: Fix method name leakage bug in ogbg-code

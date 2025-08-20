@@ -1,0 +1,16 @@
+{
+  "4672": {
+    "total_attempts": 2,
+    "unique_perturbations": 1,
+    "cache_hits": 1,
+    "failed_perturbations": 0,
+    "failed_evaluations": 0
+  },
+  "4678": {
+    "total_attempts": 2,
+    "unique_perturbations": 2,
+    "cache_hits": 0,
+    "failed_perturbations": 0,
+    "failed_evaluations": 0
+  }
+}

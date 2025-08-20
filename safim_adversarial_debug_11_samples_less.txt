@@ -1,0 +1,3506 @@
+2025-06-05 14:52:31,014 - INFO - backup_safim.py:77 - ================================================================================
+2025-06-05 14:52:31,014 - INFO - backup_safim.py:78 - DEBUGGING 11 PROBLEMATIC SAMPLES
+2025-06-05 14:52:31,017 - INFO - backup_safim.py:79 - These samples have identical completions but different test results
+2025-06-05 14:52:31,018 - INFO - backup_safim.py:80 - Log file with DEBUG details: safim_adversarial_debug_11_samples_less.txt
+2025-06-05 14:52:31,022 - INFO - backup_safim.py:81 - ================================================================================
+2025-06-05 14:52:31,029 - INFO - backup_safim.py:594 - Using default post-processors for 'block': ['truncate_line_until_block']
+2025-06-05 14:52:31,039 - INFO - backup_safim.py:600 - Loaded cache with 216 entries from ./model_cache.json.
+2025-06-05 14:52:31,039 - INFO - backup_safim.py:603 - Building model: deepseek-ai/deepseek-coder-1.3b-instruct
+2025-06-05 14:52:37,602 - INFO - backup_safim.py:606 - Loading dataset: block
+2025-06-05 14:52:40,641 - INFO - backup_safim.py:610 - Using completion type: block
+2025-06-05 14:52:40,644 - INFO - backup_safim.py:613 - Filtered to 11 problematic samples for debugging out of 8781 total.
+2025-06-05 14:52:40,646 - INFO - backup_safim.py:413 - 
+================================================================================
+DEBUGGING PROBLEMATIC SAMPLE: block_completion_000075
+================================================================================
+2025-06-05 14:52:40,650 - INFO - backup_safim.py:416 - Task block_completion_000075: Original eval_prompt:
+from sys import stdin
+input = stdin.readline
+
+inp = lambda : list(map(int,input().split()))
+
+def update(i , t):
+
+    global ans
+
+    if(i + 1 < n and a[i] == a[i + 1]):
+        ans += t * (i + 1)
+    else:
+        ans += t * (n - i) * (i + 1)
+
+    return ans
+
+def answer():
+
+    global ans
+
+    ans = 0
+    for i in range(n):
+
+        update(i , 1)
+
+
+    for q in range(m):
+        i , x = inp()
+        i -= 1
+
+        if(i >= 0):update(i - 1 , -1)
+        update(i , -1)
+
+        a[i] = x
+        if(i >= 0):{{completion}}
+        update(i , 1)
+
+        print(ans)
+
+        
+for T in range(1):
+
+    n , m = inp()
+    a = inp()
+    
+    answer()
+
+2025-06-05 14:52:40,686 - INFO - backup_safim.py:427 - Task block_completion_000075: Original model completion (full):
+2025-06-05 14:52:40,686 - INFO - backup_safim.py:428 - ------
+update(i - 1 , 1)
+
+------
+2025-06-05 14:52:40,686 - INFO - backup_safim.py:433 - 
+ORIGINAL FULL CODE (Prompt + Completion) FOR block_completion_000075:
+2025-06-05 14:52:40,688 - INFO - backup_safim.py:434 - ------------------------------------------------------------
+2025-06-05 14:52:40,689 - INFO - backup_safim.py:435 - from sys import stdin
+input = stdin.readline
+
+inp = lambda : list(map(int,input().split()))
+
+def update(i , t):
+
+    global ans
+
+    if(i + 1 < n and a[i] == a[i + 1]):
+        ans += t * (i + 1)
+    else:
+        ans += t * (n - i) * (i + 1)
+
+    return ans
+
+def answer():
+
+    global ans
+
+    ans = 0
+    for i in range(n):
+
+        update(i , 1)
+
+
+    for q in range(m):
+        i , x = inp()
+        i -= 1
+
+        if(i >= 0):update(i - 1 , -1)
+        update(i , -1)
+
+        a[i] = x
+        if(i >= 0):update(i - 1 , 1)
+
+        update(i , 1)
+
+        print(ans)
+
+        
+for T in range(1):
+
+    n , m = inp()
+    a = inp()
+    
+    answer()
+
+2025-06-05 14:52:40,691 - INFO - backup_safim.py:436 - ------------------------------------------------------------
+2025-06-05 14:52:40,693 - INFO - backup_safim.py:445 - Task block_completion_000075: Original matches ground truth (implies all 1 tests passed).
+2025-06-05 14:52:40,695 - INFO - backup_safim.py:462 - Task block_completion_000075: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-05 14:52:40,697 - INFO - backup_safim.py:324 - Task block_completion_000075: Searching for adversarial example...
+2025-06-05 14:52:40,966 - WARNING - backup_safim.py:273 - Task block_completion_000075: Reordered code (full) has syntax error after perturbation. Code:
+
+
+def answer():
+    ans = 0
+    global ans
+    for q in range(m):
+        print(ans)
+        (i, x) = inp()
+        i -= 1
+        if (i >= 0):
+            update((i - 1), 1)
+        if (i >= 0):
+            update((i - 1), (- 1))
+        update(i, (- 1))
+        a[i] = x
+        update(i, 1)
+    for i in range(n):
+        update(i, 1)
+from sys import stdin
+inp = (lambda : list(map(int, input().split())))
+
+def update(i, t):
+    global ans
+    if (((i + 1) < n) and (a[(1 + i)] == a[i])):
+        ans += ((i + 1) * t)
+    else:
+        ans += ((1 + i) * (t * (n - i)))
+    return ans
+input = stdin.readline
+for T in range(1):
+    (n, m) = inp()
+    a = inp()
+    answer()
+
+2025-06-05 14:52:40,969 - INFO - backup_safim.py:390 - Task block_completion_000075: No adversarial example found after 1 reordering attempts.
+2025-06-05 14:52:40,974 - INFO - backup_safim.py:391 -   Overall attempts: 1, Valid reorderings generated: 0, Model passed on valid reorderings: 0
+2025-06-05 14:52:40,978 - INFO - backup_safim.py:392 -   Final failure reason: no_valid_reorderings_generated_or_gt_not_found_all_attempts
+2025-06-05 14:52:40,982 - INFO - backup_safim.py:524 - Task block_completion_000075: Adversarial attack failed or conditions not met. Reason: no_valid_reorderings_generated_or_gt_not_found_all_attempts
+2025-06-05 14:52:40,986 - INFO - backup_safim.py:413 - 
+================================================================================
+DEBUGGING PROBLEMATIC SAMPLE: block_completion_000078
+================================================================================
+2025-06-05 14:52:40,990 - INFO - backup_safim.py:416 - Task block_completion_000078: Original eval_prompt:
+import time, sys
+
+n, m = [int(i) for i in sys.stdin.readline().split()]
+a = [int(i) for i in sys.stdin.readline().split()]
+t1 = time.time()
+w = [(i+1)*(n-i-1) for i in range(n-1)]
+c = sum([w[i] if a[i+1] != a[i] else 0 for i in range(n-1)])
+for _ in range(m):
+    ix, x = [int(i) for i in sys.stdin.readline().split()]
+    ix -= 1
+    if ix != 0:
+        if a[ix] == a[ix-1] != x:
+            c += w[ix-1]
+        elif a[ix] != a[ix-1] == x:
+            {{completion}}
+    if ix != n-1:
+        if a[ix] == a[ix+1] != x:
+            c += w[ix]
+        elif a[ix] != a[ix+1] == x:
+            c -= w[ix]
+    a[ix] = x
+
+    sys.stdout.write(str(c+(n*(n+1))//2) + '\n')
+2025-06-05 14:52:41,006 - INFO - backup_safim.py:427 - Task block_completion_000078: Original model completion (full):
+2025-06-05 14:52:41,006 - INFO - backup_safim.py:428 - ------
+c -= w[ix-1]
+
+------
+2025-06-05 14:52:41,007 - INFO - backup_safim.py:433 - 
+ORIGINAL FULL CODE (Prompt + Completion) FOR block_completion_000078:
+2025-06-05 14:52:41,008 - INFO - backup_safim.py:434 - ------------------------------------------------------------
+2025-06-05 14:52:41,010 - INFO - backup_safim.py:435 - import time, sys
+
+n, m = [int(i) for i in sys.stdin.readline().split()]
+a = [int(i) for i in sys.stdin.readline().split()]
+t1 = time.time()
+w = [(i+1)*(n-i-1) for i in range(n-1)]
+c = sum([w[i] if a[i+1] != a[i] else 0 for i in range(n-1)])
+for _ in range(m):
+    ix, x = [int(i) for i in sys.stdin.readline().split()]
+    ix -= 1
+    if ix != 0:
+        if a[ix] == a[ix-1] != x:
+            c += w[ix-1]
+        elif a[ix] != a[ix-1] == x:
+            c -= w[ix-1]
+
+    if ix != n-1:
+        if a[ix] == a[ix+1] != x:
+            c += w[ix]
+        elif a[ix] != a[ix+1] == x:
+            c -= w[ix]
+    a[ix] = x
+
+    sys.stdout.write(str(c+(n*(n+1))//2) + '\n')
+2025-06-05 14:52:41,011 - INFO - backup_safim.py:436 - ------------------------------------------------------------
+2025-06-05 14:52:41,013 - INFO - backup_safim.py:445 - Task block_completion_000078: Original matches ground truth (implies all 1 tests passed).
+2025-06-05 14:52:41,016 - INFO - backup_safim.py:462 - Task block_completion_000078: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-05 14:52:41,018 - INFO - backup_safim.py:324 - Task block_completion_000078: Searching for adversarial example...
+2025-06-05 14:52:41,944 - WARNING - perturbation.py:862 - Cycle detected in module statement dependencies. Falling back to original order for module statements.
+2025-06-05 14:52:41,968 - INFO - backup_safim.py:355 - Task block_completion_000078: Attempt 1 - Model's adversarial completion (first 50 chars): 'c -= w[ix-1]
+...'
+2025-06-05 14:52:42,009 - WARNING - backup_safim.py:138 - Task block_completion_000078_adv_0, Test 1/1: WRONG_ANSWER.
+2025-06-05 14:52:42,009 - INFO - backup_safim.py:371 - Task block_completion_000078: Found adversarial example after 1 reordering attempts (1 valid).
+2025-06-05 14:52:42,009 - INFO - backup_safim.py:372 -   Model's completion (adversarial) failed 1/1 tests on reordered code.
+2025-06-05 14:52:42,009 - INFO - backup_safim.py:478 - 
+ADVERSARIAL ATTACK SUCCEEDED for block_completion_000078:
+2025-06-05 14:52:42,009 - INFO - backup_safim.py:479 -   Original passed: True
+2025-06-05 14:52:42,009 - INFO - backup_safim.py:480 -   Adversarial completion (full):
+2025-06-05 14:52:42,009 - INFO - backup_safim.py:481 - ------
+c -= w[ix-1]
+
+------
+2025-06-05 14:52:42,009 - INFO - backup_safim.py:482 -   COMPLETIONS ARE IDENTICAL
+2025-06-05 14:52:42,009 - INFO - backup_safim.py:485 -   Adversarial code FAILED tests (1 failed / 1 total). Status: FAILED_ALL_TESTS
+2025-06-05 14:52:42,010 - INFO - backup_safim.py:488 - 
+ADVERSARIAL FULL CODE (Perturbed Prompt + Completion) FOR block_completion_000078:
+2025-06-05 14:52:42,010 - INFO - backup_safim.py:489 - ------------------------------------------------------------
+2025-06-05 14:52:42,010 - INFO - backup_safim.py:490 - import time, sys
+t1 = time.time()
+(n, m) = [int(i) for i in sys.stdin.readline().split()]
+a = [int(i) for i in sys.stdin.readline().split()]
+w = [((1 + i) * ((n - i) - 1)) for i in range((n - 1))]
+c = sum([(w[i] if (a[i] != a[(1 + i)]) else 0) for i in range((n - 1))])
+for _ in range(m):
+    (ix, x) = [int(i) for i in sys.stdin.readline().split()]
+    ix -= 1
+    if (ix != (n - 1)):
+        if (a[ix] == a[(ix + 1)] != x):
+            c += w[ix]
+        else:
+            if (a[ix] != a[(1 + ix)] == x):
+                c -= w[ix]
+    if (ix != 0):
+        if (a[ix] == a[(ix - 1)] != x):
+            c += w[(ix - 1)]
+        else:
+            if (a[ix] != a[(ix - 1)] == x):
+                c -= w[ix-1]
+
+    a[ix] = x
+    sys.stdout.write((str((c + (((n + 1) * n) // 2))) + '\n'))
+2025-06-05 14:52:42,010 - INFO - backup_safim.py:491 - ------------------------------------------------------------
+2025-06-05 14:52:42,010 - ERROR - backup_safim.py:494 - 
+
+!!! CRITICAL ISSUE FOR block_completion_000078 !!!
+2025-06-05 14:52:42,010 - ERROR - backup_safim.py:495 - !!! IDENTICAL COMPLETION BUT DIFFERENT TEST RESULTS !!!
+2025-06-05 14:52:42,010 - ERROR - backup_safim.py:496 - ------------------------------------------------------------
+2025-06-05 14:52:42,010 - ERROR - backup_safim.py:497 - ORIGINAL PROMPT (led to PASSING code):
+2025-06-05 14:52:42,010 - ERROR - backup_safim.py:498 - vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+2025-06-05 14:52:42,010 - ERROR - backup_safim.py:499 - import time, sys
+
+n, m = [int(i) for i in sys.stdin.readline().split()]
+a = [int(i) for i in sys.stdin.readline().split()]
+t1 = time.time()
+w = [(i+1)*(n-i-1) for i in range(n-1)]
+c = sum([w[i] if a[i+1] != a[i] else 0 for i in range(n-1)])
+for _ in range(m):
+    ix, x = [int(i) for i in sys.stdin.readline().split()]
+    ix -= 1
+    if ix != 0:
+        if a[ix] == a[ix-1] != x:
+            c += w[ix-1]
+        elif a[ix] != a[ix-1] == x:
+            {{completion}}
+    if ix != n-1:
+        if a[ix] == a[ix+1] != x:
+            c += w[ix]
+        elif a[ix] != a[ix+1] == x:
+            c -= w[ix]
+    a[ix] = x
+
+    sys.stdout.write(str(c+(n*(n+1))//2) + '\n')
+2025-06-05 14:52:42,010 - ERROR - backup_safim.py:500 - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-06-05 14:52:42,010 - ERROR - backup_safim.py:501 - 
+ADVERSARIAL PROMPT (led to FAILING code with SAME completion):
+2025-06-05 14:52:42,011 - ERROR - backup_safim.py:502 - vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+2025-06-05 14:52:42,011 - ERROR - backup_safim.py:503 - import time, sys
+t1 = time.time()
+(n, m) = [int(i) for i in sys.stdin.readline().split()]
+a = [int(i) for i in sys.stdin.readline().split()]
+w = [((1 + i) * ((n - i) - 1)) for i in range((n - 1))]
+c = sum([(w[i] if (a[i] != a[(1 + i)]) else 0) for i in range((n - 1))])
+for _ in range(m):
+    (ix, x) = [int(i) for i in sys.stdin.readline().split()]
+    ix -= 1
+    if (ix != (n - 1)):
+        if (a[ix] == a[(ix + 1)] != x):
+            c += w[ix]
+        else:
+            if (a[ix] != a[(1 + ix)] == x):
+                c -= w[ix]
+    if (ix != 0):
+        if (a[ix] == a[(ix - 1)] != x):
+            c += w[(ix - 1)]
+        else:
+            if (a[ix] != a[(ix - 1)] == x):
+                {{completion}}
+    a[ix] = x
+    sys.stdout.write((str((c + (((n + 1) * n) // 2))) + '\n'))
+2025-06-05 14:52:42,011 - ERROR - backup_safim.py:504 - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-06-05 14:52:42,011 - ERROR - backup_safim.py:506 - 
+LINE-BY-LINE PROMPT DIFFERENCES (Original vs Adversarial):
+2025-06-05 14:52:42,011 - ERROR - backup_safim.py:516 - Line 1 DIFFERS:
+2025-06-05 14:52:42,011 - ERROR - backup_safim.py:517 -   ORIGINAL : import time, sys
+2025-06-05 14:52:42,011 - ERROR - backup_safim.py:518 -   ADVERSARY: import time, sys
+2025-06-05 14:52:42,011 - ERROR - backup_safim.py:516 - Line 2 DIFFERS:
+2025-06-05 14:52:42,011 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:42,011 - ERROR - backup_safim.py:518 -   ADVERSARY: t1 = time.time()
+2025-06-05 14:52:42,011 - ERROR - backup_safim.py:516 - Line 3 DIFFERS:
+2025-06-05 14:52:42,011 - ERROR - backup_safim.py:517 -   ORIGINAL : n, m = [int(i) for i in sys.stdin.readline().split()]
+2025-06-05 14:52:42,011 - ERROR - backup_safim.py:518 -   ADVERSARY: (n, m) = [int(i) for i in sys.stdin.readline().split()]
+2025-06-05 14:52:42,012 - ERROR - backup_safim.py:516 - Line 4 DIFFERS:
+2025-06-05 14:52:42,012 - ERROR - backup_safim.py:517 -   ORIGINAL : a = [int(i) for i in sys.stdin.readline().split()]
+2025-06-05 14:52:42,012 - ERROR - backup_safim.py:518 -   ADVERSARY: a = [int(i) for i in sys.stdin.readline().split()]
+2025-06-05 14:52:42,012 - ERROR - backup_safim.py:516 - Line 5 DIFFERS:
+2025-06-05 14:52:42,012 - ERROR - backup_safim.py:517 -   ORIGINAL : t1 = time.time()
+2025-06-05 14:52:42,012 - ERROR - backup_safim.py:518 -   ADVERSARY: w = [((1 + i) * ((n - i) - 1)) for i in range((n - 1))]
+2025-06-05 14:52:42,012 - ERROR - backup_safim.py:516 - Line 6 DIFFERS:
+2025-06-05 14:52:42,012 - ERROR - backup_safim.py:517 -   ORIGINAL : w = [(i+1)*(n-i-1) for i in range(n-1)]
+2025-06-05 14:52:42,018 - ERROR - backup_safim.py:518 -   ADVERSARY: c = sum([(w[i] if (a[i] != a[(1 + i)]) else 0) for i in range((n - 1))])
+2025-06-05 14:52:42,021 - ERROR - backup_safim.py:516 - Line 7 DIFFERS:
+2025-06-05 14:52:42,021 - ERROR - backup_safim.py:517 -   ORIGINAL : c = sum([w[i] if a[i+1] != a[i] else 0 for i in range(n-1)])
+2025-06-05 14:52:42,021 - ERROR - backup_safim.py:518 -   ADVERSARY: for _ in range(m):
+2025-06-05 14:52:42,022 - ERROR - backup_safim.py:516 - Line 8 DIFFERS:
+2025-06-05 14:52:42,022 - ERROR - backup_safim.py:517 -   ORIGINAL : for _ in range(m):
+2025-06-05 14:52:42,022 - ERROR - backup_safim.py:518 -   ADVERSARY:     (ix, x) = [int(i) for i in sys.stdin.readline().split()]
+2025-06-05 14:52:42,022 - ERROR - backup_safim.py:516 - Line 9 DIFFERS:
+2025-06-05 14:52:42,022 - ERROR - backup_safim.py:517 -   ORIGINAL :     ix, x = [int(i) for i in sys.stdin.readline().split()]
+2025-06-05 14:52:42,022 - ERROR - backup_safim.py:518 -   ADVERSARY:     ix -= 1
+2025-06-05 14:52:42,022 - ERROR - backup_safim.py:516 - Line 10 DIFFERS:
+2025-06-05 14:52:42,022 - ERROR - backup_safim.py:517 -   ORIGINAL :     ix -= 1
+2025-06-05 14:52:42,022 - ERROR - backup_safim.py:518 -   ADVERSARY:     if (ix != (n - 1)):
+2025-06-05 14:52:42,022 - ERROR - backup_safim.py:516 - Line 11 DIFFERS:
+2025-06-05 14:52:42,022 - ERROR - backup_safim.py:517 -   ORIGINAL :     if ix != 0:
+2025-06-05 14:52:42,022 - ERROR - backup_safim.py:518 -   ADVERSARY:         if (a[ix] == a[(ix + 1)] != x):
+2025-06-05 14:52:42,022 - ERROR - backup_safim.py:516 - Line 12 DIFFERS:
+2025-06-05 14:52:42,022 - ERROR - backup_safim.py:517 -   ORIGINAL :         if a[ix] == a[ix-1] != x:
+2025-06-05 14:52:42,022 - ERROR - backup_safim.py:518 -   ADVERSARY:             c += w[ix]
+2025-06-05 14:52:42,023 - ERROR - backup_safim.py:516 - Line 13 DIFFERS:
+2025-06-05 14:52:42,023 - ERROR - backup_safim.py:517 -   ORIGINAL :             c += w[ix-1]
+2025-06-05 14:52:42,023 - ERROR - backup_safim.py:518 -   ADVERSARY:         else:
+2025-06-05 14:52:42,023 - ERROR - backup_safim.py:516 - Line 14 DIFFERS:
+2025-06-05 14:52:42,023 - ERROR - backup_safim.py:517 -   ORIGINAL :         elif a[ix] != a[ix-1] == x:
+2025-06-05 14:52:42,023 - ERROR - backup_safim.py:518 -   ADVERSARY:             if (a[ix] != a[(1 + ix)] == x):
+2025-06-05 14:52:42,023 - ERROR - backup_safim.py:516 - Line 15 DIFFERS:
+2025-06-05 14:52:42,023 - ERROR - backup_safim.py:517 -   ORIGINAL :             {{completion}}
+2025-06-05 14:52:42,023 - ERROR - backup_safim.py:518 -   ADVERSARY:                 c -= w[ix]
+2025-06-05 14:52:42,023 - ERROR - backup_safim.py:516 - Line 16 DIFFERS:
+2025-06-05 14:52:42,023 - ERROR - backup_safim.py:517 -   ORIGINAL :     if ix != n-1:
+2025-06-05 14:52:42,023 - ERROR - backup_safim.py:518 -   ADVERSARY:     if (ix != 0):
+2025-06-05 14:52:42,023 - ERROR - backup_safim.py:516 - Line 17 DIFFERS:
+2025-06-05 14:52:42,023 - ERROR - backup_safim.py:517 -   ORIGINAL :         if a[ix] == a[ix+1] != x:
+2025-06-05 14:52:42,023 - ERROR - backup_safim.py:518 -   ADVERSARY:         if (a[ix] == a[(ix - 1)] != x):
+2025-06-05 14:52:42,024 - ERROR - backup_safim.py:516 - Line 18 DIFFERS:
+2025-06-05 14:52:42,024 - ERROR - backup_safim.py:517 -   ORIGINAL :             c += w[ix]
+2025-06-05 14:52:42,024 - ERROR - backup_safim.py:518 -   ADVERSARY:             c += w[(ix - 1)]
+2025-06-05 14:52:42,024 - ERROR - backup_safim.py:516 - Line 19 DIFFERS:
+2025-06-05 14:52:42,024 - ERROR - backup_safim.py:517 -   ORIGINAL :         elif a[ix] != a[ix+1] == x:
+2025-06-05 14:52:42,024 - ERROR - backup_safim.py:518 -   ADVERSARY:         else:
+2025-06-05 14:52:42,024 - ERROR - backup_safim.py:516 - Line 20 DIFFERS:
+2025-06-05 14:52:42,024 - ERROR - backup_safim.py:517 -   ORIGINAL :             c -= w[ix]
+2025-06-05 14:52:42,024 - ERROR - backup_safim.py:518 -   ADVERSARY:             if (a[ix] != a[(ix - 1)] == x):
+2025-06-05 14:52:42,024 - ERROR - backup_safim.py:516 - Line 21 DIFFERS:
+2025-06-05 14:52:42,024 - ERROR - backup_safim.py:517 -   ORIGINAL :     a[ix] = x
+2025-06-05 14:52:42,024 - ERROR - backup_safim.py:518 -   ADVERSARY:                 {{completion}}
+2025-06-05 14:52:42,024 - ERROR - backup_safim.py:516 - Line 22 DIFFERS:
+2025-06-05 14:52:42,024 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:42,024 - ERROR - backup_safim.py:518 -   ADVERSARY:     a[ix] = x
+2025-06-05 14:52:42,025 - ERROR - backup_safim.py:516 - Line 23 DIFFERS:
+2025-06-05 14:52:42,025 - ERROR - backup_safim.py:517 -   ORIGINAL :     sys.stdout.write(str(c+(n*(n+1))//2) + '\n')
+2025-06-05 14:52:42,025 - ERROR - backup_safim.py:518 -   ADVERSARY:     sys.stdout.write((str((c + (((n + 1) * n) // 2))) + '\n'))
+2025-06-05 14:52:42,025 - ERROR - backup_safim.py:521 - ------------------------------------------------------------
+
+
+2025-06-05 14:52:42,039 - INFO - backup_safim.py:413 - 
+================================================================================
+DEBUGGING PROBLEMATIC SAMPLE: block_completion_000079
+================================================================================
+2025-06-05 14:52:42,039 - INFO - backup_safim.py:416 - Task block_completion_000079: Original eval_prompt:
+import time, sys
+
+n, m = [int(i) for i in sys.stdin.readline().split()]
+a = [int(i) for i in sys.stdin.readline().split()]
+t1 = time.time()
+w = [(i+1)*(n-i-1) for i in range(n-1)]
+c = sum([w[i] if a[i+1] != a[i] else 0 for i in range(n-1)])
+for _ in range(m):
+    ix, x = [int(i) for i in sys.stdin.readline().split()]
+    ix -= 1
+    if ix != 0:
+        if a[ix] == a[ix-1] != x:
+            c += w[ix-1]
+        elif a[ix] != a[ix-1] == x:
+            c -= w[ix-1]
+    if ix != n-1:
+        if a[ix] == a[ix+1] != x:
+            c += w[ix]
+        elif a[ix] != a[ix+1] == x:
+            {{completion}}
+    a[ix] = x
+
+    sys.stdout.write(str(c+(n*(n+1))//2) + '\n')
+2025-06-05 14:52:42,089 - INFO - backup_safim.py:427 - Task block_completion_000079: Original model completion (full):
+2025-06-05 14:52:42,093 - INFO - backup_safim.py:428 - ------
+c -= w[ix]
+
+------
+2025-06-05 14:52:42,093 - INFO - backup_safim.py:433 - 
+ORIGINAL FULL CODE (Prompt + Completion) FOR block_completion_000079:
+2025-06-05 14:52:42,093 - INFO - backup_safim.py:434 - ------------------------------------------------------------
+2025-06-05 14:52:42,093 - INFO - backup_safim.py:435 - import time, sys
+
+n, m = [int(i) for i in sys.stdin.readline().split()]
+a = [int(i) for i in sys.stdin.readline().split()]
+t1 = time.time()
+w = [(i+1)*(n-i-1) for i in range(n-1)]
+c = sum([w[i] if a[i+1] != a[i] else 0 for i in range(n-1)])
+for _ in range(m):
+    ix, x = [int(i) for i in sys.stdin.readline().split()]
+    ix -= 1
+    if ix != 0:
+        if a[ix] == a[ix-1] != x:
+            c += w[ix-1]
+        elif a[ix] != a[ix-1] == x:
+            c -= w[ix-1]
+    if ix != n-1:
+        if a[ix] == a[ix+1] != x:
+            c += w[ix]
+        elif a[ix] != a[ix+1] == x:
+            c -= w[ix]
+
+    a[ix] = x
+
+    sys.stdout.write(str(c+(n*(n+1))//2) + '\n')
+2025-06-05 14:52:42,093 - INFO - backup_safim.py:436 - ------------------------------------------------------------
+2025-06-05 14:52:42,093 - INFO - backup_safim.py:445 - Task block_completion_000079: Original matches ground truth (implies all 1 tests passed).
+2025-06-05 14:52:42,094 - INFO - backup_safim.py:462 - Task block_completion_000079: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-05 14:52:42,094 - INFO - backup_safim.py:324 - Task block_completion_000079: Searching for adversarial example...
+2025-06-05 14:52:43,157 - WARNING - perturbation.py:862 - Cycle detected in module statement dependencies. Falling back to original order for module statements.
+2025-06-05 14:52:43,177 - INFO - backup_safim.py:355 - Task block_completion_000079: Attempt 1 - Model's adversarial completion (first 50 chars): 'c -= w[ix]
+...'
+2025-06-05 14:52:43,211 - WARNING - backup_safim.py:138 - Task block_completion_000079_adv_0, Test 1/1: WRONG_ANSWER.
+2025-06-05 14:52:43,212 - INFO - backup_safim.py:371 - Task block_completion_000079: Found adversarial example after 1 reordering attempts (1 valid).
+2025-06-05 14:52:43,215 - INFO - backup_safim.py:372 -   Model's completion (adversarial) failed 1/1 tests on reordered code.
+2025-06-05 14:52:43,219 - INFO - backup_safim.py:478 - 
+ADVERSARIAL ATTACK SUCCEEDED for block_completion_000079:
+2025-06-05 14:52:43,222 - INFO - backup_safim.py:479 -   Original passed: True
+2025-06-05 14:52:43,224 - INFO - backup_safim.py:480 -   Adversarial completion (full):
+2025-06-05 14:52:43,224 - INFO - backup_safim.py:481 - ------
+c -= w[ix]
+
+------
+2025-06-05 14:52:43,225 - INFO - backup_safim.py:482 -   COMPLETIONS ARE IDENTICAL
+2025-06-05 14:52:43,228 - INFO - backup_safim.py:485 -   Adversarial code FAILED tests (1 failed / 1 total). Status: FAILED_ALL_TESTS
+2025-06-05 14:52:43,229 - INFO - backup_safim.py:488 - 
+ADVERSARIAL FULL CODE (Perturbed Prompt + Completion) FOR block_completion_000079:
+2025-06-05 14:52:43,231 - INFO - backup_safim.py:489 - ------------------------------------------------------------
+2025-06-05 14:52:43,233 - INFO - backup_safim.py:490 - import time, sys
+t1 = time.time()
+(n, m) = [int(i) for i in sys.stdin.readline().split()]
+a = [int(i) for i in sys.stdin.readline().split()]
+w = [(((n - i) - 1) * (1 + i)) for i in range((n - 1))]
+c = sum([(w[i] if (a[(1 + i)] != a[i]) else 0) for i in range((n - 1))])
+for _ in range(m):
+    (ix, x) = [int(i) for i in sys.stdin.readline().split()]
+    ix -= 1
+    if ((n - 1) != ix):
+        if (a[ix] == a[(1 + ix)] != x):
+            c += w[ix]
+        else:
+            if (a[ix] != a[(1 + ix)] == x):
+                c -= w[ix]
+
+    if (ix != 0):
+        if (a[ix] == a[(ix - 1)] != x):
+            c += w[(ix - 1)]
+        else:
+            if (a[ix] != a[(ix - 1)] == x):
+                c -= w[(ix - 1)]
+    a[ix] = x
+    sys.stdout.write((str((((n * (1 + n)) // 2) + c)) + '\n'))
+2025-06-05 14:52:43,235 - INFO - backup_safim.py:491 - ------------------------------------------------------------
+2025-06-05 14:52:43,239 - ERROR - backup_safim.py:494 - 
+
+!!! CRITICAL ISSUE FOR block_completion_000079 !!!
+2025-06-05 14:52:43,243 - ERROR - backup_safim.py:495 - !!! IDENTICAL COMPLETION BUT DIFFERENT TEST RESULTS !!!
+2025-06-05 14:52:43,247 - ERROR - backup_safim.py:496 - ------------------------------------------------------------
+2025-06-05 14:52:43,250 - ERROR - backup_safim.py:497 - ORIGINAL PROMPT (led to PASSING code):
+2025-06-05 14:52:43,254 - ERROR - backup_safim.py:498 - vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+2025-06-05 14:52:43,256 - ERROR - backup_safim.py:499 - import time, sys
+
+n, m = [int(i) for i in sys.stdin.readline().split()]
+a = [int(i) for i in sys.stdin.readline().split()]
+t1 = time.time()
+w = [(i+1)*(n-i-1) for i in range(n-1)]
+c = sum([w[i] if a[i+1] != a[i] else 0 for i in range(n-1)])
+for _ in range(m):
+    ix, x = [int(i) for i in sys.stdin.readline().split()]
+    ix -= 1
+    if ix != 0:
+        if a[ix] == a[ix-1] != x:
+            c += w[ix-1]
+        elif a[ix] != a[ix-1] == x:
+            c -= w[ix-1]
+    if ix != n-1:
+        if a[ix] == a[ix+1] != x:
+            c += w[ix]
+        elif a[ix] != a[ix+1] == x:
+            {{completion}}
+    a[ix] = x
+
+    sys.stdout.write(str(c+(n*(n+1))//2) + '\n')
+2025-06-05 14:52:43,258 - ERROR - backup_safim.py:500 - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-06-05 14:52:43,260 - ERROR - backup_safim.py:501 - 
+ADVERSARIAL PROMPT (led to FAILING code with SAME completion):
+2025-06-05 14:52:43,261 - ERROR - backup_safim.py:502 - vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+2025-06-05 14:52:43,265 - ERROR - backup_safim.py:503 - import time, sys
+t1 = time.time()
+(n, m) = [int(i) for i in sys.stdin.readline().split()]
+a = [int(i) for i in sys.stdin.readline().split()]
+w = [(((n - i) - 1) * (1 + i)) for i in range((n - 1))]
+c = sum([(w[i] if (a[(1 + i)] != a[i]) else 0) for i in range((n - 1))])
+for _ in range(m):
+    (ix, x) = [int(i) for i in sys.stdin.readline().split()]
+    ix -= 1
+    if ((n - 1) != ix):
+        if (a[ix] == a[(1 + ix)] != x):
+            c += w[ix]
+        else:
+            if (a[ix] != a[(1 + ix)] == x):
+                {{completion}}
+    if (ix != 0):
+        if (a[ix] == a[(ix - 1)] != x):
+            c += w[(ix - 1)]
+        else:
+            if (a[ix] != a[(ix - 1)] == x):
+                c -= w[(ix - 1)]
+    a[ix] = x
+    sys.stdout.write((str((((n * (1 + n)) // 2) + c)) + '\n'))
+2025-06-05 14:52:43,267 - ERROR - backup_safim.py:504 - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-06-05 14:52:43,268 - ERROR - backup_safim.py:506 - 
+LINE-BY-LINE PROMPT DIFFERENCES (Original vs Adversarial):
+2025-06-05 14:52:43,272 - ERROR - backup_safim.py:516 - Line 1 DIFFERS:
+2025-06-05 14:52:43,273 - ERROR - backup_safim.py:517 -   ORIGINAL : import time, sys
+2025-06-05 14:52:43,277 - ERROR - backup_safim.py:518 -   ADVERSARY: import time, sys
+2025-06-05 14:52:43,279 - ERROR - backup_safim.py:516 - Line 2 DIFFERS:
+2025-06-05 14:52:43,280 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:43,282 - ERROR - backup_safim.py:518 -   ADVERSARY: t1 = time.time()
+2025-06-05 14:52:43,284 - ERROR - backup_safim.py:516 - Line 3 DIFFERS:
+2025-06-05 14:52:43,285 - ERROR - backup_safim.py:517 -   ORIGINAL : n, m = [int(i) for i in sys.stdin.readline().split()]
+2025-06-05 14:52:43,287 - ERROR - backup_safim.py:518 -   ADVERSARY: (n, m) = [int(i) for i in sys.stdin.readline().split()]
+2025-06-05 14:52:43,289 - ERROR - backup_safim.py:516 - Line 4 DIFFERS:
+2025-06-05 14:52:43,293 - ERROR - backup_safim.py:517 -   ORIGINAL : a = [int(i) for i in sys.stdin.readline().split()]
+2025-06-05 14:52:43,299 - ERROR - backup_safim.py:518 -   ADVERSARY: a = [int(i) for i in sys.stdin.readline().split()]
+2025-06-05 14:52:43,299 - ERROR - backup_safim.py:516 - Line 5 DIFFERS:
+2025-06-05 14:52:43,299 - ERROR - backup_safim.py:517 -   ORIGINAL : t1 = time.time()
+2025-06-05 14:52:43,299 - ERROR - backup_safim.py:518 -   ADVERSARY: w = [(((n - i) - 1) * (1 + i)) for i in range((n - 1))]
+2025-06-05 14:52:43,304 - ERROR - backup_safim.py:516 - Line 6 DIFFERS:
+2025-06-05 14:52:43,304 - ERROR - backup_safim.py:517 -   ORIGINAL : w = [(i+1)*(n-i-1) for i in range(n-1)]
+2025-06-05 14:52:43,304 - ERROR - backup_safim.py:518 -   ADVERSARY: c = sum([(w[i] if (a[(1 + i)] != a[i]) else 0) for i in range((n - 1))])
+2025-06-05 14:52:43,304 - ERROR - backup_safim.py:516 - Line 7 DIFFERS:
+2025-06-05 14:52:43,304 - ERROR - backup_safim.py:517 -   ORIGINAL : c = sum([w[i] if a[i+1] != a[i] else 0 for i in range(n-1)])
+2025-06-05 14:52:43,304 - ERROR - backup_safim.py:518 -   ADVERSARY: for _ in range(m):
+2025-06-05 14:52:43,304 - ERROR - backup_safim.py:516 - Line 8 DIFFERS:
+2025-06-05 14:52:43,304 - ERROR - backup_safim.py:517 -   ORIGINAL : for _ in range(m):
+2025-06-05 14:52:43,304 - ERROR - backup_safim.py:518 -   ADVERSARY:     (ix, x) = [int(i) for i in sys.stdin.readline().split()]
+2025-06-05 14:52:43,304 - ERROR - backup_safim.py:516 - Line 9 DIFFERS:
+2025-06-05 14:52:43,304 - ERROR - backup_safim.py:517 -   ORIGINAL :     ix, x = [int(i) for i in sys.stdin.readline().split()]
+2025-06-05 14:52:43,304 - ERROR - backup_safim.py:518 -   ADVERSARY:     ix -= 1
+2025-06-05 14:52:43,305 - ERROR - backup_safim.py:516 - Line 10 DIFFERS:
+2025-06-05 14:52:43,305 - ERROR - backup_safim.py:517 -   ORIGINAL :     ix -= 1
+2025-06-05 14:52:43,305 - ERROR - backup_safim.py:518 -   ADVERSARY:     if ((n - 1) != ix):
+2025-06-05 14:52:43,305 - ERROR - backup_safim.py:516 - Line 11 DIFFERS:
+2025-06-05 14:52:43,305 - ERROR - backup_safim.py:517 -   ORIGINAL :     if ix != 0:
+2025-06-05 14:52:43,305 - ERROR - backup_safim.py:518 -   ADVERSARY:         if (a[ix] == a[(1 + ix)] != x):
+2025-06-05 14:52:43,305 - ERROR - backup_safim.py:516 - Line 12 DIFFERS:
+2025-06-05 14:52:43,305 - ERROR - backup_safim.py:517 -   ORIGINAL :         if a[ix] == a[ix-1] != x:
+2025-06-05 14:52:43,305 - ERROR - backup_safim.py:518 -   ADVERSARY:             c += w[ix]
+2025-06-05 14:52:43,305 - ERROR - backup_safim.py:516 - Line 13 DIFFERS:
+2025-06-05 14:52:43,305 - ERROR - backup_safim.py:517 -   ORIGINAL :             c += w[ix-1]
+2025-06-05 14:52:43,305 - ERROR - backup_safim.py:518 -   ADVERSARY:         else:
+2025-06-05 14:52:43,307 - ERROR - backup_safim.py:516 - Line 14 DIFFERS:
+2025-06-05 14:52:43,308 - ERROR - backup_safim.py:517 -   ORIGINAL :         elif a[ix] != a[ix-1] == x:
+2025-06-05 14:52:43,310 - ERROR - backup_safim.py:518 -   ADVERSARY:             if (a[ix] != a[(1 + ix)] == x):
+2025-06-05 14:52:43,312 - ERROR - backup_safim.py:516 - Line 15 DIFFERS:
+2025-06-05 14:52:43,314 - ERROR - backup_safim.py:517 -   ORIGINAL :             c -= w[ix-1]
+2025-06-05 14:52:43,315 - ERROR - backup_safim.py:518 -   ADVERSARY:                 {{completion}}
+2025-06-05 14:52:43,317 - ERROR - backup_safim.py:516 - Line 16 DIFFERS:
+2025-06-05 14:52:43,319 - ERROR - backup_safim.py:517 -   ORIGINAL :     if ix != n-1:
+2025-06-05 14:52:43,320 - ERROR - backup_safim.py:518 -   ADVERSARY:     if (ix != 0):
+2025-06-05 14:52:43,322 - ERROR - backup_safim.py:516 - Line 17 DIFFERS:
+2025-06-05 14:52:43,326 - ERROR - backup_safim.py:517 -   ORIGINAL :         if a[ix] == a[ix+1] != x:
+2025-06-05 14:52:43,327 - ERROR - backup_safim.py:518 -   ADVERSARY:         if (a[ix] == a[(ix - 1)] != x):
+2025-06-05 14:52:43,333 - ERROR - backup_safim.py:516 - Line 18 DIFFERS:
+2025-06-05 14:52:43,333 - ERROR - backup_safim.py:517 -   ORIGINAL :             c += w[ix]
+2025-06-05 14:52:43,333 - ERROR - backup_safim.py:518 -   ADVERSARY:             c += w[(ix - 1)]
+2025-06-05 14:52:43,333 - ERROR - backup_safim.py:516 - Line 19 DIFFERS:
+2025-06-05 14:52:43,333 - ERROR - backup_safim.py:517 -   ORIGINAL :         elif a[ix] != a[ix+1] == x:
+2025-06-05 14:52:43,335 - ERROR - backup_safim.py:518 -   ADVERSARY:         else:
+2025-06-05 14:52:43,340 - ERROR - backup_safim.py:516 - Line 20 DIFFERS:
+2025-06-05 14:52:43,342 - ERROR - backup_safim.py:517 -   ORIGINAL :             {{completion}}
+2025-06-05 14:52:43,343 - ERROR - backup_safim.py:518 -   ADVERSARY:             if (a[ix] != a[(ix - 1)] == x):
+2025-06-05 14:52:43,345 - ERROR - backup_safim.py:516 - Line 21 DIFFERS:
+2025-06-05 14:52:43,347 - ERROR - backup_safim.py:517 -   ORIGINAL :     a[ix] = x
+2025-06-05 14:52:43,350 - ERROR - backup_safim.py:518 -   ADVERSARY:                 c -= w[(ix - 1)]
+2025-06-05 14:52:43,354 - ERROR - backup_safim.py:516 - Line 22 DIFFERS:
+2025-06-05 14:52:43,358 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:43,361 - ERROR - backup_safim.py:518 -   ADVERSARY:     a[ix] = x
+2025-06-05 14:52:43,364 - ERROR - backup_safim.py:516 - Line 23 DIFFERS:
+2025-06-05 14:52:43,367 - ERROR - backup_safim.py:517 -   ORIGINAL :     sys.stdout.write(str(c+(n*(n+1))//2) + '\n')
+2025-06-05 14:52:43,370 - ERROR - backup_safim.py:518 -   ADVERSARY:     sys.stdout.write((str((((n * (1 + n)) // 2) + c)) + '\n'))
+2025-06-05 14:52:43,373 - ERROR - backup_safim.py:521 - ------------------------------------------------------------
+
+
+2025-06-05 14:52:43,375 - INFO - backup_safim.py:413 - 
+================================================================================
+DEBUGGING PROBLEMATIC SAMPLE: block_completion_000109
+================================================================================
+2025-06-05 14:52:43,377 - INFO - backup_safim.py:416 - Task block_completion_000109: Original eval_prompt:
+
+
+
+
+import sys
+input=sys.stdin.readline #文字列入力はするな！！
+
+
+
+########################################
+from heapq import heappush, heappop
+B=10**5+10
+def dijkstra( G, dist, INF=10**11):
+    """
+    https://tjkendev.github.io/procon-library/python/graph/dijkstra.html
+    O((|E|+|V|)log|V|)
+    V: 頂点数
+    G[v] = [(nod, cost)]:
+        頂点vから遷移可能な頂点(nod)とそのコスト(cost)
+    s: 始点の頂点"""
+
+    N=len(dist)
+    hp=[]
+    for i in range(N):
+        heappush(hp,dist[i]*B+i)
+    while hp:
+        cv=heappop(hp)
+        c, v = cv//B,cv%B
+        if dist[v] < c:
+            {{completion}}
+        for u, cost in G[v]:
+            if dist[v] + cost < dist[u]:
+                dist[u] = dist[v] + cost
+                heappush(hp, dist[u]*B+u)
+    return dist
+##################################################
+
+
+
+
+#########################################
+from collections import deque
+class Convex_Hull_Trick():
+
+    #https://tjkendev.github.io/procon-library/python/convex_hull_trick/deque.html
+    #追加する傾きが単調かつqueryのxが単調
+    #単調性なしが良いならこちらへ(queryのxは先読み) https://judge.yosupo.jp/submission/30579
+
+    def __init__(self):
+        self.deq=deque()
+    def check(self,f1, f2, f3):
+        return (f2[0] - f1[0]) * (f3[1] - f2[1]) >= (f2[1] - f1[1]) * (f3[0] - f2[0])
+    def f(self,f1, x):
+        return f1[0] * x + f1[1]
+
+    # add f_i(x) = a*x + b
+    def add_line(self,a, b):
+        f1 = (a, b)
+        while len(self.deq) >= 2 and self.check(self.deq[-2], self.deq[-1], f1):
+            self.deq.pop()
+        self.deq.append(f1)
+
+    # min f_i(x)
+    def query(self,x):
+        while len(self.deq) >= 2 and self.f(self.deq[0], x) >= self.f(self.deq[1], x):
+            self.deq.popleft()
+        return self.f(self.deq[0], x)
+
+##################################
+
+
+n,m,k=map(int,input().split())
+root=[[] for i in range(n+2)]
+for i in range(m):
+    a,b,c=map(int,input().split())
+    root[a].append((b,c))
+    root[b].append((a,c))
+dp=[10**11]*(n+1)
+dp[1]=0
+dp=dijkstra(root,dp)
+for iii in range(k):
+    newdp=[10**11]*(n+1)
+    cht=Convex_Hull_Trick()
+    for i in range(1,n+1):
+        cht.add_line(-2*i,dp[i]+i**2)
+    for i in range(1,n+1):
+        newdp[i]=cht.query(i)+i**2
+
+
+    dp=newdp[:]
+    dp=dijkstra(root,dp)
+print(*dp[1:])
+
+
+
+
+
+2025-06-05 14:52:43,768 - INFO - backup_safim.py:427 - Task block_completion_000109: Original model completion (full):
+2025-06-05 14:52:43,768 - INFO - backup_safim.py:428 - ------
+continue
+        if len(G[v]) == 0:
+            continue
+
+------
+2025-06-05 14:52:43,768 - INFO - backup_safim.py:433 - 
+ORIGINAL FULL CODE (Prompt + Completion) FOR block_completion_000109:
+2025-06-05 14:52:43,770 - INFO - backup_safim.py:434 - ------------------------------------------------------------
+2025-06-05 14:52:43,770 - INFO - backup_safim.py:435 - 
+
+
+
+import sys
+input=sys.stdin.readline #文字列入力はするな！！
+
+
+
+########################################
+from heapq import heappush, heappop
+B=10**5+10
+def dijkstra( G, dist, INF=10**11):
+    """
+    https://tjkendev.github.io/procon-library/python/graph/dijkstra.html
+    O((|E|+|V|)log|V|)
+    V: 頂点数
+    G[v] = [(nod, cost)]:
+        頂点vから遷移可能な頂点(nod)とそのコスト(cost)
+    s: 始点の頂点"""
+
+    N=len(dist)
+    hp=[]
+    for i in range(N):
+        heappush(hp,dist[i]*B+i)
+    while hp:
+        cv=heappop(hp)
+        c, v = cv//B,cv%B
+        if dist[v] < c:
+            continue
+        if len(G[v]) == 0:
+            continue
+
+        for u, cost in G[v]:
+            if dist[v] + cost < dist[u]:
+                dist[u] = dist[v] + cost
+                heappush(hp, dist[u]*B+u)
+    return dist
+##################################################
+
+
+
+
+#########################################
+from collections import deque
+class Convex_Hull_Trick():
+
+    #https://tjkendev.github.io/procon-library/python/convex_hull_trick/deque.html
+    #追加する傾きが単調かつqueryのxが単調
+    #単調性なしが良いならこちらへ(queryのxは先読み) https://judge.yosupo.jp/submission/30579
+
+    def __init__(self):
+        self.deq=deque()
+    def check(self,f1, f2, f3):
+        return (f2[0] - f1[0]) * (f3[1] - f2[1]) >= (f2[1] - f1[1]) * (f3[0] - f2[0])
+    def f(self,f1, x):
+        return f1[0] * x + f1[1]
+
+    # add f_i(x) = a*x + b
+    def add_line(self,a, b):
+        f1 = (a, b)
+        while len(self.deq) >= 2 and self.check(self.deq[-2], self.deq[-1], f1):
+            self.deq.pop()
+        self.deq.append(f1)
+
+    # min f_i(x)
+    def query(self,x):
+        while len(self.deq) >= 2 and self.f(self.deq[0], x) >= self.f(self.deq[1], x):
+            self.deq.popleft()
+        return self.f(self.deq[0], x)
+
+##################################
+
+
+n,m,k=map(int,input().split())
+root=[[] for i in range(n+2)]
+for i in range(m):
+    a,b,c=map(int,input().split())
+    root[a].append((b,c))
+    root[b].append((a,c))
+dp=[10**11]*(n+1)
+dp[1]=0
+dp=dijkstra(root,dp)
+for iii in range(k):
+    newdp=[10**11]*(n+1)
+    cht=Convex_Hull_Trick()
+    for i in range(1,n+1):
+        cht.add_line(-2*i,dp[i]+i**2)
+    for i in range(1,n+1):
+        newdp[i]=cht.query(i)+i**2
+
+
+    dp=newdp[:]
+    dp=dijkstra(root,dp)
+print(*dp[1:])
+
+
+
+
+
+2025-06-05 14:52:43,771 - INFO - backup_safim.py:436 - ------------------------------------------------------------
+2025-06-05 14:52:43,908 - INFO - backup_safim.py:455 - Task block_completion_000109: Original code PASSED tests (4 passed / 4 total). Status: PASSED
+2025-06-05 14:52:43,908 - INFO - backup_safim.py:462 - Task block_completion_000109: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-05 14:52:43,909 - INFO - backup_safim.py:324 - Task block_completion_000109: Searching for adversarial example...
+2025-06-05 14:52:49,614 - WARNING - perturbation.py:862 - Cycle detected in module statement dependencies. Falling back to original order for module statements.
+2025-06-05 14:52:49,992 - INFO - backup_safim.py:355 - Task block_completion_000109: Attempt 1 - Model's adversarial completion (first 50 chars): 'continue
+        if len(G[v]) == 0:
+            co...'
+2025-06-05 14:52:50,030 - WARNING - backup_safim.py:130 - Task block_completion_000109_adv_0, Test 1/4: RUNTIME_ERROR. Stderr: Traceback (most recent call last):
+  File "/tmp/tmpx3t_nbhu.py", line 54, in <module>
+    newdp[i] = ((i ** 2) + cht.query(i))
+                           ^^^^^^^^^^^^
+  File "/tmp/tmpx3t_nbhu.py", line 46, in query
+    return self.f(self.deq[0], x)
+                  ~~~~~~~~^^^
+IndexError: deque ind
+2025-06-05 14:52:50,065 - WARNING - backup_safim.py:130 - Task block_completion_000109_adv_0, Test 2/4: RUNTIME_ERROR. Stderr: Traceback (most recent call last):
+  File "/tmp/tmpjfqw26ed.py", line 54, in <module>
+    newdp[i] = ((i ** 2) + cht.query(i))
+                           ^^^^^^^^^^^^
+  File "/tmp/tmpjfqw26ed.py", line 46, in query
+    return self.f(self.deq[0], x)
+                  ~~~~~~~~^^^
+IndexError: deque ind
+2025-06-05 14:52:50,099 - WARNING - backup_safim.py:130 - Task block_completion_000109_adv_0, Test 3/4: RUNTIME_ERROR. Stderr: Traceback (most recent call last):
+  File "/tmp/tmpgsvx_3_3.py", line 54, in <module>
+    newdp[i] = ((i ** 2) + cht.query(i))
+                           ^^^^^^^^^^^^
+  File "/tmp/tmpgsvx_3_3.py", line 46, in query
+    return self.f(self.deq[0], x)
+                  ~~~~~~~~^^^
+IndexError: deque ind
+2025-06-05 14:52:50,133 - WARNING - backup_safim.py:130 - Task block_completion_000109_adv_0, Test 4/4: RUNTIME_ERROR. Stderr: Traceback (most recent call last):
+  File "/tmp/tmpt3pturlp.py", line 54, in <module>
+    newdp[i] = ((i ** 2) + cht.query(i))
+                           ^^^^^^^^^^^^
+  File "/tmp/tmpt3pturlp.py", line 46, in query
+    return self.f(self.deq[0], x)
+                  ~~~~~~~~^^^
+IndexError: deque ind
+2025-06-05 14:52:50,133 - INFO - backup_safim.py:371 - Task block_completion_000109: Found adversarial example after 1 reordering attempts (1 valid).
+2025-06-05 14:52:50,135 - INFO - backup_safim.py:372 -   Model's completion (adversarial) failed 4/4 tests on reordered code.
+2025-06-05 14:52:50,135 - INFO - backup_safim.py:478 - 
+ADVERSARIAL ATTACK SUCCEEDED for block_completion_000109:
+2025-06-05 14:52:50,137 - INFO - backup_safim.py:479 -   Original passed: True
+2025-06-05 14:52:50,140 - INFO - backup_safim.py:480 -   Adversarial completion (full):
+2025-06-05 14:52:50,144 - INFO - backup_safim.py:481 - ------
+continue
+        if len(G[v]) == 0:
+            continue
+
+------
+2025-06-05 14:52:50,146 - INFO - backup_safim.py:482 -   COMPLETIONS ARE IDENTICAL
+2025-06-05 14:52:50,150 - INFO - backup_safim.py:485 -   Adversarial code FAILED tests (4 failed / 4 total). Status: FAILED_ALL_TESTS
+2025-06-05 14:52:50,153 - INFO - backup_safim.py:488 - 
+ADVERSARIAL FULL CODE (Perturbed Prompt + Completion) FOR block_completion_000109:
+2025-06-05 14:52:50,157 - INFO - backup_safim.py:489 - ------------------------------------------------------------
+2025-06-05 14:52:50,161 - INFO - backup_safim.py:490 - from heapq import heappush, heappop
+
+def dijkstra(G, dist, INF=(10 ** 11)):
+    hp = []
+    N = len(dist)
+    '\n    https://tjkendev.github.io/procon-library/python/graph/dijkstra.html\n    O((|E|+|V|)log|V|)\n    V: 頂点数\n    G[v] = [(nod, cost)]:\n        頂点vから遷移可能な頂点(nod)とそのコスト(cost)\n    s: 始点の頂点'
+    while hp:
+        for (u, cost) in G[v]:
+            if ((cost + dist[v]) < dist[u]):
+                dist[u] = (cost + dist[v])
+                heappush(hp, (u + (dist[u] * B)))
+        if (dist[v] < c):
+            continue
+        if len(G[v]) == 0:
+            continue
+
+        cv = heappop(hp)
+        (c, v) = ((cv // B), (cv % B))
+    for i in range(N):
+        heappush(hp, (i + (dist[i] * B)))
+    return dist
+import sys
+B = (10 + (10 ** 5))
+from collections import deque
+
+class Convex_Hull_Trick():
+
+    def __init__(self):
+        self.deq = deque()
+
+    def check(self, f1, f2, f3):
+        return (((f2[0] - f1[0]) * (f3[1] - f2[1])) >= ((f3[0] - f2[0]) * (f2[1] - f1[1])))
+
+    def f(self, f1, x):
+        return (f1[1] + (x * f1[0]))
+
+    def add_line(self, a, b):
+        f1 = (a, b)
+        while ((len(self.deq) >= 2) and self.check(self.deq[(- 2)], self.deq[(- 1)], f1)):
+            self.deq.pop()
+        self.deq.append(f1)
+
+    def query(self, x):
+        while ((len(self.deq) >= 2) and (self.f(self.deq[0], x) >= self.f(self.deq[1], x))):
+            self.deq.popleft()
+        return self.f(self.deq[0], x)
+input = sys.stdin.readline
+(n, m, k) = map(int, input().split())
+root = [[] for i in range((2 + n))]
+for iii in range(k):
+    newdp = ((1 + n) * [(10 ** 11)])
+    cht = Convex_Hull_Trick()
+    for i in range(1, (n + 1)):
+        newdp[i] = ((i ** 2) + cht.query(i))
+    for i in range(1, (1 + n)):
+        cht.add_line(((- 2) * i), ((i ** 2) + dp[i]))
+    dp = newdp[:]
+    dp = dijkstra(root, dp)
+for i in range(m):
+    (a, b, c) = map(int, input().split())
+    root[a].append((b, c))
+    root[b].append((a, c))
+dp = ((1 + n) * [(10 ** 11)])
+dp[1] = 0
+dp = dijkstra(root, dp)
+print(*dp[1:])
+2025-06-05 14:52:50,164 - INFO - backup_safim.py:491 - ------------------------------------------------------------
+2025-06-05 14:52:50,170 - ERROR - backup_safim.py:494 - 
+
+!!! CRITICAL ISSUE FOR block_completion_000109 !!!
+2025-06-05 14:52:50,174 - ERROR - backup_safim.py:495 - !!! IDENTICAL COMPLETION BUT DIFFERENT TEST RESULTS !!!
+2025-06-05 14:52:50,178 - ERROR - backup_safim.py:496 - ------------------------------------------------------------
+2025-06-05 14:52:50,181 - ERROR - backup_safim.py:497 - ORIGINAL PROMPT (led to PASSING code):
+2025-06-05 14:52:50,185 - ERROR - backup_safim.py:498 - vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+2025-06-05 14:52:50,187 - ERROR - backup_safim.py:499 - 
+
+
+
+import sys
+input=sys.stdin.readline #文字列入力はするな！！
+
+
+
+########################################
+from heapq import heappush, heappop
+B=10**5+10
+def dijkstra( G, dist, INF=10**11):
+    """
+    https://tjkendev.github.io/procon-library/python/graph/dijkstra.html
+    O((|E|+|V|)log|V|)
+    V: 頂点数
+    G[v] = [(nod, cost)]:
+        頂点vから遷移可能な頂点(nod)とそのコスト(cost)
+    s: 始点の頂点"""
+
+    N=len(dist)
+    hp=[]
+    for i in range(N):
+        heappush(hp,dist[i]*B+i)
+    while hp:
+        cv=heappop(hp)
+        c, v = cv//B,cv%B
+        if dist[v] < c:
+            {{completion}}
+        for u, cost in G[v]:
+            if dist[v] + cost < dist[u]:
+                dist[u] = dist[v] + cost
+                heappush(hp, dist[u]*B+u)
+    return dist
+##################################################
+
+
+
+
+#########################################
+from collections import deque
+class Convex_Hull_Trick():
+
+    #https://tjkendev.github.io/procon-library/python/convex_hull_trick/deque.html
+    #追加する傾きが単調かつqueryのxが単調
+    #単調性なしが良いならこちらへ(queryのxは先読み) https://judge.yosupo.jp/submission/30579
+
+    def __init__(self):
+        self.deq=deque()
+    def check(self,f1, f2, f3):
+        return (f2[0] - f1[0]) * (f3[1] - f2[1]) >= (f2[1] - f1[1]) * (f3[0] - f2[0])
+    def f(self,f1, x):
+        return f1[0] * x + f1[1]
+
+    # add f_i(x) = a*x + b
+    def add_line(self,a, b):
+        f1 = (a, b)
+        while len(self.deq) >= 2 and self.check(self.deq[-2], self.deq[-1], f1):
+            self.deq.pop()
+        self.deq.append(f1)
+
+    # min f_i(x)
+    def query(self,x):
+        while len(self.deq) >= 2 and self.f(self.deq[0], x) >= self.f(self.deq[1], x):
+            self.deq.popleft()
+        return self.f(self.deq[0], x)
+
+##################################
+
+
+n,m,k=map(int,input().split())
+root=[[] for i in range(n+2)]
+for i in range(m):
+    a,b,c=map(int,input().split())
+    root[a].append((b,c))
+    root[b].append((a,c))
+dp=[10**11]*(n+1)
+dp[1]=0
+dp=dijkstra(root,dp)
+for iii in range(k):
+    newdp=[10**11]*(n+1)
+    cht=Convex_Hull_Trick()
+    for i in range(1,n+1):
+        cht.add_line(-2*i,dp[i]+i**2)
+    for i in range(1,n+1):
+        newdp[i]=cht.query(i)+i**2
+
+
+    dp=newdp[:]
+    dp=dijkstra(root,dp)
+print(*dp[1:])
+
+
+
+
+
+2025-06-05 14:52:50,189 - ERROR - backup_safim.py:500 - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-06-05 14:52:50,194 - ERROR - backup_safim.py:501 - 
+ADVERSARIAL PROMPT (led to FAILING code with SAME completion):
+2025-06-05 14:52:50,195 - ERROR - backup_safim.py:502 - vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+2025-06-05 14:52:50,197 - ERROR - backup_safim.py:503 - from heapq import heappush, heappop
+
+def dijkstra(G, dist, INF=(10 ** 11)):
+    hp = []
+    N = len(dist)
+    '\n    https://tjkendev.github.io/procon-library/python/graph/dijkstra.html\n    O((|E|+|V|)log|V|)\n    V: 頂点数\n    G[v] = [(nod, cost)]:\n        頂点vから遷移可能な頂点(nod)とそのコスト(cost)\n    s: 始点の頂点'
+    while hp:
+        for (u, cost) in G[v]:
+            if ((cost + dist[v]) < dist[u]):
+                dist[u] = (cost + dist[v])
+                heappush(hp, (u + (dist[u] * B)))
+        if (dist[v] < c):
+            {{completion}}
+        cv = heappop(hp)
+        (c, v) = ((cv // B), (cv % B))
+    for i in range(N):
+        heappush(hp, (i + (dist[i] * B)))
+    return dist
+import sys
+B = (10 + (10 ** 5))
+from collections import deque
+
+class Convex_Hull_Trick():
+
+    def __init__(self):
+        self.deq = deque()
+
+    def check(self, f1, f2, f3):
+        return (((f2[0] - f1[0]) * (f3[1] - f2[1])) >= ((f3[0] - f2[0]) * (f2[1] - f1[1])))
+
+    def f(self, f1, x):
+        return (f1[1] + (x * f1[0]))
+
+    def add_line(self, a, b):
+        f1 = (a, b)
+        while ((len(self.deq) >= 2) and self.check(self.deq[(- 2)], self.deq[(- 1)], f1)):
+            self.deq.pop()
+        self.deq.append(f1)
+
+    def query(self, x):
+        while ((len(self.deq) >= 2) and (self.f(self.deq[0], x) >= self.f(self.deq[1], x))):
+            self.deq.popleft()
+        return self.f(self.deq[0], x)
+input = sys.stdin.readline
+(n, m, k) = map(int, input().split())
+root = [[] for i in range((2 + n))]
+for iii in range(k):
+    newdp = ((1 + n) * [(10 ** 11)])
+    cht = Convex_Hull_Trick()
+    for i in range(1, (n + 1)):
+        newdp[i] = ((i ** 2) + cht.query(i))
+    for i in range(1, (1 + n)):
+        cht.add_line(((- 2) * i), ((i ** 2) + dp[i]))
+    dp = newdp[:]
+    dp = dijkstra(root, dp)
+for i in range(m):
+    (a, b, c) = map(int, input().split())
+    root[a].append((b, c))
+    root[b].append((a, c))
+dp = ((1 + n) * [(10 ** 11)])
+dp[1] = 0
+dp = dijkstra(root, dp)
+print(*dp[1:])
+2025-06-05 14:52:50,199 - ERROR - backup_safim.py:504 - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-06-05 14:52:50,201 - ERROR - backup_safim.py:506 - 
+LINE-BY-LINE PROMPT DIFFERENCES (Original vs Adversarial):
+2025-06-05 14:52:50,204 - ERROR - backup_safim.py:516 - Line 1 DIFFERS:
+2025-06-05 14:52:50,208 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,211 - ERROR - backup_safim.py:518 -   ADVERSARY: from heapq import heappush, heappop
+2025-06-05 14:52:50,214 - ERROR - backup_safim.py:516 - Line 3 DIFFERS:
+2025-06-05 14:52:50,217 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,221 - ERROR - backup_safim.py:518 -   ADVERSARY: def dijkstra(G, dist, INF=(10 ** 11)):
+2025-06-05 14:52:50,222 - ERROR - backup_safim.py:516 - Line 4 DIFFERS:
+2025-06-05 14:52:50,223 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,225 - ERROR - backup_safim.py:518 -   ADVERSARY:     hp = []
+2025-06-05 14:52:50,227 - ERROR - backup_safim.py:516 - Line 5 DIFFERS:
+2025-06-05 14:52:50,228 - ERROR - backup_safim.py:517 -   ORIGINAL : import sys
+2025-06-05 14:52:50,230 - ERROR - backup_safim.py:518 -   ADVERSARY:     N = len(dist)
+2025-06-05 14:52:50,232 - ERROR - backup_safim.py:516 - Line 6 DIFFERS:
+2025-06-05 14:52:50,233 - ERROR - backup_safim.py:517 -   ORIGINAL : input=sys.stdin.readline #文字列入力はするな！！
+2025-06-05 14:52:50,235 - ERROR - backup_safim.py:518 -   ADVERSARY:     '\n    https://tjkendev.github.io/procon-library/python/graph/dijkstra.html\n    O((|E|+|V|)log|V|)\n    V: 頂点数\n    G[v] = [(nod, cost)]:\n        頂点vから遷移可能な頂点(nod)とそのコスト(cost)\n    s: 始点の頂点'
+2025-06-05 14:52:50,239 - ERROR - backup_safim.py:516 - Line 7 DIFFERS:
+2025-06-05 14:52:50,243 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,245 - ERROR - backup_safim.py:518 -   ADVERSARY:     while hp:
+2025-06-05 14:52:50,247 - ERROR - backup_safim.py:516 - Line 8 DIFFERS:
+2025-06-05 14:52:50,249 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,251 - ERROR - backup_safim.py:518 -   ADVERSARY:         for (u, cost) in G[v]:
+2025-06-05 14:52:50,255 - ERROR - backup_safim.py:516 - Line 9 DIFFERS:
+2025-06-05 14:52:50,258 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,261 - ERROR - backup_safim.py:518 -   ADVERSARY:             if ((cost + dist[v]) < dist[u]):
+2025-06-05 14:52:50,265 - ERROR - backup_safim.py:516 - Line 10 DIFFERS:
+2025-06-05 14:52:50,268 - ERROR - backup_safim.py:517 -   ORIGINAL : ########################################
+2025-06-05 14:52:50,272 - ERROR - backup_safim.py:518 -   ADVERSARY:                 dist[u] = (cost + dist[v])
+2025-06-05 14:52:50,275 - ERROR - backup_safim.py:516 - Line 11 DIFFERS:
+2025-06-05 14:52:50,279 - ERROR - backup_safim.py:517 -   ORIGINAL : from heapq import heappush, heappop
+2025-06-05 14:52:50,282 - ERROR - backup_safim.py:518 -   ADVERSARY:                 heappush(hp, (u + (dist[u] * B)))
+2025-06-05 14:52:50,283 - ERROR - backup_safim.py:516 - Line 12 DIFFERS:
+2025-06-05 14:52:50,285 - ERROR - backup_safim.py:517 -   ORIGINAL : B=10**5+10
+2025-06-05 14:52:50,288 - ERROR - backup_safim.py:518 -   ADVERSARY:         if (dist[v] < c):
+2025-06-05 14:52:50,292 - ERROR - backup_safim.py:516 - Line 13 DIFFERS:
+2025-06-05 14:52:50,296 - ERROR - backup_safim.py:517 -   ORIGINAL : def dijkstra( G, dist, INF=10**11):
+2025-06-05 14:52:50,299 - ERROR - backup_safim.py:518 -   ADVERSARY:             {{completion}}
+2025-06-05 14:52:50,301 - ERROR - backup_safim.py:516 - Line 14 DIFFERS:
+2025-06-05 14:52:50,302 - ERROR - backup_safim.py:517 -   ORIGINAL :     """
+2025-06-05 14:52:50,305 - ERROR - backup_safim.py:518 -   ADVERSARY:         cv = heappop(hp)
+2025-06-05 14:52:50,306 - ERROR - backup_safim.py:516 - Line 15 DIFFERS:
+2025-06-05 14:52:50,309 - ERROR - backup_safim.py:517 -   ORIGINAL :     https://tjkendev.github.io/procon-library/python/graph/dijkstra.html
+2025-06-05 14:52:50,311 - ERROR - backup_safim.py:518 -   ADVERSARY:         (c, v) = ((cv // B), (cv % B))
+2025-06-05 14:52:50,313 - ERROR - backup_safim.py:516 - Line 16 DIFFERS:
+2025-06-05 14:52:50,314 - ERROR - backup_safim.py:517 -   ORIGINAL :     O((|E|+|V|)log|V|)
+2025-06-05 14:52:50,316 - ERROR - backup_safim.py:518 -   ADVERSARY:     for i in range(N):
+2025-06-05 14:52:50,319 - ERROR - backup_safim.py:516 - Line 17 DIFFERS:
+2025-06-05 14:52:50,321 - ERROR - backup_safim.py:517 -   ORIGINAL :     V: 頂点数
+2025-06-05 14:52:50,323 - ERROR - backup_safim.py:518 -   ADVERSARY:         heappush(hp, (i + (dist[i] * B)))
+2025-06-05 14:52:50,325 - ERROR - backup_safim.py:516 - Line 18 DIFFERS:
+2025-06-05 14:52:50,327 - ERROR - backup_safim.py:517 -   ORIGINAL :     G[v] = [(nod, cost)]:
+2025-06-05 14:52:50,329 - ERROR - backup_safim.py:518 -   ADVERSARY:     return dist
+2025-06-05 14:52:50,330 - ERROR - backup_safim.py:516 - Line 19 DIFFERS:
+2025-06-05 14:52:50,332 - ERROR - backup_safim.py:517 -   ORIGINAL :         頂点vから遷移可能な頂点(nod)とそのコスト(cost)
+2025-06-05 14:52:50,334 - ERROR - backup_safim.py:518 -   ADVERSARY: import sys
+2025-06-05 14:52:50,336 - ERROR - backup_safim.py:516 - Line 20 DIFFERS:
+2025-06-05 14:52:50,337 - ERROR - backup_safim.py:517 -   ORIGINAL :     s: 始点の頂点"""
+2025-06-05 14:52:50,339 - ERROR - backup_safim.py:518 -   ADVERSARY: B = (10 + (10 ** 5))
+2025-06-05 14:52:50,341 - ERROR - backup_safim.py:516 - Line 21 DIFFERS:
+2025-06-05 14:52:50,341 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,343 - ERROR - backup_safim.py:518 -   ADVERSARY: from collections import deque
+2025-06-05 14:52:50,344 - ERROR - backup_safim.py:516 - Line 22 DIFFERS:
+2025-06-05 14:52:50,344 - ERROR - backup_safim.py:517 -   ORIGINAL :     N=len(dist)
+2025-06-05 14:52:50,349 - ERROR - backup_safim.py:518 -   ADVERSARY: 
+2025-06-05 14:52:50,353 - ERROR - backup_safim.py:516 - Line 23 DIFFERS:
+2025-06-05 14:52:50,356 - ERROR - backup_safim.py:517 -   ORIGINAL :     hp=[]
+2025-06-05 14:52:50,360 - ERROR - backup_safim.py:518 -   ADVERSARY: class Convex_Hull_Trick():
+2025-06-05 14:52:50,364 - ERROR - backup_safim.py:516 - Line 24 DIFFERS:
+2025-06-05 14:52:50,367 - ERROR - backup_safim.py:517 -   ORIGINAL :     for i in range(N):
+2025-06-05 14:52:50,369 - ERROR - backup_safim.py:518 -   ADVERSARY: 
+2025-06-05 14:52:50,370 - ERROR - backup_safim.py:516 - Line 25 DIFFERS:
+2025-06-05 14:52:50,372 - ERROR - backup_safim.py:517 -   ORIGINAL :         heappush(hp,dist[i]*B+i)
+2025-06-05 14:52:50,374 - ERROR - backup_safim.py:518 -   ADVERSARY:     def __init__(self):
+2025-06-05 14:52:50,376 - ERROR - backup_safim.py:516 - Line 26 DIFFERS:
+2025-06-05 14:52:50,377 - ERROR - backup_safim.py:517 -   ORIGINAL :     while hp:
+2025-06-05 14:52:50,380 - ERROR - backup_safim.py:518 -   ADVERSARY:         self.deq = deque()
+2025-06-05 14:52:50,382 - ERROR - backup_safim.py:516 - Line 27 DIFFERS:
+2025-06-05 14:52:50,385 - ERROR - backup_safim.py:517 -   ORIGINAL :         cv=heappop(hp)
+2025-06-05 14:52:50,386 - ERROR - backup_safim.py:518 -   ADVERSARY: 
+2025-06-05 14:52:50,391 - ERROR - backup_safim.py:516 - Line 28 DIFFERS:
+2025-06-05 14:52:50,395 - ERROR - backup_safim.py:517 -   ORIGINAL :         c, v = cv//B,cv%B
+2025-06-05 14:52:50,398 - ERROR - backup_safim.py:518 -   ADVERSARY:     def check(self, f1, f2, f3):
+2025-06-05 14:52:50,402 - ERROR - backup_safim.py:516 - Line 29 DIFFERS:
+2025-06-05 14:52:50,406 - ERROR - backup_safim.py:517 -   ORIGINAL :         if dist[v] < c:
+2025-06-05 14:52:50,410 - ERROR - backup_safim.py:518 -   ADVERSARY:         return (((f2[0] - f1[0]) * (f3[1] - f2[1])) >= ((f3[0] - f2[0]) * (f2[1] - f1[1])))
+2025-06-05 14:52:50,413 - ERROR - backup_safim.py:516 - Line 30 DIFFERS:
+2025-06-05 14:52:50,414 - ERROR - backup_safim.py:517 -   ORIGINAL :             {{completion}}
+2025-06-05 14:52:50,416 - ERROR - backup_safim.py:518 -   ADVERSARY: 
+2025-06-05 14:52:50,418 - ERROR - backup_safim.py:516 - Line 31 DIFFERS:
+2025-06-05 14:52:50,420 - ERROR - backup_safim.py:517 -   ORIGINAL :         for u, cost in G[v]:
+2025-06-05 14:52:50,422 - ERROR - backup_safim.py:518 -   ADVERSARY:     def f(self, f1, x):
+2025-06-05 14:52:50,422 - ERROR - backup_safim.py:516 - Line 32 DIFFERS:
+2025-06-05 14:52:50,424 - ERROR - backup_safim.py:517 -   ORIGINAL :             if dist[v] + cost < dist[u]:
+2025-06-05 14:52:50,427 - ERROR - backup_safim.py:518 -   ADVERSARY:         return (f1[1] + (x * f1[0]))
+2025-06-05 14:52:50,431 - ERROR - backup_safim.py:516 - Line 33 DIFFERS:
+2025-06-05 14:52:50,433 - ERROR - backup_safim.py:517 -   ORIGINAL :                 dist[u] = dist[v] + cost
+2025-06-05 14:52:50,434 - ERROR - backup_safim.py:518 -   ADVERSARY: 
+2025-06-05 14:52:50,436 - ERROR - backup_safim.py:516 - Line 34 DIFFERS:
+2025-06-05 14:52:50,438 - ERROR - backup_safim.py:517 -   ORIGINAL :                 heappush(hp, dist[u]*B+u)
+2025-06-05 14:52:50,440 - ERROR - backup_safim.py:518 -   ADVERSARY:     def add_line(self, a, b):
+2025-06-05 14:52:50,442 - ERROR - backup_safim.py:516 - Line 35 DIFFERS:
+2025-06-05 14:52:50,446 - ERROR - backup_safim.py:517 -   ORIGINAL :     return dist
+2025-06-05 14:52:50,449 - ERROR - backup_safim.py:518 -   ADVERSARY:         f1 = (a, b)
+2025-06-05 14:52:50,451 - ERROR - backup_safim.py:516 - Line 36 DIFFERS:
+2025-06-05 14:52:50,453 - ERROR - backup_safim.py:517 -   ORIGINAL : ##################################################
+2025-06-05 14:52:50,454 - ERROR - backup_safim.py:518 -   ADVERSARY:         while ((len(self.deq) >= 2) and self.check(self.deq[(- 2)], self.deq[(- 1)], f1)):
+2025-06-05 14:52:50,456 - ERROR - backup_safim.py:516 - Line 37 DIFFERS:
+2025-06-05 14:52:50,456 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,457 - ERROR - backup_safim.py:518 -   ADVERSARY:             self.deq.pop()
+2025-06-05 14:52:50,457 - ERROR - backup_safim.py:516 - Line 38 DIFFERS:
+2025-06-05 14:52:50,457 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,457 - ERROR - backup_safim.py:518 -   ADVERSARY:         self.deq.append(f1)
+2025-06-05 14:52:50,457 - ERROR - backup_safim.py:516 - Line 40 DIFFERS:
+2025-06-05 14:52:50,457 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,457 - ERROR - backup_safim.py:518 -   ADVERSARY:     def query(self, x):
+2025-06-05 14:52:50,457 - ERROR - backup_safim.py:516 - Line 41 DIFFERS:
+2025-06-05 14:52:50,457 - ERROR - backup_safim.py:517 -   ORIGINAL : #########################################
+2025-06-05 14:52:50,457 - ERROR - backup_safim.py:518 -   ADVERSARY:         while ((len(self.deq) >= 2) and (self.f(self.deq[0], x) >= self.f(self.deq[1], x))):
+2025-06-05 14:52:50,457 - ERROR - backup_safim.py:516 - Line 42 DIFFERS:
+2025-06-05 14:52:50,457 - ERROR - backup_safim.py:517 -   ORIGINAL : from collections import deque
+2025-06-05 14:52:50,457 - ERROR - backup_safim.py:518 -   ADVERSARY:             self.deq.popleft()
+2025-06-05 14:52:50,458 - ERROR - backup_safim.py:516 - Line 43 DIFFERS:
+2025-06-05 14:52:50,458 - ERROR - backup_safim.py:517 -   ORIGINAL : class Convex_Hull_Trick():
+2025-06-05 14:52:50,458 - ERROR - backup_safim.py:518 -   ADVERSARY:         return self.f(self.deq[0], x)
+2025-06-05 14:52:50,462 - ERROR - backup_safim.py:516 - Line 44 DIFFERS:
+2025-06-05 14:52:50,466 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,470 - ERROR - backup_safim.py:518 -   ADVERSARY: input = sys.stdin.readline
+2025-06-05 14:52:50,474 - ERROR - backup_safim.py:516 - Line 45 DIFFERS:
+2025-06-05 14:52:50,478 - ERROR - backup_safim.py:517 -   ORIGINAL :     #https://tjkendev.github.io/procon-library/python/convex_hull_trick/deque.html
+2025-06-05 14:52:50,479 - ERROR - backup_safim.py:518 -   ADVERSARY: (n, m, k) = map(int, input().split())
+2025-06-05 14:52:50,481 - ERROR - backup_safim.py:516 - Line 46 DIFFERS:
+2025-06-05 14:52:50,485 - ERROR - backup_safim.py:517 -   ORIGINAL :     #追加する傾きが単調かつqueryのxが単調
+2025-06-05 14:52:50,489 - ERROR - backup_safim.py:518 -   ADVERSARY: root = [[] for i in range((2 + n))]
+2025-06-05 14:52:50,493 - ERROR - backup_safim.py:516 - Line 47 DIFFERS:
+2025-06-05 14:52:50,496 - ERROR - backup_safim.py:517 -   ORIGINAL :     #単調性なしが良いならこちらへ(queryのxは先読み) https://judge.yosupo.jp/submission/30579
+2025-06-05 14:52:50,501 - ERROR - backup_safim.py:518 -   ADVERSARY: for iii in range(k):
+2025-06-05 14:52:50,505 - ERROR - backup_safim.py:516 - Line 48 DIFFERS:
+2025-06-05 14:52:50,509 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,512 - ERROR - backup_safim.py:518 -   ADVERSARY:     newdp = ((1 + n) * [(10 ** 11)])
+2025-06-05 14:52:50,514 - ERROR - backup_safim.py:516 - Line 49 DIFFERS:
+2025-06-05 14:52:50,516 - ERROR - backup_safim.py:517 -   ORIGINAL :     def __init__(self):
+2025-06-05 14:52:50,516 - ERROR - backup_safim.py:518 -   ADVERSARY:     cht = Convex_Hull_Trick()
+2025-06-05 14:52:50,518 - ERROR - backup_safim.py:516 - Line 50 DIFFERS:
+2025-06-05 14:52:50,520 - ERROR - backup_safim.py:517 -   ORIGINAL :         self.deq=deque()
+2025-06-05 14:52:50,522 - ERROR - backup_safim.py:518 -   ADVERSARY:     for i in range(1, (n + 1)):
+2025-06-05 14:52:50,524 - ERROR - backup_safim.py:516 - Line 51 DIFFERS:
+2025-06-05 14:52:50,527 - ERROR - backup_safim.py:517 -   ORIGINAL :     def check(self,f1, f2, f3):
+2025-06-05 14:52:50,532 - ERROR - backup_safim.py:518 -   ADVERSARY:         newdp[i] = ((i ** 2) + cht.query(i))
+2025-06-05 14:52:50,535 - ERROR - backup_safim.py:516 - Line 52 DIFFERS:
+2025-06-05 14:52:50,536 - ERROR - backup_safim.py:517 -   ORIGINAL :         return (f2[0] - f1[0]) * (f3[1] - f2[1]) >= (f2[1] - f1[1]) * (f3[0] - f2[0])
+2025-06-05 14:52:50,538 - ERROR - backup_safim.py:518 -   ADVERSARY:     for i in range(1, (1 + n)):
+2025-06-05 14:52:50,540 - ERROR - backup_safim.py:516 - Line 53 DIFFERS:
+2025-06-05 14:52:50,541 - ERROR - backup_safim.py:517 -   ORIGINAL :     def f(self,f1, x):
+2025-06-05 14:52:50,546 - ERROR - backup_safim.py:518 -   ADVERSARY:         cht.add_line(((- 2) * i), ((i ** 2) + dp[i]))
+2025-06-05 14:52:50,549 - ERROR - backup_safim.py:516 - Line 54 DIFFERS:
+2025-06-05 14:52:50,552 - ERROR - backup_safim.py:517 -   ORIGINAL :         return f1[0] * x + f1[1]
+2025-06-05 14:52:50,554 - ERROR - backup_safim.py:518 -   ADVERSARY:     dp = newdp[:]
+2025-06-05 14:52:50,556 - ERROR - backup_safim.py:516 - Line 55 DIFFERS:
+2025-06-05 14:52:50,558 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,560 - ERROR - backup_safim.py:518 -   ADVERSARY:     dp = dijkstra(root, dp)
+2025-06-05 14:52:50,561 - ERROR - backup_safim.py:516 - Line 56 DIFFERS:
+2025-06-05 14:52:50,563 - ERROR - backup_safim.py:517 -   ORIGINAL :     # add f_i(x) = a*x + b
+2025-06-05 14:52:50,566 - ERROR - backup_safim.py:518 -   ADVERSARY: for i in range(m):
+2025-06-05 14:52:50,568 - ERROR - backup_safim.py:516 - Line 57 DIFFERS:
+2025-06-05 14:52:50,570 - ERROR - backup_safim.py:517 -   ORIGINAL :     def add_line(self,a, b):
+2025-06-05 14:52:50,570 - ERROR - backup_safim.py:518 -   ADVERSARY:     (a, b, c) = map(int, input().split())
+2025-06-05 14:52:50,574 - ERROR - backup_safim.py:516 - Line 58 DIFFERS:
+2025-06-05 14:52:50,577 - ERROR - backup_safim.py:517 -   ORIGINAL :         f1 = (a, b)
+2025-06-05 14:52:50,581 - ERROR - backup_safim.py:518 -   ADVERSARY:     root[a].append((b, c))
+2025-06-05 14:52:50,584 - ERROR - backup_safim.py:516 - Line 59 DIFFERS:
+2025-06-05 14:52:50,588 - ERROR - backup_safim.py:517 -   ORIGINAL :         while len(self.deq) >= 2 and self.check(self.deq[-2], self.deq[-1], f1):
+2025-06-05 14:52:50,592 - ERROR - backup_safim.py:518 -   ADVERSARY:     root[b].append((a, c))
+2025-06-05 14:52:50,595 - ERROR - backup_safim.py:516 - Line 60 DIFFERS:
+2025-06-05 14:52:50,599 - ERROR - backup_safim.py:517 -   ORIGINAL :             self.deq.pop()
+2025-06-05 14:52:50,602 - ERROR - backup_safim.py:518 -   ADVERSARY: dp = ((1 + n) * [(10 ** 11)])
+2025-06-05 14:52:50,604 - ERROR - backup_safim.py:516 - Line 61 DIFFERS:
+2025-06-05 14:52:50,606 - ERROR - backup_safim.py:517 -   ORIGINAL :         self.deq.append(f1)
+2025-06-05 14:52:50,606 - ERROR - backup_safim.py:518 -   ADVERSARY: dp[1] = 0
+2025-06-05 14:52:50,607 - ERROR - backup_safim.py:516 - Line 62 DIFFERS:
+2025-06-05 14:52:50,609 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,611 - ERROR - backup_safim.py:518 -   ADVERSARY: dp = dijkstra(root, dp)
+2025-06-05 14:52:50,612 - ERROR - backup_safim.py:516 - Line 63 DIFFERS:
+2025-06-05 14:52:50,614 - ERROR - backup_safim.py:517 -   ORIGINAL :     # min f_i(x)
+2025-06-05 14:52:50,616 - ERROR - backup_safim.py:518 -   ADVERSARY: print(*dp[1:])
+2025-06-05 14:52:50,619 - ERROR - backup_safim.py:516 - Line 64 DIFFERS:
+2025-06-05 14:52:50,623 - ERROR - backup_safim.py:517 -   ORIGINAL :     def query(self,x):
+2025-06-05 14:52:50,625 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,625 - ERROR - backup_safim.py:516 - Line 65 DIFFERS:
+2025-06-05 14:52:50,625 - ERROR - backup_safim.py:517 -   ORIGINAL :         while len(self.deq) >= 2 and self.f(self.deq[0], x) >= self.f(self.deq[1], x):
+2025-06-05 14:52:50,625 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,626 - ERROR - backup_safim.py:516 - Line 66 DIFFERS:
+2025-06-05 14:52:50,627 - ERROR - backup_safim.py:517 -   ORIGINAL :             self.deq.popleft()
+2025-06-05 14:52:50,629 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,631 - ERROR - backup_safim.py:516 - Line 67 DIFFERS:
+2025-06-05 14:52:50,635 - ERROR - backup_safim.py:517 -   ORIGINAL :         return self.f(self.deq[0], x)
+2025-06-05 14:52:50,637 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,639 - ERROR - backup_safim.py:516 - Line 68 DIFFERS:
+2025-06-05 14:52:50,642 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,646 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,648 - ERROR - backup_safim.py:516 - Line 69 DIFFERS:
+2025-06-05 14:52:50,650 - ERROR - backup_safim.py:517 -   ORIGINAL : ##################################
+2025-06-05 14:52:50,651 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,653 - ERROR - backup_safim.py:516 - Line 70 DIFFERS:
+2025-06-05 14:52:50,654 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,657 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,661 - ERROR - backup_safim.py:516 - Line 71 DIFFERS:
+2025-06-05 14:52:50,662 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,664 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,666 - ERROR - backup_safim.py:516 - Line 72 DIFFERS:
+2025-06-05 14:52:50,669 - ERROR - backup_safim.py:517 -   ORIGINAL : n,m,k=map(int,input().split())
+2025-06-05 14:52:50,670 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,672 - ERROR - backup_safim.py:516 - Line 73 DIFFERS:
+2025-06-05 14:52:50,675 - ERROR - backup_safim.py:517 -   ORIGINAL : root=[[] for i in range(n+2)]
+2025-06-05 14:52:50,679 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,682 - ERROR - backup_safim.py:516 - Line 74 DIFFERS:
+2025-06-05 14:52:50,686 - ERROR - backup_safim.py:517 -   ORIGINAL : for i in range(m):
+2025-06-05 14:52:50,690 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,693 - ERROR - backup_safim.py:516 - Line 75 DIFFERS:
+2025-06-05 14:52:50,697 - ERROR - backup_safim.py:517 -   ORIGINAL :     a,b,c=map(int,input().split())
+2025-06-05 14:52:50,698 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,700 - ERROR - backup_safim.py:516 - Line 76 DIFFERS:
+2025-06-05 14:52:50,701 - ERROR - backup_safim.py:517 -   ORIGINAL :     root[a].append((b,c))
+2025-06-05 14:52:50,703 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,705 - ERROR - backup_safim.py:516 - Line 77 DIFFERS:
+2025-06-05 14:52:50,706 - ERROR - backup_safim.py:517 -   ORIGINAL :     root[b].append((a,c))
+2025-06-05 14:52:50,708 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,710 - ERROR - backup_safim.py:516 - Line 78 DIFFERS:
+2025-06-05 14:52:50,712 - ERROR - backup_safim.py:517 -   ORIGINAL : dp=[10**11]*(n+1)
+2025-06-05 14:52:50,714 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,716 - ERROR - backup_safim.py:516 - Line 79 DIFFERS:
+2025-06-05 14:52:50,717 - ERROR - backup_safim.py:517 -   ORIGINAL : dp[1]=0
+2025-06-05 14:52:50,719 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,721 - ERROR - backup_safim.py:516 - Line 80 DIFFERS:
+2025-06-05 14:52:50,722 - ERROR - backup_safim.py:517 -   ORIGINAL : dp=dijkstra(root,dp)
+2025-06-05 14:52:50,724 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,727 - ERROR - backup_safim.py:516 - Line 81 DIFFERS:
+2025-06-05 14:52:50,730 - ERROR - backup_safim.py:517 -   ORIGINAL : for iii in range(k):
+2025-06-05 14:52:50,733 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,737 - ERROR - backup_safim.py:516 - Line 82 DIFFERS:
+2025-06-05 14:52:50,741 - ERROR - backup_safim.py:517 -   ORIGINAL :     newdp=[10**11]*(n+1)
+2025-06-05 14:52:50,744 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,747 - ERROR - backup_safim.py:516 - Line 83 DIFFERS:
+2025-06-05 14:52:50,751 - ERROR - backup_safim.py:517 -   ORIGINAL :     cht=Convex_Hull_Trick()
+2025-06-05 14:52:50,752 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,753 - ERROR - backup_safim.py:516 - Line 84 DIFFERS:
+2025-06-05 14:52:50,753 - ERROR - backup_safim.py:517 -   ORIGINAL :     for i in range(1,n+1):
+2025-06-05 14:52:50,755 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,759 - ERROR - backup_safim.py:516 - Line 85 DIFFERS:
+2025-06-05 14:52:50,759 - ERROR - backup_safim.py:517 -   ORIGINAL :         cht.add_line(-2*i,dp[i]+i**2)
+2025-06-05 14:52:50,761 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,762 - ERROR - backup_safim.py:516 - Line 86 DIFFERS:
+2025-06-05 14:52:50,764 - ERROR - backup_safim.py:517 -   ORIGINAL :     for i in range(1,n+1):
+2025-06-05 14:52:50,765 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,767 - ERROR - backup_safim.py:516 - Line 87 DIFFERS:
+2025-06-05 14:52:50,769 - ERROR - backup_safim.py:517 -   ORIGINAL :         newdp[i]=cht.query(i)+i**2
+2025-06-05 14:52:50,771 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,773 - ERROR - backup_safim.py:516 - Line 88 DIFFERS:
+2025-06-05 14:52:50,775 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,776 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,778 - ERROR - backup_safim.py:516 - Line 89 DIFFERS:
+2025-06-05 14:52:50,780 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,783 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,787 - ERROR - backup_safim.py:516 - Line 90 DIFFERS:
+2025-06-05 14:52:50,791 - ERROR - backup_safim.py:517 -   ORIGINAL :     dp=newdp[:]
+2025-06-05 14:52:50,793 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,795 - ERROR - backup_safim.py:516 - Line 91 DIFFERS:
+2025-06-05 14:52:50,797 - ERROR - backup_safim.py:517 -   ORIGINAL :     dp=dijkstra(root,dp)
+2025-06-05 14:52:50,798 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,802 - ERROR - backup_safim.py:516 - Line 92 DIFFERS:
+2025-06-05 14:52:50,805 - ERROR - backup_safim.py:517 -   ORIGINAL : print(*dp[1:])
+2025-06-05 14:52:50,808 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,812 - ERROR - backup_safim.py:516 - Line 93 DIFFERS:
+2025-06-05 14:52:50,815 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,818 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,822 - ERROR - backup_safim.py:516 - Line 94 DIFFERS:
+2025-06-05 14:52:50,825 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,829 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,832 - ERROR - backup_safim.py:516 - Line 95 DIFFERS:
+2025-06-05 14:52:50,836 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,837 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,839 - ERROR - backup_safim.py:516 - Line 96 DIFFERS:
+2025-06-05 14:52:50,841 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,844 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,847 - ERROR - backup_safim.py:516 - Line 97 DIFFERS:
+2025-06-05 14:52:50,850 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:50,854 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:50,858 - ERROR - backup_safim.py:521 - ------------------------------------------------------------
+
+
+2025-06-05 14:52:50,862 - INFO - backup_safim.py:413 - 
+================================================================================
+DEBUGGING PROBLEMATIC SAMPLE: block_completion_000432
+================================================================================
+2025-06-05 14:52:50,865 - INFO - backup_safim.py:416 - Task block_completion_000432: Original eval_prompt:
+for t in range(int(input())):
+    
+    n=int(input())
+    a=list(map(int,input().split()))
+    i=n-1
+    while(a[i]==0 and i!=0):
+        i-=1 
+    while(i>0):
+        if a[i]>=0:
+            print("NO")
+            break
+        a[i-1]+=a[i]
+        i-=1
+    else:
+        if a[i]==0:
+            print("YES")
+        else:
+            {{completion}}
+
+2025-06-05 14:52:50,877 - INFO - backup_safim.py:427 - Task block_completion_000432: Original model completion (full):
+2025-06-05 14:52:50,877 - INFO - backup_safim.py:428 - ------
+print("NO")
+
+
+------
+2025-06-05 14:52:50,880 - INFO - backup_safim.py:433 - 
+ORIGINAL FULL CODE (Prompt + Completion) FOR block_completion_000432:
+2025-06-05 14:52:50,880 - INFO - backup_safim.py:434 - ------------------------------------------------------------
+2025-06-05 14:52:50,881 - INFO - backup_safim.py:435 - for t in range(int(input())):
+    
+    n=int(input())
+    a=list(map(int,input().split()))
+    i=n-1
+    while(a[i]==0 and i!=0):
+        i-=1 
+    while(i>0):
+        if a[i]>=0:
+            print("NO")
+            break
+        a[i-1]+=a[i]
+        i-=1
+    else:
+        if a[i]==0:
+            print("YES")
+        else:
+            print("NO")
+
+
+
+2025-06-05 14:52:50,883 - INFO - backup_safim.py:436 - ------------------------------------------------------------
+2025-06-05 14:52:50,885 - INFO - backup_safim.py:445 - Task block_completion_000432: Original matches ground truth (implies all 1 tests passed).
+2025-06-05 14:52:50,887 - INFO - backup_safim.py:462 - Task block_completion_000432: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-05 14:52:50,888 - INFO - backup_safim.py:324 - Task block_completion_000432: Searching for adversarial example...
+2025-06-05 14:52:51,102 - INFO - backup_safim.py:355 - Task block_completion_000432: Attempt 1 - Model's adversarial completion (first 50 chars): 'print("NO")
+
+...'
+2025-06-05 14:52:51,136 - WARNING - backup_safim.py:138 - Task block_completion_000432_adv_0, Test 1/1: WRONG_ANSWER.
+2025-06-05 14:52:51,136 - INFO - backup_safim.py:371 - Task block_completion_000432: Found adversarial example after 1 reordering attempts (1 valid).
+2025-06-05 14:52:51,138 - INFO - backup_safim.py:372 -   Model's completion (adversarial) failed 1/1 tests on reordered code.
+2025-06-05 14:52:51,140 - INFO - backup_safim.py:478 - 
+ADVERSARIAL ATTACK SUCCEEDED for block_completion_000432:
+2025-06-05 14:52:51,141 - INFO - backup_safim.py:479 -   Original passed: True
+2025-06-05 14:52:51,145 - INFO - backup_safim.py:480 -   Adversarial completion (full):
+2025-06-05 14:52:51,148 - INFO - backup_safim.py:481 - ------
+print("NO")
+
+
+------
+2025-06-05 14:52:51,150 - INFO - backup_safim.py:482 -   COMPLETIONS ARE IDENTICAL
+2025-06-05 14:52:51,154 - INFO - backup_safim.py:485 -   Adversarial code FAILED tests (1 failed / 1 total). Status: FAILED_ALL_TESTS
+2025-06-05 14:52:51,157 - INFO - backup_safim.py:488 - 
+ADVERSARIAL FULL CODE (Perturbed Prompt + Completion) FOR block_completion_000432:
+2025-06-05 14:52:51,159 - INFO - backup_safim.py:489 - ------------------------------------------------------------
+2025-06-05 14:52:51,161 - INFO - backup_safim.py:490 - for t in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    i = (n - 1)
+    while (i > 0):
+        if (a[i] >= 0):
+            print("NO")
+
+
+            break
+        a[(i - 1)] += a[i]
+        i -= 1
+    else:
+        if (0 == a[i]):
+            print('YES')
+        else:
+            print('NO')
+    while ((a[i] == 0) and (0 != i)):
+        i -= 1
+2025-06-05 14:52:51,163 - INFO - backup_safim.py:491 - ------------------------------------------------------------
+2025-06-05 14:52:51,166 - ERROR - backup_safim.py:494 - 
+
+!!! CRITICAL ISSUE FOR block_completion_000432 !!!
+2025-06-05 14:52:51,170 - ERROR - backup_safim.py:495 - !!! IDENTICAL COMPLETION BUT DIFFERENT TEST RESULTS !!!
+2025-06-05 14:52:51,172 - ERROR - backup_safim.py:496 - ------------------------------------------------------------
+2025-06-05 14:52:51,174 - ERROR - backup_safim.py:497 - ORIGINAL PROMPT (led to PASSING code):
+2025-06-05 14:52:51,178 - ERROR - backup_safim.py:498 - vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+2025-06-05 14:52:51,181 - ERROR - backup_safim.py:499 - for t in range(int(input())):
+    
+    n=int(input())
+    a=list(map(int,input().split()))
+    i=n-1
+    while(a[i]==0 and i!=0):
+        i-=1 
+    while(i>0):
+        if a[i]>=0:
+            print("NO")
+            break
+        a[i-1]+=a[i]
+        i-=1
+    else:
+        if a[i]==0:
+            print("YES")
+        else:
+            {{completion}}
+
+2025-06-05 14:52:51,184 - ERROR - backup_safim.py:500 - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-06-05 14:52:51,188 - ERROR - backup_safim.py:501 - 
+ADVERSARIAL PROMPT (led to FAILING code with SAME completion):
+2025-06-05 14:52:51,189 - ERROR - backup_safim.py:502 - vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+2025-06-05 14:52:51,191 - ERROR - backup_safim.py:503 - for t in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    i = (n - 1)
+    while (i > 0):
+        if (a[i] >= 0):
+            {{completion}}
+            break
+        a[(i - 1)] += a[i]
+        i -= 1
+    else:
+        if (0 == a[i]):
+            print('YES')
+        else:
+            print('NO')
+    while ((a[i] == 0) and (0 != i)):
+        i -= 1
+2025-06-05 14:52:51,193 - ERROR - backup_safim.py:504 - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-06-05 14:52:51,195 - ERROR - backup_safim.py:506 - 
+LINE-BY-LINE PROMPT DIFFERENCES (Original vs Adversarial):
+2025-06-05 14:52:51,198 - ERROR - backup_safim.py:516 - Line 1 DIFFERS:
+2025-06-05 14:52:51,202 - ERROR - backup_safim.py:517 -   ORIGINAL : for t in range(int(input())):
+2025-06-05 14:52:51,205 - ERROR - backup_safim.py:518 -   ADVERSARY: for t in range(int(input())):
+2025-06-05 14:52:51,207 - ERROR - backup_safim.py:516 - Line 2 DIFFERS:
+2025-06-05 14:52:51,209 - ERROR - backup_safim.py:517 -   ORIGINAL :     
+2025-06-05 14:52:51,210 - ERROR - backup_safim.py:518 -   ADVERSARY:     n = int(input())
+2025-06-05 14:52:51,212 - ERROR - backup_safim.py:516 - Line 3 DIFFERS:
+2025-06-05 14:52:51,214 - ERROR - backup_safim.py:517 -   ORIGINAL :     n=int(input())
+2025-06-05 14:52:51,215 - ERROR - backup_safim.py:518 -   ADVERSARY:     a = list(map(int, input().split()))
+2025-06-05 14:52:51,217 - ERROR - backup_safim.py:516 - Line 4 DIFFERS:
+2025-06-05 14:52:51,218 - ERROR - backup_safim.py:517 -   ORIGINAL :     a=list(map(int,input().split()))
+2025-06-05 14:52:51,222 - ERROR - backup_safim.py:518 -   ADVERSARY:     i = (n - 1)
+2025-06-05 14:52:51,225 - ERROR - backup_safim.py:516 - Line 5 DIFFERS:
+2025-06-05 14:52:51,227 - ERROR - backup_safim.py:517 -   ORIGINAL :     i=n-1
+2025-06-05 14:52:51,229 - ERROR - backup_safim.py:518 -   ADVERSARY:     while (i > 0):
+2025-06-05 14:52:51,231 - ERROR - backup_safim.py:516 - Line 6 DIFFERS:
+2025-06-05 14:52:51,232 - ERROR - backup_safim.py:517 -   ORIGINAL :     while(a[i]==0 and i!=0):
+2025-06-05 14:52:51,234 - ERROR - backup_safim.py:518 -   ADVERSARY:         if (a[i] >= 0):
+2025-06-05 14:52:51,236 - ERROR - backup_safim.py:516 - Line 7 DIFFERS:
+2025-06-05 14:52:51,238 - ERROR - backup_safim.py:517 -   ORIGINAL :         i-=1 
+2025-06-05 14:52:51,240 - ERROR - backup_safim.py:518 -   ADVERSARY:             {{completion}}
+2025-06-05 14:52:51,244 - ERROR - backup_safim.py:516 - Line 8 DIFFERS:
+2025-06-05 14:52:51,247 - ERROR - backup_safim.py:517 -   ORIGINAL :     while(i>0):
+2025-06-05 14:52:51,250 - ERROR - backup_safim.py:518 -   ADVERSARY:             break
+2025-06-05 14:52:51,253 - ERROR - backup_safim.py:516 - Line 9 DIFFERS:
+2025-06-05 14:52:51,256 - ERROR - backup_safim.py:517 -   ORIGINAL :         if a[i]>=0:
+2025-06-05 14:52:51,260 - ERROR - backup_safim.py:518 -   ADVERSARY:         a[(i - 1)] += a[i]
+2025-06-05 14:52:51,264 - ERROR - backup_safim.py:516 - Line 10 DIFFERS:
+2025-06-05 14:52:51,265 - ERROR - backup_safim.py:517 -   ORIGINAL :             print("NO")
+2025-06-05 14:52:51,269 - ERROR - backup_safim.py:518 -   ADVERSARY:         i -= 1
+2025-06-05 14:52:51,273 - ERROR - backup_safim.py:516 - Line 11 DIFFERS:
+2025-06-05 14:52:51,275 - ERROR - backup_safim.py:517 -   ORIGINAL :             break
+2025-06-05 14:52:51,276 - ERROR - backup_safim.py:518 -   ADVERSARY:     else:
+2025-06-05 14:52:51,278 - ERROR - backup_safim.py:516 - Line 12 DIFFERS:
+2025-06-05 14:52:51,279 - ERROR - backup_safim.py:517 -   ORIGINAL :         a[i-1]+=a[i]
+2025-06-05 14:52:51,283 - ERROR - backup_safim.py:518 -   ADVERSARY:         if (0 == a[i]):
+2025-06-05 14:52:51,286 - ERROR - backup_safim.py:516 - Line 13 DIFFERS:
+2025-06-05 14:52:51,290 - ERROR - backup_safim.py:517 -   ORIGINAL :         i-=1
+2025-06-05 14:52:51,294 - ERROR - backup_safim.py:518 -   ADVERSARY:             print('YES')
+2025-06-05 14:52:51,298 - ERROR - backup_safim.py:516 - Line 14 DIFFERS:
+2025-06-05 14:52:51,301 - ERROR - backup_safim.py:517 -   ORIGINAL :     else:
+2025-06-05 14:52:51,305 - ERROR - backup_safim.py:518 -   ADVERSARY:         else:
+2025-06-05 14:52:51,308 - ERROR - backup_safim.py:516 - Line 15 DIFFERS:
+2025-06-05 14:52:51,312 - ERROR - backup_safim.py:517 -   ORIGINAL :         if a[i]==0:
+2025-06-05 14:52:51,316 - ERROR - backup_safim.py:518 -   ADVERSARY:             print('NO')
+2025-06-05 14:52:51,317 - ERROR - backup_safim.py:516 - Line 16 DIFFERS:
+2025-06-05 14:52:51,319 - ERROR - backup_safim.py:517 -   ORIGINAL :             print("YES")
+2025-06-05 14:52:51,323 - ERROR - backup_safim.py:518 -   ADVERSARY:     while ((a[i] == 0) and (0 != i)):
+2025-06-05 14:52:51,326 - ERROR - backup_safim.py:516 - Line 17 DIFFERS:
+2025-06-05 14:52:51,330 - ERROR - backup_safim.py:517 -   ORIGINAL :         else:
+2025-06-05 14:52:51,331 - ERROR - backup_safim.py:518 -   ADVERSARY:         i -= 1
+2025-06-05 14:52:51,333 - ERROR - backup_safim.py:516 - Line 18 DIFFERS:
+2025-06-05 14:52:51,333 - ERROR - backup_safim.py:517 -   ORIGINAL :             {{completion}}
+2025-06-05 14:52:51,335 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:51,338 - ERROR - backup_safim.py:516 - Line 19 DIFFERS:
+2025-06-05 14:52:51,342 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:51,346 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:51,350 - ERROR - backup_safim.py:521 - ------------------------------------------------------------
+
+
+2025-06-05 14:52:51,354 - INFO - backup_safim.py:413 - 
+================================================================================
+DEBUGGING PROBLEMATIC SAMPLE: block_completion_000487
+================================================================================
+2025-06-05 14:52:51,357 - INFO - backup_safim.py:416 - Task block_completion_000487: Original eval_prompt:
+input = __import__('sys').stdin.readline
+
+
+n = int(input())
+a = list(map(int, input().split())) + [n+1]
+
+
+ans = 0
+cache = {}
+for i in range(n):
+    u = 0
+    d = n+1
+    
+    keys = []
+    j = i
+    while j+1 <= n:
+        key = (j, u, d)
+        v = cache.get(key, -1)
+        if v != -1:
+            j = v
+            break
+        
+        keys.append(key)
+        # greedy
+        if u < a[j] < d: # if can insert to both
+            if a[j] < a[j+1]:
+                u = max(u, a[j])
+            elif a[j] > a[j+1]:
+                {{completion}}
+        elif u < a[j]: # if only can insert to increasing subsequence
+            u = a[j]
+        elif d > a[j]: # if only can insert to decreasing subsequence
+            d = a[j]
+        else:
+            break
+
+        j += 1
+    
+    for key in keys:
+        cache[key] = j
+
+    ans += j - i
+    # print(f'at {i} max {j} ans {ans}', u, d)
+
+# print(f'count={len(cache)}')
+print(ans)
+
+2025-06-05 14:52:51,395 - INFO - backup_safim.py:427 - Task block_completion_000487: Original model completion (full):
+2025-06-05 14:52:51,395 - INFO - backup_safim.py:428 - ------
+d = min(d, a[j])
+
+------
+2025-06-05 14:52:51,396 - INFO - backup_safim.py:433 - 
+ORIGINAL FULL CODE (Prompt + Completion) FOR block_completion_000487:
+2025-06-05 14:52:51,396 - INFO - backup_safim.py:434 - ------------------------------------------------------------
+2025-06-05 14:52:51,398 - INFO - backup_safim.py:435 - input = __import__('sys').stdin.readline
+
+
+n = int(input())
+a = list(map(int, input().split())) + [n+1]
+
+
+ans = 0
+cache = {}
+for i in range(n):
+    u = 0
+    d = n+1
+    
+    keys = []
+    j = i
+    while j+1 <= n:
+        key = (j, u, d)
+        v = cache.get(key, -1)
+        if v != -1:
+            j = v
+            break
+        
+        keys.append(key)
+        # greedy
+        if u < a[j] < d: # if can insert to both
+            if a[j] < a[j+1]:
+                u = max(u, a[j])
+            elif a[j] > a[j+1]:
+                d = min(d, a[j])
+
+        elif u < a[j]: # if only can insert to increasing subsequence
+            u = a[j]
+        elif d > a[j]: # if only can insert to decreasing subsequence
+            d = a[j]
+        else:
+            break
+
+        j += 1
+    
+    for key in keys:
+        cache[key] = j
+
+    ans += j - i
+    # print(f'at {i} max {j} ans {ans}', u, d)
+
+# print(f'count={len(cache)}')
+print(ans)
+
+2025-06-05 14:52:51,401 - INFO - backup_safim.py:436 - ------------------------------------------------------------
+2025-06-05 14:52:51,407 - INFO - backup_safim.py:445 - Task block_completion_000487: Original matches ground truth (implies all 3 tests passed).
+2025-06-05 14:52:51,412 - INFO - backup_safim.py:462 - Task block_completion_000487: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-05 14:52:51,418 - INFO - backup_safim.py:324 - Task block_completion_000487: Searching for adversarial example...
+2025-06-05 14:52:52,585 - INFO - backup_safim.py:355 - Task block_completion_000487: Attempt 1 - Model's adversarial completion (first 50 chars): 'd = min(d, a[j])
+...'
+2025-06-05 14:52:52,617 - WARNING - backup_safim.py:138 - Task block_completion_000487_adv_0, Test 1/3: WRONG_ANSWER.
+2025-06-05 14:52:52,647 - WARNING - backup_safim.py:138 - Task block_completion_000487_adv_0, Test 2/3: WRONG_ANSWER.
+2025-06-05 14:52:52,678 - WARNING - backup_safim.py:138 - Task block_completion_000487_adv_0, Test 3/3: WRONG_ANSWER.
+2025-06-05 14:52:52,679 - INFO - backup_safim.py:371 - Task block_completion_000487: Found adversarial example after 1 reordering attempts (1 valid).
+2025-06-05 14:52:52,680 - INFO - backup_safim.py:372 -   Model's completion (adversarial) failed 3/3 tests on reordered code.
+2025-06-05 14:52:52,684 - INFO - backup_safim.py:478 - 
+ADVERSARIAL ATTACK SUCCEEDED for block_completion_000487:
+2025-06-05 14:52:52,687 - INFO - backup_safim.py:479 -   Original passed: True
+2025-06-05 14:52:52,689 - INFO - backup_safim.py:480 -   Adversarial completion (full):
+2025-06-05 14:52:52,692 - INFO - backup_safim.py:481 - ------
+d = min(d, a[j])
+
+------
+2025-06-05 14:52:52,693 - INFO - backup_safim.py:482 -   COMPLETIONS ARE IDENTICAL
+2025-06-05 14:52:52,695 - INFO - backup_safim.py:485 -   Adversarial code FAILED tests (3 failed / 3 total). Status: FAILED_ALL_TESTS
+2025-06-05 14:52:52,696 - INFO - backup_safim.py:488 - 
+ADVERSARIAL FULL CODE (Perturbed Prompt + Completion) FOR block_completion_000487:
+2025-06-05 14:52:52,697 - INFO - backup_safim.py:489 - ------------------------------------------------------------
+2025-06-05 14:52:52,699 - INFO - backup_safim.py:490 - input = __import__('sys').stdin.readline
+n = int(input())
+ans = 0
+cache = {}
+a = ([(1 + n)] + list(map(int, input().split())))
+for i in range(n):
+    u = 0
+    d = (1 + n)
+    keys = []
+    j = i
+    for key in keys:
+        cache[key] = j
+    while ((1 + j) <= n):
+        key = (j, u, d)
+        v = cache.get(key, (- 1))
+        if (u < a[j] < d):
+            if (a[j] < a[(j + 1)]):
+                u = max(u, a[j])
+            else:
+                if (a[j] > a[(j + 1)]):
+                    d = min(d, a[j])
+
+        else:
+            if (u < a[j]):
+                u = a[j]
+            else:
+                if (d > a[j]):
+                    d = a[j]
+                else:
+                    break
+        if (v != (- 1)):
+            j = v
+            break
+        keys.append(key)
+        j += 1
+    ans += (j - i)
+print(ans)
+2025-06-05 14:52:52,701 - INFO - backup_safim.py:491 - ------------------------------------------------------------
+2025-06-05 14:52:52,703 - ERROR - backup_safim.py:494 - 
+
+!!! CRITICAL ISSUE FOR block_completion_000487 !!!
+2025-06-05 14:52:52,708 - ERROR - backup_safim.py:495 - !!! IDENTICAL COMPLETION BUT DIFFERENT TEST RESULTS !!!
+2025-06-05 14:52:52,711 - ERROR - backup_safim.py:496 - ------------------------------------------------------------
+2025-06-05 14:52:52,714 - ERROR - backup_safim.py:497 - ORIGINAL PROMPT (led to PASSING code):
+2025-06-05 14:52:52,716 - ERROR - backup_safim.py:498 - vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+2025-06-05 14:52:52,717 - ERROR - backup_safim.py:499 - input = __import__('sys').stdin.readline
+
+
+n = int(input())
+a = list(map(int, input().split())) + [n+1]
+
+
+ans = 0
+cache = {}
+for i in range(n):
+    u = 0
+    d = n+1
+    
+    keys = []
+    j = i
+    while j+1 <= n:
+        key = (j, u, d)
+        v = cache.get(key, -1)
+        if v != -1:
+            j = v
+            break
+        
+        keys.append(key)
+        # greedy
+        if u < a[j] < d: # if can insert to both
+            if a[j] < a[j+1]:
+                u = max(u, a[j])
+            elif a[j] > a[j+1]:
+                {{completion}}
+        elif u < a[j]: # if only can insert to increasing subsequence
+            u = a[j]
+        elif d > a[j]: # if only can insert to decreasing subsequence
+            d = a[j]
+        else:
+            break
+
+        j += 1
+    
+    for key in keys:
+        cache[key] = j
+
+    ans += j - i
+    # print(f'at {i} max {j} ans {ans}', u, d)
+
+# print(f'count={len(cache)}')
+print(ans)
+
+2025-06-05 14:52:52,719 - ERROR - backup_safim.py:500 - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-06-05 14:52:52,721 - ERROR - backup_safim.py:501 - 
+ADVERSARIAL PROMPT (led to FAILING code with SAME completion):
+2025-06-05 14:52:52,724 - ERROR - backup_safim.py:502 - vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+2025-06-05 14:52:52,727 - ERROR - backup_safim.py:503 - input = __import__('sys').stdin.readline
+n = int(input())
+ans = 0
+cache = {}
+a = ([(1 + n)] + list(map(int, input().split())))
+for i in range(n):
+    u = 0
+    d = (1 + n)
+    keys = []
+    j = i
+    for key in keys:
+        cache[key] = j
+    while ((1 + j) <= n):
+        key = (j, u, d)
+        v = cache.get(key, (- 1))
+        if (u < a[j] < d):
+            if (a[j] < a[(j + 1)]):
+                u = max(u, a[j])
+            else:
+                if (a[j] > a[(j + 1)]):
+                    {{completion}}
+        else:
+            if (u < a[j]):
+                u = a[j]
+            else:
+                if (d > a[j]):
+                    d = a[j]
+                else:
+                    break
+        if (v != (- 1)):
+            j = v
+            break
+        keys.append(key)
+        j += 1
+    ans += (j - i)
+print(ans)
+2025-06-05 14:52:52,729 - ERROR - backup_safim.py:504 - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-06-05 14:52:52,732 - ERROR - backup_safim.py:506 - 
+LINE-BY-LINE PROMPT DIFFERENCES (Original vs Adversarial):
+2025-06-05 14:52:52,735 - ERROR - backup_safim.py:516 - Line 1 DIFFERS:
+2025-06-05 14:52:52,737 - ERROR - backup_safim.py:517 -   ORIGINAL : input = __import__('sys').stdin.readline
+2025-06-05 14:52:52,739 - ERROR - backup_safim.py:518 -   ADVERSARY: input = __import__('sys').stdin.readline
+2025-06-05 14:52:52,740 - ERROR - backup_safim.py:516 - Line 2 DIFFERS:
+2025-06-05 14:52:52,742 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:52,744 - ERROR - backup_safim.py:518 -   ADVERSARY: n = int(input())
+2025-06-05 14:52:52,747 - ERROR - backup_safim.py:516 - Line 3 DIFFERS:
+2025-06-05 14:52:52,749 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:52,750 - ERROR - backup_safim.py:518 -   ADVERSARY: ans = 0
+2025-06-05 14:52:52,754 - ERROR - backup_safim.py:516 - Line 4 DIFFERS:
+2025-06-05 14:52:52,756 - ERROR - backup_safim.py:517 -   ORIGINAL : n = int(input())
+2025-06-05 14:52:52,758 - ERROR - backup_safim.py:518 -   ADVERSARY: cache = {}
+2025-06-05 14:52:52,760 - ERROR - backup_safim.py:516 - Line 5 DIFFERS:
+2025-06-05 14:52:52,762 - ERROR - backup_safim.py:517 -   ORIGINAL : a = list(map(int, input().split())) + [n+1]
+2025-06-05 14:52:52,764 - ERROR - backup_safim.py:518 -   ADVERSARY: a = ([(1 + n)] + list(map(int, input().split())))
+2025-06-05 14:52:52,766 - ERROR - backup_safim.py:516 - Line 6 DIFFERS:
+2025-06-05 14:52:52,768 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:52,769 - ERROR - backup_safim.py:518 -   ADVERSARY: for i in range(n):
+2025-06-05 14:52:52,771 - ERROR - backup_safim.py:516 - Line 7 DIFFERS:
+2025-06-05 14:52:52,773 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:52,775 - ERROR - backup_safim.py:518 -   ADVERSARY:     u = 0
+2025-06-05 14:52:52,776 - ERROR - backup_safim.py:516 - Line 8 DIFFERS:
+2025-06-05 14:52:52,778 - ERROR - backup_safim.py:517 -   ORIGINAL : ans = 0
+2025-06-05 14:52:52,779 - ERROR - backup_safim.py:518 -   ADVERSARY:     d = (1 + n)
+2025-06-05 14:52:52,781 - ERROR - backup_safim.py:516 - Line 9 DIFFERS:
+2025-06-05 14:52:52,783 - ERROR - backup_safim.py:517 -   ORIGINAL : cache = {}
+2025-06-05 14:52:52,785 - ERROR - backup_safim.py:518 -   ADVERSARY:     keys = []
+2025-06-05 14:52:52,787 - ERROR - backup_safim.py:516 - Line 10 DIFFERS:
+2025-06-05 14:52:52,790 - ERROR - backup_safim.py:517 -   ORIGINAL : for i in range(n):
+2025-06-05 14:52:52,794 - ERROR - backup_safim.py:518 -   ADVERSARY:     j = i
+2025-06-05 14:52:52,798 - ERROR - backup_safim.py:516 - Line 11 DIFFERS:
+2025-06-05 14:52:52,801 - ERROR - backup_safim.py:517 -   ORIGINAL :     u = 0
+2025-06-05 14:52:52,805 - ERROR - backup_safim.py:518 -   ADVERSARY:     for key in keys:
+2025-06-05 14:52:52,809 - ERROR - backup_safim.py:516 - Line 12 DIFFERS:
+2025-06-05 14:52:52,812 - ERROR - backup_safim.py:517 -   ORIGINAL :     d = n+1
+2025-06-05 14:52:52,816 - ERROR - backup_safim.py:518 -   ADVERSARY:         cache[key] = j
+2025-06-05 14:52:52,820 - ERROR - backup_safim.py:516 - Line 13 DIFFERS:
+2025-06-05 14:52:52,822 - ERROR - backup_safim.py:517 -   ORIGINAL :     
+2025-06-05 14:52:52,824 - ERROR - backup_safim.py:518 -   ADVERSARY:     while ((1 + j) <= n):
+2025-06-05 14:52:52,826 - ERROR - backup_safim.py:516 - Line 14 DIFFERS:
+2025-06-05 14:52:52,826 - ERROR - backup_safim.py:517 -   ORIGINAL :     keys = []
+2025-06-05 14:52:52,826 - ERROR - backup_safim.py:518 -   ADVERSARY:         key = (j, u, d)
+2025-06-05 14:52:52,827 - ERROR - backup_safim.py:516 - Line 15 DIFFERS:
+2025-06-05 14:52:52,827 - ERROR - backup_safim.py:517 -   ORIGINAL :     j = i
+2025-06-05 14:52:52,828 - ERROR - backup_safim.py:518 -   ADVERSARY:         v = cache.get(key, (- 1))
+2025-06-05 14:52:52,830 - ERROR - backup_safim.py:516 - Line 16 DIFFERS:
+2025-06-05 14:52:52,831 - ERROR - backup_safim.py:517 -   ORIGINAL :     while j+1 <= n:
+2025-06-05 14:52:52,833 - ERROR - backup_safim.py:518 -   ADVERSARY:         if (u < a[j] < d):
+2025-06-05 14:52:52,835 - ERROR - backup_safim.py:516 - Line 17 DIFFERS:
+2025-06-05 14:52:52,837 - ERROR - backup_safim.py:517 -   ORIGINAL :         key = (j, u, d)
+2025-06-05 14:52:52,838 - ERROR - backup_safim.py:518 -   ADVERSARY:             if (a[j] < a[(j + 1)]):
+2025-06-05 14:52:52,840 - ERROR - backup_safim.py:516 - Line 18 DIFFERS:
+2025-06-05 14:52:52,842 - ERROR - backup_safim.py:517 -   ORIGINAL :         v = cache.get(key, -1)
+2025-06-05 14:52:52,844 - ERROR - backup_safim.py:518 -   ADVERSARY:                 u = max(u, a[j])
+2025-06-05 14:52:52,846 - ERROR - backup_safim.py:516 - Line 19 DIFFERS:
+2025-06-05 14:52:52,848 - ERROR - backup_safim.py:517 -   ORIGINAL :         if v != -1:
+2025-06-05 14:52:52,849 - ERROR - backup_safim.py:518 -   ADVERSARY:             else:
+2025-06-05 14:52:52,850 - ERROR - backup_safim.py:516 - Line 20 DIFFERS:
+2025-06-05 14:52:52,854 - ERROR - backup_safim.py:517 -   ORIGINAL :             j = v
+2025-06-05 14:52:52,858 - ERROR - backup_safim.py:518 -   ADVERSARY:                 if (a[j] > a[(j + 1)]):
+2025-06-05 14:52:52,861 - ERROR - backup_safim.py:516 - Line 21 DIFFERS:
+2025-06-05 14:52:52,863 - ERROR - backup_safim.py:517 -   ORIGINAL :             break
+2025-06-05 14:52:52,865 - ERROR - backup_safim.py:518 -   ADVERSARY:                     {{completion}}
+2025-06-05 14:52:52,867 - ERROR - backup_safim.py:516 - Line 22 DIFFERS:
+2025-06-05 14:52:52,868 - ERROR - backup_safim.py:517 -   ORIGINAL :         
+2025-06-05 14:52:52,870 - ERROR - backup_safim.py:518 -   ADVERSARY:         else:
+2025-06-05 14:52:52,872 - ERROR - backup_safim.py:516 - Line 23 DIFFERS:
+2025-06-05 14:52:52,874 - ERROR - backup_safim.py:517 -   ORIGINAL :         keys.append(key)
+2025-06-05 14:52:52,874 - ERROR - backup_safim.py:518 -   ADVERSARY:             if (u < a[j]):
+2025-06-05 14:52:52,874 - ERROR - backup_safim.py:516 - Line 24 DIFFERS:
+2025-06-05 14:52:52,876 - ERROR - backup_safim.py:517 -   ORIGINAL :         # greedy
+2025-06-05 14:52:52,878 - ERROR - backup_safim.py:518 -   ADVERSARY:                 u = a[j]
+2025-06-05 14:52:52,880 - ERROR - backup_safim.py:516 - Line 25 DIFFERS:
+2025-06-05 14:52:52,884 - ERROR - backup_safim.py:517 -   ORIGINAL :         if u < a[j] < d: # if can insert to both
+2025-06-05 14:52:52,887 - ERROR - backup_safim.py:518 -   ADVERSARY:             else:
+2025-06-05 14:52:52,891 - ERROR - backup_safim.py:516 - Line 26 DIFFERS:
+2025-06-05 14:52:52,895 - ERROR - backup_safim.py:517 -   ORIGINAL :             if a[j] < a[j+1]:
+2025-06-05 14:52:52,898 - ERROR - backup_safim.py:518 -   ADVERSARY:                 if (d > a[j]):
+2025-06-05 14:52:52,902 - ERROR - backup_safim.py:516 - Line 27 DIFFERS:
+2025-06-05 14:52:52,906 - ERROR - backup_safim.py:517 -   ORIGINAL :                 u = max(u, a[j])
+2025-06-05 14:52:52,910 - ERROR - backup_safim.py:518 -   ADVERSARY:                     d = a[j]
+2025-06-05 14:52:52,913 - ERROR - backup_safim.py:516 - Line 28 DIFFERS:
+2025-06-05 14:52:52,917 - ERROR - backup_safim.py:517 -   ORIGINAL :             elif a[j] > a[j+1]:
+2025-06-05 14:52:52,921 - ERROR - backup_safim.py:518 -   ADVERSARY:                 else:
+2025-06-05 14:52:52,926 - ERROR - backup_safim.py:516 - Line 29 DIFFERS:
+2025-06-05 14:52:52,929 - ERROR - backup_safim.py:517 -   ORIGINAL :                 {{completion}}
+2025-06-05 14:52:52,932 - ERROR - backup_safim.py:518 -   ADVERSARY:                     break
+2025-06-05 14:52:52,936 - ERROR - backup_safim.py:516 - Line 30 DIFFERS:
+2025-06-05 14:52:52,939 - ERROR - backup_safim.py:517 -   ORIGINAL :         elif u < a[j]: # if only can insert to increasing subsequence
+2025-06-05 14:52:52,943 - ERROR - backup_safim.py:518 -   ADVERSARY:         if (v != (- 1)):
+2025-06-05 14:52:52,947 - ERROR - backup_safim.py:516 - Line 31 DIFFERS:
+2025-06-05 14:52:52,950 - ERROR - backup_safim.py:517 -   ORIGINAL :             u = a[j]
+2025-06-05 14:52:52,953 - ERROR - backup_safim.py:518 -   ADVERSARY:             j = v
+2025-06-05 14:52:52,957 - ERROR - backup_safim.py:516 - Line 32 DIFFERS:
+2025-06-05 14:52:52,959 - ERROR - backup_safim.py:517 -   ORIGINAL :         elif d > a[j]: # if only can insert to decreasing subsequence
+2025-06-05 14:52:52,964 - ERROR - backup_safim.py:518 -   ADVERSARY:             break
+2025-06-05 14:52:52,964 - ERROR - backup_safim.py:516 - Line 33 DIFFERS:
+2025-06-05 14:52:52,964 - ERROR - backup_safim.py:517 -   ORIGINAL :             d = a[j]
+2025-06-05 14:52:52,965 - ERROR - backup_safim.py:518 -   ADVERSARY:         keys.append(key)
+2025-06-05 14:52:52,966 - ERROR - backup_safim.py:516 - Line 34 DIFFERS:
+2025-06-05 14:52:52,968 - ERROR - backup_safim.py:517 -   ORIGINAL :         else:
+2025-06-05 14:52:52,970 - ERROR - backup_safim.py:518 -   ADVERSARY:         j += 1
+2025-06-05 14:52:52,971 - ERROR - backup_safim.py:516 - Line 35 DIFFERS:
+2025-06-05 14:52:52,973 - ERROR - backup_safim.py:517 -   ORIGINAL :             break
+2025-06-05 14:52:52,975 - ERROR - backup_safim.py:518 -   ADVERSARY:     ans += (j - i)
+2025-06-05 14:52:52,979 - ERROR - backup_safim.py:516 - Line 36 DIFFERS:
+2025-06-05 14:52:52,983 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:52,987 - ERROR - backup_safim.py:518 -   ADVERSARY: print(ans)
+2025-06-05 14:52:52,990 - ERROR - backup_safim.py:516 - Line 37 DIFFERS:
+2025-06-05 14:52:52,994 - ERROR - backup_safim.py:517 -   ORIGINAL :         j += 1
+2025-06-05 14:52:52,998 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:53,000 - ERROR - backup_safim.py:516 - Line 38 DIFFERS:
+2025-06-05 14:52:53,001 - ERROR - backup_safim.py:517 -   ORIGINAL :     
+2025-06-05 14:52:53,003 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:53,007 - ERROR - backup_safim.py:516 - Line 39 DIFFERS:
+2025-06-05 14:52:53,011 - ERROR - backup_safim.py:517 -   ORIGINAL :     for key in keys:
+2025-06-05 14:52:53,016 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:53,016 - ERROR - backup_safim.py:516 - Line 40 DIFFERS:
+2025-06-05 14:52:53,018 - ERROR - backup_safim.py:517 -   ORIGINAL :         cache[key] = j
+2025-06-05 14:52:53,020 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:53,024 - ERROR - backup_safim.py:516 - Line 41 DIFFERS:
+2025-06-05 14:52:53,027 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:53,031 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:53,034 - ERROR - backup_safim.py:516 - Line 42 DIFFERS:
+2025-06-05 14:52:53,039 - ERROR - backup_safim.py:517 -   ORIGINAL :     ans += j - i
+2025-06-05 14:52:53,041 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:53,041 - ERROR - backup_safim.py:516 - Line 43 DIFFERS:
+2025-06-05 14:52:53,041 - ERROR - backup_safim.py:517 -   ORIGINAL :     # print(f'at {i} max {j} ans {ans}', u, d)
+2025-06-05 14:52:53,043 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:53,044 - ERROR - backup_safim.py:516 - Line 44 DIFFERS:
+2025-06-05 14:52:53,044 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:53,046 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:53,048 - ERROR - backup_safim.py:516 - Line 45 DIFFERS:
+2025-06-05 14:52:53,050 - ERROR - backup_safim.py:517 -   ORIGINAL : # print(f'count={len(cache)}')
+2025-06-05 14:52:53,050 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:53,052 - ERROR - backup_safim.py:516 - Line 46 DIFFERS:
+2025-06-05 14:52:53,055 - ERROR - backup_safim.py:517 -   ORIGINAL : print(ans)
+2025-06-05 14:52:53,059 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:53,062 - ERROR - backup_safim.py:516 - Line 47 DIFFERS:
+2025-06-05 14:52:53,066 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:52:53,069 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:52:53,073 - ERROR - backup_safim.py:521 - ------------------------------------------------------------
+
+
+2025-06-05 14:52:53,077 - INFO - backup_safim.py:413 - 
+================================================================================
+DEBUGGING PROBLEMATIC SAMPLE: block_completion_000488
+================================================================================
+2025-06-05 14:52:53,079 - INFO - backup_safim.py:416 - Task block_completion_000488: Original eval_prompt:
+input = __import__('sys').stdin.readline
+
+
+n = int(input())
+a = list(map(int, input().split())) + [n+1]
+
+cache = {}
+def check(i, u, d):
+    keys = []
+    j = i
+    while j+1 <= n:
+        key = (j, u, d)
+        v = cache.get(key, -1)
+        if v != -1:
+            j = v
+            break
+        
+        keys.append(key)
+        if u < a[j] < d: # if can insert to both
+            if a[j] < a[j+1]:
+                u = max(u, a[j])
+            elif a[j] > a[j+1]:
+                {{completion}}
+        elif u < a[j]: # if only can insert to increasing subsequence
+            u = a[j]
+        elif d > a[j]: # if only can insert to decreasing subsequence
+            d = a[j]
+        else:
+            break
+
+        j += 1
+    
+    for key in keys:
+        cache[key] = j
+    
+    return j
+
+ans = 0
+for i in range(n):
+    u = 0
+    d = n+1
+    j = check(i, u, d)
+    ans += j - i
+    # print(f'at {i} max {j} ans {ans}', u, d)
+
+# print(f'count={count}')
+print(ans)
+
+2025-06-05 14:52:53,114 - INFO - backup_safim.py:427 - Task block_completion_000488: Original model completion (full):
+2025-06-05 14:52:53,114 - INFO - backup_safim.py:428 - ------
+d = min(d, a[j])
+
+------
+2025-06-05 14:52:53,116 - INFO - backup_safim.py:433 - 
+ORIGINAL FULL CODE (Prompt + Completion) FOR block_completion_000488:
+2025-06-05 14:52:53,117 - INFO - backup_safim.py:434 - ------------------------------------------------------------
+2025-06-05 14:52:53,119 - INFO - backup_safim.py:435 - input = __import__('sys').stdin.readline
+
+
+n = int(input())
+a = list(map(int, input().split())) + [n+1]
+
+cache = {}
+def check(i, u, d):
+    keys = []
+    j = i
+    while j+1 <= n:
+        key = (j, u, d)
+        v = cache.get(key, -1)
+        if v != -1:
+            j = v
+            break
+        
+        keys.append(key)
+        if u < a[j] < d: # if can insert to both
+            if a[j] < a[j+1]:
+                u = max(u, a[j])
+            elif a[j] > a[j+1]:
+                d = min(d, a[j])
+
+        elif u < a[j]: # if only can insert to increasing subsequence
+            u = a[j]
+        elif d > a[j]: # if only can insert to decreasing subsequence
+            d = a[j]
+        else:
+            break
+
+        j += 1
+    
+    for key in keys:
+        cache[key] = j
+    
+    return j
+
+ans = 0
+for i in range(n):
+    u = 0
+    d = n+1
+    j = check(i, u, d)
+    ans += j - i
+    # print(f'at {i} max {j} ans {ans}', u, d)
+
+# print(f'count={count}')
+print(ans)
+
+2025-06-05 14:52:53,121 - INFO - backup_safim.py:436 - ------------------------------------------------------------
+2025-06-05 14:52:53,124 - INFO - backup_safim.py:445 - Task block_completion_000488: Original matches ground truth (implies all 3 tests passed).
+2025-06-05 14:52:53,128 - INFO - backup_safim.py:462 - Task block_completion_000488: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-05 14:52:53,130 - INFO - backup_safim.py:324 - Task block_completion_000488: Searching for adversarial example...
+2025-06-05 14:52:54,432 - INFO - backup_safim.py:355 - Task block_completion_000488: Attempt 1 - Model's adversarial completion (first 50 chars): 'd = min(d, a[j])
+...'
+2025-06-05 14:52:54,520 - INFO - backup_safim.py:376 - Task block_completion_000488: Attempt 1 - Model passed tests on this reordered prompt.
+2025-06-05 14:52:54,520 - INFO - backup_safim.py:390 - Task block_completion_000488: No adversarial example found after 1 reordering attempts.
+2025-06-05 14:52:54,520 - INFO - backup_safim.py:391 -   Overall attempts: 1, Valid reorderings generated: 1, Model passed on valid reorderings: 1
+2025-06-05 14:52:54,522 - INFO - backup_safim.py:392 -   Final failure reason: model_robust_all_valid_reorderings_passed
+2025-06-05 14:52:54,524 - INFO - backup_safim.py:524 - Task block_completion_000488: Adversarial attack failed or conditions not met. Reason: model_robust_all_valid_reorderings_passed
+2025-06-05 14:52:54,526 - INFO - backup_safim.py:413 - 
+================================================================================
+DEBUGGING PROBLEMATIC SAMPLE: block_completion_000546
+================================================================================
+2025-06-05 14:52:54,527 - INFO - backup_safim.py:416 - Task block_completion_000546: Original eval_prompt:
+input = __import__('sys').stdin.readline
+
+
+MOD = 998244353
+
+fact = [1]
+invfact = [1]
+
+for i in range(1, 101):
+    fact.append(fact[-1] * i % MOD)
+    invfact.append(pow(fact[-1], MOD-2, MOD))
+
+
+def C(n, k):
+    if k < 0 or k > n:
+        return 0
+    return fact[n] * invfact[k] % MOD * invfact[n-k] % MOD
+
+
+def P(n, k):
+    if k < 0 or k > n:
+        return 0
+    return fact[n] * invfact[n-k] % MOD
+
+
+n = int(input())
+coords = []
+for _ in range(n):
+    x, y = map(int, input().split())
+    coords.append((x, y))
+
+min_dist = [10**9] * n
+dist = [[-1] * n for _ in range(n)]
+for u in range(n):
+    for v in range(n):
+        dist[u][v] = abs(coords[u][0] - coords[v][0]) + abs(coords[u][1] - coords[v][1])
+        if u != v:
+            min_dist[u] = min(min_dist[u], dist[u][v])
+
+cnt = [0, 0, 0, 0, 0]
+vis = [False]*n
+for u in sorted(range(n), key=lambda x: min_dist[x]):
+    if vis[u]:
+        continue
+
+    vis[u] = True
+    seen = [False]*n
+    seen[u] = True    
+    ptr = 0
+    found = [u]
+    while ptr < len(found):
+        v = found[ptr]
+        ptr += 1
+        for w in range(n):
+            if not seen[w] and dist[v][w] == min_dist[v]:
+                seen[w] = True
+                found.append(w)
+    
+    ok = all(dist[found[i]][found[j]] == min_dist[u] for i in range(len(found)) for j in range(i+1, len(found)))
+    if len(found) == 1 or not ok:
+        cnt[1] += 1
+    else:
+        # print('found', found, ok)
+        cnt[len(found)] += 1
+        for u in found:
+            vis[u] = True
+
+
+# print('cnt', cnt[1:])
+
+ans = 0
+for two in range(cnt[2] + 1):
+    for three in range(cnt[3] + 1):
+        for four in range(cnt[4] + 1):
+            ans += P(n, n - two - 2*three - 3*four) * C(cnt[2], two) % MOD \
+                * C(cnt[3], three) % MOD \
+                * C(cnt[4], four) % MOD
+            if ans >= MOD:
+                {{completion}}
+            # print(f'add P({n},{n - two - 2*three - 3*four})*C({cnt[2]},{two})*C({cnt[3]},{three})*C({cnt[4]},{four}) {ans}')
+print(ans)
+2025-06-05 14:52:54,571 - INFO - backup_safim.py:427 - Task block_completion_000546: Original model completion (full):
+2025-06-05 14:52:54,571 - INFO - backup_safim.py:428 - ------
+ans -= MOD
+
+------
+2025-06-05 14:52:54,571 - INFO - backup_safim.py:433 - 
+ORIGINAL FULL CODE (Prompt + Completion) FOR block_completion_000546:
+2025-06-05 14:52:54,571 - INFO - backup_safim.py:434 - ------------------------------------------------------------
+2025-06-05 14:52:54,573 - INFO - backup_safim.py:435 - input = __import__('sys').stdin.readline
+
+
+MOD = 998244353
+
+fact = [1]
+invfact = [1]
+
+for i in range(1, 101):
+    fact.append(fact[-1] * i % MOD)
+    invfact.append(pow(fact[-1], MOD-2, MOD))
+
+
+def C(n, k):
+    if k < 0 or k > n:
+        return 0
+    return fact[n] * invfact[k] % MOD * invfact[n-k] % MOD
+
+
+def P(n, k):
+    if k < 0 or k > n:
+        return 0
+    return fact[n] * invfact[n-k] % MOD
+
+
+n = int(input())
+coords = []
+for _ in range(n):
+    x, y = map(int, input().split())
+    coords.append((x, y))
+
+min_dist = [10**9] * n
+dist = [[-1] * n for _ in range(n)]
+for u in range(n):
+    for v in range(n):
+        dist[u][v] = abs(coords[u][0] - coords[v][0]) + abs(coords[u][1] - coords[v][1])
+        if u != v:
+            min_dist[u] = min(min_dist[u], dist[u][v])
+
+cnt = [0, 0, 0, 0, 0]
+vis = [False]*n
+for u in sorted(range(n), key=lambda x: min_dist[x]):
+    if vis[u]:
+        continue
+
+    vis[u] = True
+    seen = [False]*n
+    seen[u] = True    
+    ptr = 0
+    found = [u]
+    while ptr < len(found):
+        v = found[ptr]
+        ptr += 1
+        for w in range(n):
+            if not seen[w] and dist[v][w] == min_dist[v]:
+                seen[w] = True
+                found.append(w)
+    
+    ok = all(dist[found[i]][found[j]] == min_dist[u] for i in range(len(found)) for j in range(i+1, len(found)))
+    if len(found) == 1 or not ok:
+        cnt[1] += 1
+    else:
+        # print('found', found, ok)
+        cnt[len(found)] += 1
+        for u in found:
+            vis[u] = True
+
+
+# print('cnt', cnt[1:])
+
+ans = 0
+for two in range(cnt[2] + 1):
+    for three in range(cnt[3] + 1):
+        for four in range(cnt[4] + 1):
+            ans += P(n, n - two - 2*three - 3*four) * C(cnt[2], two) % MOD \
+                * C(cnt[3], three) % MOD \
+                * C(cnt[4], four) % MOD
+            if ans >= MOD:
+                ans -= MOD
+
+            # print(f'add P({n},{n - two - 2*three - 3*four})*C({cnt[2]},{two})*C({cnt[3]},{three})*C({cnt[4]},{four}) {ans}')
+print(ans)
+2025-06-05 14:52:54,575 - INFO - backup_safim.py:436 - ------------------------------------------------------------
+2025-06-05 14:52:54,579 - INFO - backup_safim.py:445 - Task block_completion_000546: Original matches ground truth (implies all 3 tests passed).
+2025-06-05 14:52:54,582 - INFO - backup_safim.py:462 - Task block_completion_000546: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-05 14:52:54,585 - INFO - backup_safim.py:324 - Task block_completion_000546: Searching for adversarial example...
+2025-06-05 14:53:22,656 - WARNING - perturbation.py:862 - Cycle detected in module statement dependencies. Falling back to original order for module statements.
+2025-06-05 14:53:22,750 - INFO - backup_safim.py:355 - Task block_completion_000546: Attempt 1 - Model's adversarial completion (first 50 chars): 'ans -= MOD
+...'
+2025-06-05 14:53:22,789 - WARNING - backup_safim.py:130 - Task block_completion_000546_adv_0, Test 1/3: RUNTIME_ERROR. Stderr: Traceback (most recent call last):
+  File "/tmp/tmpa_wbau04.py", line 5, in <module>
+    for two in range((1 + cnt[2])):
+                          ^^^
+NameError: name 'cnt' is not defined. Did you mean: 'int'?
+
+2025-06-05 14:53:22,823 - WARNING - backup_safim.py:130 - Task block_completion_000546_adv_0, Test 2/3: RUNTIME_ERROR. Stderr: Traceback (most recent call last):
+  File "/tmp/tmpylk1qu9f.py", line 5, in <module>
+    for two in range((1 + cnt[2])):
+                          ^^^
+NameError: name 'cnt' is not defined. Did you mean: 'int'?
+
+2025-06-05 14:53:22,855 - WARNING - backup_safim.py:130 - Task block_completion_000546_adv_0, Test 3/3: RUNTIME_ERROR. Stderr: Traceback (most recent call last):
+  File "/tmp/tmpgvftnt3j.py", line 5, in <module>
+    for two in range((1 + cnt[2])):
+                          ^^^
+NameError: name 'cnt' is not defined. Did you mean: 'int'?
+
+2025-06-05 14:53:22,855 - INFO - backup_safim.py:371 - Task block_completion_000546: Found adversarial example after 1 reordering attempts (1 valid).
+2025-06-05 14:53:22,857 - INFO - backup_safim.py:372 -   Model's completion (adversarial) failed 3/3 tests on reordered code.
+2025-06-05 14:53:22,859 - INFO - backup_safim.py:478 - 
+ADVERSARIAL ATTACK SUCCEEDED for block_completion_000546:
+2025-06-05 14:53:22,860 - INFO - backup_safim.py:479 -   Original passed: True
+2025-06-05 14:53:22,862 - INFO - backup_safim.py:480 -   Adversarial completion (full):
+2025-06-05 14:53:22,866 - INFO - backup_safim.py:481 - ------
+ans -= MOD
+
+------
+2025-06-05 14:53:22,869 - INFO - backup_safim.py:482 -   COMPLETIONS ARE IDENTICAL
+2025-06-05 14:53:22,873 - INFO - backup_safim.py:485 -   Adversarial code FAILED tests (3 failed / 3 total). Status: FAILED_ALL_TESTS
+2025-06-05 14:53:22,876 - INFO - backup_safim.py:488 - 
+ADVERSARIAL FULL CODE (Perturbed Prompt + Completion) FOR block_completion_000546:
+2025-06-05 14:53:22,879 - INFO - backup_safim.py:489 - ------------------------------------------------------------
+2025-06-05 14:53:22,881 - INFO - backup_safim.py:490 - MOD = 998244353
+invfact = [1]
+input = __import__('sys').stdin.readline
+fact = [1]
+for two in range((1 + cnt[2])):
+    for three in range((1 + cnt[3])):
+        for four in range((cnt[4] + 1)):
+            ans += ((C(cnt[4], four) * ((((C(cnt[2], two) * P(n, (((n - two) - (2 * three)) - (3 * four)))) % MOD) * C(cnt[3], three)) % MOD)) % MOD)
+            if (ans >= MOD):
+                ans -= MOD
+
+for u in sorted(range(n), key=(lambda x: min_dist[x])):
+    if ((len(found) == 1) or (not ok)):
+        cnt[1] += 1
+    else:
+        for u in found:
+            vis[u] = True
+        cnt[len(found)] += 1
+    while (ptr < len(found)):
+        for w in range(n):
+            if ((not seen[w]) and (min_dist[v] == dist[v][w])):
+                seen[w] = True
+                found.append(w)
+        v = found[ptr]
+        ptr += 1
+    if vis[u]:
+        continue
+    vis[u] = True
+    seen = (n * [False])
+    seen[u] = True
+    ptr = 0
+    found = [u]
+    ok = all(((min_dist[u] == dist[found[i]][found[j]]) for i in range(len(found)) for j in range((i + 1), len(found))))
+for u in range(n):
+    for v in range(n):
+        dist[u][v] = (abs((coords[u][1] - coords[v][1])) + abs((coords[u][0] - coords[v][0])))
+        if (v != u):
+            min_dist[u] = min(min_dist[u], dist[u][v])
+ans = 0
+print(ans)
+for _ in range(n):
+    (x, y) = map(int, input().split())
+    coords.append((x, y))
+for i in range(1, 101):
+    fact.append(((fact[(- 1)] * i) % MOD))
+    invfact.append(pow(fact[(- 1)], (MOD - 2), MOD))
+
+def C(n, k):
+    if ((k < 0) or (k > n)):
+        return 0
+    return ((invfact[(n - k)] * ((fact[n] * invfact[k]) % MOD)) % MOD)
+
+def P(n, k):
+    if ((k < 0) or (k > n)):
+        return 0
+    return ((invfact[(n - k)] * fact[n]) % MOD)
+n = int(input())
+cnt = [0, 0, 0, 0, 0]
+vis = (n * [False])
+min_dist = ([(10 ** 9)] * n)
+dist = [(n * [(- 1)]) for _ in range(n)]
+coords = []
+2025-06-05 14:53:22,883 - INFO - backup_safim.py:491 - ------------------------------------------------------------
+2025-06-05 14:53:22,889 - ERROR - backup_safim.py:494 - 
+
+!!! CRITICAL ISSUE FOR block_completion_000546 !!!
+2025-06-05 14:53:22,892 - ERROR - backup_safim.py:495 - !!! IDENTICAL COMPLETION BUT DIFFERENT TEST RESULTS !!!
+2025-06-05 14:53:22,893 - ERROR - backup_safim.py:496 - ------------------------------------------------------------
+2025-06-05 14:53:22,895 - ERROR - backup_safim.py:497 - ORIGINAL PROMPT (led to PASSING code):
+2025-06-05 14:53:22,897 - ERROR - backup_safim.py:498 - vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+2025-06-05 14:53:22,899 - ERROR - backup_safim.py:499 - input = __import__('sys').stdin.readline
+
+
+MOD = 998244353
+
+fact = [1]
+invfact = [1]
+
+for i in range(1, 101):
+    fact.append(fact[-1] * i % MOD)
+    invfact.append(pow(fact[-1], MOD-2, MOD))
+
+
+def C(n, k):
+    if k < 0 or k > n:
+        return 0
+    return fact[n] * invfact[k] % MOD * invfact[n-k] % MOD
+
+
+def P(n, k):
+    if k < 0 or k > n:
+        return 0
+    return fact[n] * invfact[n-k] % MOD
+
+
+n = int(input())
+coords = []
+for _ in range(n):
+    x, y = map(int, input().split())
+    coords.append((x, y))
+
+min_dist = [10**9] * n
+dist = [[-1] * n for _ in range(n)]
+for u in range(n):
+    for v in range(n):
+        dist[u][v] = abs(coords[u][0] - coords[v][0]) + abs(coords[u][1] - coords[v][1])
+        if u != v:
+            min_dist[u] = min(min_dist[u], dist[u][v])
+
+cnt = [0, 0, 0, 0, 0]
+vis = [False]*n
+for u in sorted(range(n), key=lambda x: min_dist[x]):
+    if vis[u]:
+        continue
+
+    vis[u] = True
+    seen = [False]*n
+    seen[u] = True    
+    ptr = 0
+    found = [u]
+    while ptr < len(found):
+        v = found[ptr]
+        ptr += 1
+        for w in range(n):
+            if not seen[w] and dist[v][w] == min_dist[v]:
+                seen[w] = True
+                found.append(w)
+    
+    ok = all(dist[found[i]][found[j]] == min_dist[u] for i in range(len(found)) for j in range(i+1, len(found)))
+    if len(found) == 1 or not ok:
+        cnt[1] += 1
+    else:
+        # print('found', found, ok)
+        cnt[len(found)] += 1
+        for u in found:
+            vis[u] = True
+
+
+# print('cnt', cnt[1:])
+
+ans = 0
+for two in range(cnt[2] + 1):
+    for three in range(cnt[3] + 1):
+        for four in range(cnt[4] + 1):
+            ans += P(n, n - two - 2*three - 3*four) * C(cnt[2], two) % MOD \
+                * C(cnt[3], three) % MOD \
+                * C(cnt[4], four) % MOD
+            if ans >= MOD:
+                {{completion}}
+            # print(f'add P({n},{n - two - 2*three - 3*four})*C({cnt[2]},{two})*C({cnt[3]},{three})*C({cnt[4]},{four}) {ans}')
+print(ans)
+2025-06-05 14:53:22,900 - ERROR - backup_safim.py:500 - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-06-05 14:53:22,902 - ERROR - backup_safim.py:501 - 
+ADVERSARIAL PROMPT (led to FAILING code with SAME completion):
+2025-06-05 14:53:22,906 - ERROR - backup_safim.py:502 - vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+2025-06-05 14:53:22,907 - ERROR - backup_safim.py:503 - MOD = 998244353
+invfact = [1]
+input = __import__('sys').stdin.readline
+fact = [1]
+for two in range((1 + cnt[2])):
+    for three in range((1 + cnt[3])):
+        for four in range((cnt[4] + 1)):
+            ans += ((C(cnt[4], four) * ((((C(cnt[2], two) * P(n, (((n - two) - (2 * three)) - (3 * four)))) % MOD) * C(cnt[3], three)) % MOD)) % MOD)
+            if (ans >= MOD):
+                {{completion}}
+for u in sorted(range(n), key=(lambda x: min_dist[x])):
+    if ((len(found) == 1) or (not ok)):
+        cnt[1] += 1
+    else:
+        for u in found:
+            vis[u] = True
+        cnt[len(found)] += 1
+    while (ptr < len(found)):
+        for w in range(n):
+            if ((not seen[w]) and (min_dist[v] == dist[v][w])):
+                seen[w] = True
+                found.append(w)
+        v = found[ptr]
+        ptr += 1
+    if vis[u]:
+        continue
+    vis[u] = True
+    seen = (n * [False])
+    seen[u] = True
+    ptr = 0
+    found = [u]
+    ok = all(((min_dist[u] == dist[found[i]][found[j]]) for i in range(len(found)) for j in range((i + 1), len(found))))
+for u in range(n):
+    for v in range(n):
+        dist[u][v] = (abs((coords[u][1] - coords[v][1])) + abs((coords[u][0] - coords[v][0])))
+        if (v != u):
+            min_dist[u] = min(min_dist[u], dist[u][v])
+ans = 0
+print(ans)
+for _ in range(n):
+    (x, y) = map(int, input().split())
+    coords.append((x, y))
+for i in range(1, 101):
+    fact.append(((fact[(- 1)] * i) % MOD))
+    invfact.append(pow(fact[(- 1)], (MOD - 2), MOD))
+
+def C(n, k):
+    if ((k < 0) or (k > n)):
+        return 0
+    return ((invfact[(n - k)] * ((fact[n] * invfact[k]) % MOD)) % MOD)
+
+def P(n, k):
+    if ((k < 0) or (k > n)):
+        return 0
+    return ((invfact[(n - k)] * fact[n]) % MOD)
+n = int(input())
+cnt = [0, 0, 0, 0, 0]
+vis = (n * [False])
+min_dist = ([(10 ** 9)] * n)
+dist = [(n * [(- 1)]) for _ in range(n)]
+coords = []
+2025-06-05 14:53:22,908 - ERROR - backup_safim.py:504 - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-06-05 14:53:22,910 - ERROR - backup_safim.py:506 - 
+LINE-BY-LINE PROMPT DIFFERENCES (Original vs Adversarial):
+2025-06-05 14:53:22,912 - ERROR - backup_safim.py:516 - Line 1 DIFFERS:
+2025-06-05 14:53:22,912 - ERROR - backup_safim.py:517 -   ORIGINAL : input = __import__('sys').stdin.readline
+2025-06-05 14:53:22,912 - ERROR - backup_safim.py:518 -   ADVERSARY: MOD = 998244353
+2025-06-05 14:53:22,912 - ERROR - backup_safim.py:516 - Line 2 DIFFERS:
+2025-06-05 14:53:22,912 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:53:22,912 - ERROR - backup_safim.py:518 -   ADVERSARY: invfact = [1]
+2025-06-05 14:53:22,913 - ERROR - backup_safim.py:516 - Line 3 DIFFERS:
+2025-06-05 14:53:22,913 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:53:22,913 - ERROR - backup_safim.py:518 -   ADVERSARY: input = __import__('sys').stdin.readline
+2025-06-05 14:53:22,913 - ERROR - backup_safim.py:516 - Line 4 DIFFERS:
+2025-06-05 14:53:22,913 - ERROR - backup_safim.py:517 -   ORIGINAL : MOD = 998244353
+2025-06-05 14:53:22,913 - ERROR - backup_safim.py:518 -   ADVERSARY: fact = [1]
+2025-06-05 14:53:22,913 - ERROR - backup_safim.py:516 - Line 5 DIFFERS:
+2025-06-05 14:53:22,914 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:53:22,914 - ERROR - backup_safim.py:518 -   ADVERSARY: for two in range((1 + cnt[2])):
+2025-06-05 14:53:22,914 - ERROR - backup_safim.py:516 - Line 6 DIFFERS:
+2025-06-05 14:53:22,914 - ERROR - backup_safim.py:517 -   ORIGINAL : fact = [1]
+2025-06-05 14:53:22,914 - ERROR - backup_safim.py:518 -   ADVERSARY:     for three in range((1 + cnt[3])):
+2025-06-05 14:53:22,914 - ERROR - backup_safim.py:516 - Line 7 DIFFERS:
+2025-06-05 14:53:22,914 - ERROR - backup_safim.py:517 -   ORIGINAL : invfact = [1]
+2025-06-05 14:53:22,915 - ERROR - backup_safim.py:518 -   ADVERSARY:         for four in range((cnt[4] + 1)):
+2025-06-05 14:53:22,915 - ERROR - backup_safim.py:516 - Line 8 DIFFERS:
+2025-06-05 14:53:22,915 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:53:22,915 - ERROR - backup_safim.py:518 -   ADVERSARY:             ans += ((C(cnt[4], four) * ((((C(cnt[2], two) * P(n, (((n - two) - (2 * three)) - (3 * four)))) % MOD) * C(cnt[3], three)) % MOD)) % MOD)
+2025-06-05 14:53:22,917 - ERROR - backup_safim.py:516 - Line 9 DIFFERS:
+2025-06-05 14:53:22,921 - ERROR - backup_safim.py:517 -   ORIGINAL : for i in range(1, 101):
+2025-06-05 14:53:22,924 - ERROR - backup_safim.py:518 -   ADVERSARY:             if (ans >= MOD):
+2025-06-05 14:53:22,924 - ERROR - backup_safim.py:516 - Line 10 DIFFERS:
+2025-06-05 14:53:22,926 - ERROR - backup_safim.py:517 -   ORIGINAL :     fact.append(fact[-1] * i % MOD)
+2025-06-05 14:53:22,928 - ERROR - backup_safim.py:518 -   ADVERSARY:                 {{completion}}
+2025-06-05 14:53:22,931 - ERROR - backup_safim.py:516 - Line 11 DIFFERS:
+2025-06-05 14:53:22,935 - ERROR - backup_safim.py:517 -   ORIGINAL :     invfact.append(pow(fact[-1], MOD-2, MOD))
+2025-06-05 14:53:22,938 - ERROR - backup_safim.py:518 -   ADVERSARY: for u in sorted(range(n), key=(lambda x: min_dist[x])):
+2025-06-05 14:53:22,941 - ERROR - backup_safim.py:516 - Line 12 DIFFERS:
+2025-06-05 14:53:22,944 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:53:22,948 - ERROR - backup_safim.py:518 -   ADVERSARY:     if ((len(found) == 1) or (not ok)):
+2025-06-05 14:53:22,952 - ERROR - backup_safim.py:516 - Line 13 DIFFERS:
+2025-06-05 14:53:22,955 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:53:22,959 - ERROR - backup_safim.py:518 -   ADVERSARY:         cnt[1] += 1
+2025-06-05 14:53:22,960 - ERROR - backup_safim.py:516 - Line 14 DIFFERS:
+2025-06-05 14:53:22,963 - ERROR - backup_safim.py:517 -   ORIGINAL : def C(n, k):
+2025-06-05 14:53:22,964 - ERROR - backup_safim.py:518 -   ADVERSARY:     else:
+2025-06-05 14:53:22,966 - ERROR - backup_safim.py:516 - Line 15 DIFFERS:
+2025-06-05 14:53:22,970 - ERROR - backup_safim.py:517 -   ORIGINAL :     if k < 0 or k > n:
+2025-06-05 14:53:22,975 - ERROR - backup_safim.py:518 -   ADVERSARY:         for u in found:
+2025-06-05 14:53:22,977 - ERROR - backup_safim.py:516 - Line 16 DIFFERS:
+2025-06-05 14:53:22,978 - ERROR - backup_safim.py:517 -   ORIGINAL :         return 0
+2025-06-05 14:53:22,978 - ERROR - backup_safim.py:518 -   ADVERSARY:             vis[u] = True
+2025-06-05 14:53:22,978 - ERROR - backup_safim.py:516 - Line 17 DIFFERS:
+2025-06-05 14:53:22,978 - ERROR - backup_safim.py:517 -   ORIGINAL :     return fact[n] * invfact[k] % MOD * invfact[n-k] % MOD
+2025-06-05 14:53:22,978 - ERROR - backup_safim.py:518 -   ADVERSARY:         cnt[len(found)] += 1
+2025-06-05 14:53:22,978 - ERROR - backup_safim.py:516 - Line 18 DIFFERS:
+2025-06-05 14:53:22,978 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:53:22,979 - ERROR - backup_safim.py:518 -   ADVERSARY:     while (ptr < len(found)):
+2025-06-05 14:53:22,979 - ERROR - backup_safim.py:516 - Line 19 DIFFERS:
+2025-06-05 14:53:22,979 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:53:22,979 - ERROR - backup_safim.py:518 -   ADVERSARY:         for w in range(n):
+2025-06-05 14:53:22,979 - ERROR - backup_safim.py:516 - Line 20 DIFFERS:
+2025-06-05 14:53:22,979 - ERROR - backup_safim.py:517 -   ORIGINAL : def P(n, k):
+2025-06-05 14:53:22,980 - ERROR - backup_safim.py:518 -   ADVERSARY:             if ((not seen[w]) and (min_dist[v] == dist[v][w])):
+2025-06-05 14:53:22,980 - ERROR - backup_safim.py:516 - Line 21 DIFFERS:
+2025-06-05 14:53:22,980 - ERROR - backup_safim.py:517 -   ORIGINAL :     if k < 0 or k > n:
+2025-06-05 14:53:22,980 - ERROR - backup_safim.py:518 -   ADVERSARY:                 seen[w] = True
+2025-06-05 14:53:22,980 - ERROR - backup_safim.py:516 - Line 22 DIFFERS:
+2025-06-05 14:53:22,980 - ERROR - backup_safim.py:517 -   ORIGINAL :         return 0
+2025-06-05 14:53:22,980 - ERROR - backup_safim.py:518 -   ADVERSARY:                 found.append(w)
+2025-06-05 14:53:22,980 - ERROR - backup_safim.py:516 - Line 23 DIFFERS:
+2025-06-05 14:53:22,980 - ERROR - backup_safim.py:517 -   ORIGINAL :     return fact[n] * invfact[n-k] % MOD
+2025-06-05 14:53:22,984 - ERROR - backup_safim.py:518 -   ADVERSARY:         v = found[ptr]
+2025-06-05 14:53:22,986 - ERROR - backup_safim.py:516 - Line 24 DIFFERS:
+2025-06-05 14:53:22,989 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:53:22,992 - ERROR - backup_safim.py:518 -   ADVERSARY:         ptr += 1
+2025-06-05 14:53:22,994 - ERROR - backup_safim.py:516 - Line 25 DIFFERS:
+2025-06-05 14:53:22,996 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:53:22,997 - ERROR - backup_safim.py:518 -   ADVERSARY:     if vis[u]:
+2025-06-05 14:53:22,999 - ERROR - backup_safim.py:516 - Line 26 DIFFERS:
+2025-06-05 14:53:23,001 - ERROR - backup_safim.py:517 -   ORIGINAL : n = int(input())
+2025-06-05 14:53:23,003 - ERROR - backup_safim.py:518 -   ADVERSARY:         continue
+2025-06-05 14:53:23,003 - ERROR - backup_safim.py:516 - Line 27 DIFFERS:
+2025-06-05 14:53:23,006 - ERROR - backup_safim.py:517 -   ORIGINAL : coords = []
+2025-06-05 14:53:23,007 - ERROR - backup_safim.py:518 -   ADVERSARY:     vis[u] = True
+2025-06-05 14:53:23,009 - ERROR - backup_safim.py:516 - Line 28 DIFFERS:
+2025-06-05 14:53:23,011 - ERROR - backup_safim.py:517 -   ORIGINAL : for _ in range(n):
+2025-06-05 14:53:23,012 - ERROR - backup_safim.py:518 -   ADVERSARY:     seen = (n * [False])
+2025-06-05 14:53:23,015 - ERROR - backup_safim.py:516 - Line 29 DIFFERS:
+2025-06-05 14:53:23,016 - ERROR - backup_safim.py:517 -   ORIGINAL :     x, y = map(int, input().split())
+2025-06-05 14:53:23,018 - ERROR - backup_safim.py:518 -   ADVERSARY:     seen[u] = True
+2025-06-05 14:53:23,020 - ERROR - backup_safim.py:516 - Line 30 DIFFERS:
+2025-06-05 14:53:23,021 - ERROR - backup_safim.py:517 -   ORIGINAL :     coords.append((x, y))
+2025-06-05 14:53:23,024 - ERROR - backup_safim.py:518 -   ADVERSARY:     ptr = 0
+2025-06-05 14:53:23,028 - ERROR - backup_safim.py:516 - Line 31 DIFFERS:
+2025-06-05 14:53:23,031 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:53:23,035 - ERROR - backup_safim.py:518 -   ADVERSARY:     found = [u]
+2025-06-05 14:53:23,037 - ERROR - backup_safim.py:516 - Line 32 DIFFERS:
+2025-06-05 14:53:23,041 - ERROR - backup_safim.py:517 -   ORIGINAL : min_dist = [10**9] * n
+2025-06-05 14:53:23,045 - ERROR - backup_safim.py:518 -   ADVERSARY:     ok = all(((min_dist[u] == dist[found[i]][found[j]]) for i in range(len(found)) for j in range((i + 1), len(found))))
+2025-06-05 14:53:23,047 - ERROR - backup_safim.py:516 - Line 33 DIFFERS:
+2025-06-05 14:53:23,048 - ERROR - backup_safim.py:517 -   ORIGINAL : dist = [[-1] * n for _ in range(n)]
+2025-06-05 14:53:23,050 - ERROR - backup_safim.py:518 -   ADVERSARY: for u in range(n):
+2025-06-05 14:53:23,052 - ERROR - backup_safim.py:516 - Line 34 DIFFERS:
+2025-06-05 14:53:23,054 - ERROR - backup_safim.py:517 -   ORIGINAL : for u in range(n):
+2025-06-05 14:53:23,055 - ERROR - backup_safim.py:518 -   ADVERSARY:     for v in range(n):
+2025-06-05 14:53:23,057 - ERROR - backup_safim.py:516 - Line 35 DIFFERS:
+2025-06-05 14:53:23,059 - ERROR - backup_safim.py:517 -   ORIGINAL :     for v in range(n):
+2025-06-05 14:53:23,063 - ERROR - backup_safim.py:518 -   ADVERSARY:         dist[u][v] = (abs((coords[u][1] - coords[v][1])) + abs((coords[u][0] - coords[v][0])))
+2025-06-05 14:53:23,066 - ERROR - backup_safim.py:516 - Line 36 DIFFERS:
+2025-06-05 14:53:23,070 - ERROR - backup_safim.py:517 -   ORIGINAL :         dist[u][v] = abs(coords[u][0] - coords[v][0]) + abs(coords[u][1] - coords[v][1])
+2025-06-05 14:53:23,073 - ERROR - backup_safim.py:518 -   ADVERSARY:         if (v != u):
+2025-06-05 14:53:23,078 - ERROR - backup_safim.py:516 - Line 37 DIFFERS:
+2025-06-05 14:53:23,081 - ERROR - backup_safim.py:517 -   ORIGINAL :         if u != v:
+2025-06-05 14:53:23,083 - ERROR - backup_safim.py:518 -   ADVERSARY:             min_dist[u] = min(min_dist[u], dist[u][v])
+2025-06-05 14:53:23,084 - ERROR - backup_safim.py:516 - Line 38 DIFFERS:
+2025-06-05 14:53:23,087 - ERROR - backup_safim.py:517 -   ORIGINAL :             min_dist[u] = min(min_dist[u], dist[u][v])
+2025-06-05 14:53:23,089 - ERROR - backup_safim.py:518 -   ADVERSARY: ans = 0
+2025-06-05 14:53:23,090 - ERROR - backup_safim.py:516 - Line 39 DIFFERS:
+2025-06-05 14:53:23,092 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:53:23,094 - ERROR - backup_safim.py:518 -   ADVERSARY: print(ans)
+2025-06-05 14:53:23,096 - ERROR - backup_safim.py:516 - Line 40 DIFFERS:
+2025-06-05 14:53:23,097 - ERROR - backup_safim.py:517 -   ORIGINAL : cnt = [0, 0, 0, 0, 0]
+2025-06-05 14:53:23,099 - ERROR - backup_safim.py:518 -   ADVERSARY: for _ in range(n):
+2025-06-05 14:53:23,101 - ERROR - backup_safim.py:516 - Line 41 DIFFERS:
+2025-06-05 14:53:23,102 - ERROR - backup_safim.py:517 -   ORIGINAL : vis = [False]*n
+2025-06-05 14:53:23,103 - ERROR - backup_safim.py:518 -   ADVERSARY:     (x, y) = map(int, input().split())
+2025-06-05 14:53:23,103 - ERROR - backup_safim.py:516 - Line 42 DIFFERS:
+2025-06-05 14:53:23,103 - ERROR - backup_safim.py:517 -   ORIGINAL : for u in sorted(range(n), key=lambda x: min_dist[x]):
+2025-06-05 14:53:23,103 - ERROR - backup_safim.py:518 -   ADVERSARY:     coords.append((x, y))
+2025-06-05 14:53:23,103 - ERROR - backup_safim.py:516 - Line 43 DIFFERS:
+2025-06-05 14:53:23,103 - ERROR - backup_safim.py:517 -   ORIGINAL :     if vis[u]:
+2025-06-05 14:53:23,103 - ERROR - backup_safim.py:518 -   ADVERSARY: for i in range(1, 101):
+2025-06-05 14:53:23,104 - ERROR - backup_safim.py:516 - Line 44 DIFFERS:
+2025-06-05 14:53:23,104 - ERROR - backup_safim.py:517 -   ORIGINAL :         continue
+2025-06-05 14:53:23,104 - ERROR - backup_safim.py:518 -   ADVERSARY:     fact.append(((fact[(- 1)] * i) % MOD))
+2025-06-05 14:53:23,104 - ERROR - backup_safim.py:516 - Line 45 DIFFERS:
+2025-06-05 14:53:23,104 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:53:23,104 - ERROR - backup_safim.py:518 -   ADVERSARY:     invfact.append(pow(fact[(- 1)], (MOD - 2), MOD))
+2025-06-05 14:53:23,105 - ERROR - backup_safim.py:516 - Line 46 DIFFERS:
+2025-06-05 14:53:23,105 - ERROR - backup_safim.py:517 -   ORIGINAL :     vis[u] = True
+2025-06-05 14:53:23,105 - ERROR - backup_safim.py:518 -   ADVERSARY: 
+2025-06-05 14:53:23,105 - ERROR - backup_safim.py:516 - Line 47 DIFFERS:
+2025-06-05 14:53:23,105 - ERROR - backup_safim.py:517 -   ORIGINAL :     seen = [False]*n
+2025-06-05 14:53:23,105 - ERROR - backup_safim.py:518 -   ADVERSARY: def C(n, k):
+2025-06-05 14:53:23,106 - ERROR - backup_safim.py:516 - Line 48 DIFFERS:
+2025-06-05 14:53:23,111 - ERROR - backup_safim.py:517 -   ORIGINAL :     seen[u] = True    
+2025-06-05 14:53:23,113 - ERROR - backup_safim.py:518 -   ADVERSARY:     if ((k < 0) or (k > n)):
+2025-06-05 14:53:23,113 - ERROR - backup_safim.py:516 - Line 49 DIFFERS:
+2025-06-05 14:53:23,113 - ERROR - backup_safim.py:517 -   ORIGINAL :     ptr = 0
+2025-06-05 14:53:23,113 - ERROR - backup_safim.py:518 -   ADVERSARY:         return 0
+2025-06-05 14:53:23,114 - ERROR - backup_safim.py:516 - Line 50 DIFFERS:
+2025-06-05 14:53:23,114 - ERROR - backup_safim.py:517 -   ORIGINAL :     found = [u]
+2025-06-05 14:53:23,114 - ERROR - backup_safim.py:518 -   ADVERSARY:     return ((invfact[(n - k)] * ((fact[n] * invfact[k]) % MOD)) % MOD)
+2025-06-05 14:53:23,114 - ERROR - backup_safim.py:516 - Line 51 DIFFERS:
+2025-06-05 14:53:23,114 - ERROR - backup_safim.py:517 -   ORIGINAL :     while ptr < len(found):
+2025-06-05 14:53:23,114 - ERROR - backup_safim.py:518 -   ADVERSARY: 
+2025-06-05 14:53:23,114 - ERROR - backup_safim.py:516 - Line 52 DIFFERS:
+2025-06-05 14:53:23,114 - ERROR - backup_safim.py:517 -   ORIGINAL :         v = found[ptr]
+2025-06-05 14:53:23,114 - ERROR - backup_safim.py:518 -   ADVERSARY: def P(n, k):
+2025-06-05 14:53:23,114 - ERROR - backup_safim.py:516 - Line 53 DIFFERS:
+2025-06-05 14:53:23,115 - ERROR - backup_safim.py:517 -   ORIGINAL :         ptr += 1
+2025-06-05 14:53:23,115 - ERROR - backup_safim.py:518 -   ADVERSARY:     if ((k < 0) or (k > n)):
+2025-06-05 14:53:23,115 - ERROR - backup_safim.py:516 - Line 54 DIFFERS:
+2025-06-05 14:53:23,115 - ERROR - backup_safim.py:517 -   ORIGINAL :         for w in range(n):
+2025-06-05 14:53:23,115 - ERROR - backup_safim.py:518 -   ADVERSARY:         return 0
+2025-06-05 14:53:23,115 - ERROR - backup_safim.py:516 - Line 55 DIFFERS:
+2025-06-05 14:53:23,121 - ERROR - backup_safim.py:517 -   ORIGINAL :             if not seen[w] and dist[v][w] == min_dist[v]:
+2025-06-05 14:53:23,124 - ERROR - backup_safim.py:518 -   ADVERSARY:     return ((invfact[(n - k)] * fact[n]) % MOD)
+2025-06-05 14:53:23,128 - ERROR - backup_safim.py:516 - Line 56 DIFFERS:
+2025-06-05 14:53:23,131 - ERROR - backup_safim.py:517 -   ORIGINAL :                 seen[w] = True
+2025-06-05 14:53:23,131 - ERROR - backup_safim.py:518 -   ADVERSARY: n = int(input())
+2025-06-05 14:53:23,133 - ERROR - backup_safim.py:516 - Line 57 DIFFERS:
+2025-06-05 14:53:23,134 - ERROR - backup_safim.py:517 -   ORIGINAL :                 found.append(w)
+2025-06-05 14:53:23,136 - ERROR - backup_safim.py:518 -   ADVERSARY: cnt = [0, 0, 0, 0, 0]
+2025-06-05 14:53:23,138 - ERROR - backup_safim.py:516 - Line 58 DIFFERS:
+2025-06-05 14:53:23,140 - ERROR - backup_safim.py:517 -   ORIGINAL :     
+2025-06-05 14:53:23,142 - ERROR - backup_safim.py:518 -   ADVERSARY: vis = (n * [False])
+2025-06-05 14:53:23,146 - ERROR - backup_safim.py:516 - Line 59 DIFFERS:
+2025-06-05 14:53:23,149 - ERROR - backup_safim.py:517 -   ORIGINAL :     ok = all(dist[found[i]][found[j]] == min_dist[u] for i in range(len(found)) for j in range(i+1, len(found)))
+2025-06-05 14:53:23,150 - ERROR - backup_safim.py:518 -   ADVERSARY: min_dist = ([(10 ** 9)] * n)
+2025-06-05 14:53:23,152 - ERROR - backup_safim.py:516 - Line 60 DIFFERS:
+2025-06-05 14:53:23,154 - ERROR - backup_safim.py:517 -   ORIGINAL :     if len(found) == 1 or not ok:
+2025-06-05 14:53:23,156 - ERROR - backup_safim.py:518 -   ADVERSARY: dist = [(n * [(- 1)]) for _ in range(n)]
+2025-06-05 14:53:23,159 - ERROR - backup_safim.py:516 - Line 61 DIFFERS:
+2025-06-05 14:53:23,162 - ERROR - backup_safim.py:517 -   ORIGINAL :         cnt[1] += 1
+2025-06-05 14:53:23,165 - ERROR - backup_safim.py:518 -   ADVERSARY: coords = []
+2025-06-05 14:53:23,169 - ERROR - backup_safim.py:516 - Line 62 DIFFERS:
+2025-06-05 14:53:23,173 - ERROR - backup_safim.py:517 -   ORIGINAL :     else:
+2025-06-05 14:53:23,175 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,177 - ERROR - backup_safim.py:516 - Line 63 DIFFERS:
+2025-06-05 14:53:23,178 - ERROR - backup_safim.py:517 -   ORIGINAL :         # print('found', found, ok)
+2025-06-05 14:53:23,179 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,179 - ERROR - backup_safim.py:516 - Line 64 DIFFERS:
+2025-06-05 14:53:23,179 - ERROR - backup_safim.py:517 -   ORIGINAL :         cnt[len(found)] += 1
+2025-06-05 14:53:23,179 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,179 - ERROR - backup_safim.py:516 - Line 65 DIFFERS:
+2025-06-05 14:53:23,179 - ERROR - backup_safim.py:517 -   ORIGINAL :         for u in found:
+2025-06-05 14:53:23,179 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,179 - ERROR - backup_safim.py:516 - Line 66 DIFFERS:
+2025-06-05 14:53:23,179 - ERROR - backup_safim.py:517 -   ORIGINAL :             vis[u] = True
+2025-06-05 14:53:23,179 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,179 - ERROR - backup_safim.py:516 - Line 67 DIFFERS:
+2025-06-05 14:53:23,179 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:53:23,179 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,179 - ERROR - backup_safim.py:516 - Line 68 DIFFERS:
+2025-06-05 14:53:23,180 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:53:23,180 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,180 - ERROR - backup_safim.py:516 - Line 69 DIFFERS:
+2025-06-05 14:53:23,180 - ERROR - backup_safim.py:517 -   ORIGINAL : # print('cnt', cnt[1:])
+2025-06-05 14:53:23,180 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,180 - ERROR - backup_safim.py:516 - Line 70 DIFFERS:
+2025-06-05 14:53:23,180 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:53:23,180 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,180 - ERROR - backup_safim.py:516 - Line 71 DIFFERS:
+2025-06-05 14:53:23,184 - ERROR - backup_safim.py:517 -   ORIGINAL : ans = 0
+2025-06-05 14:53:23,188 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,191 - ERROR - backup_safim.py:516 - Line 72 DIFFERS:
+2025-06-05 14:53:23,191 - ERROR - backup_safim.py:517 -   ORIGINAL : for two in range(cnt[2] + 1):
+2025-06-05 14:53:23,191 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,191 - ERROR - backup_safim.py:516 - Line 73 DIFFERS:
+2025-06-05 14:53:23,191 - ERROR - backup_safim.py:517 -   ORIGINAL :     for three in range(cnt[3] + 1):
+2025-06-05 14:53:23,191 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,191 - ERROR - backup_safim.py:516 - Line 74 DIFFERS:
+2025-06-05 14:53:23,192 - ERROR - backup_safim.py:517 -   ORIGINAL :         for four in range(cnt[4] + 1):
+2025-06-05 14:53:23,192 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,192 - ERROR - backup_safim.py:516 - Line 75 DIFFERS:
+2025-06-05 14:53:23,192 - ERROR - backup_safim.py:517 -   ORIGINAL :             ans += P(n, n - two - 2*three - 3*four) * C(cnt[2], two) % MOD \
+2025-06-05 14:53:23,192 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,192 - ERROR - backup_safim.py:516 - Line 76 DIFFERS:
+2025-06-05 14:53:23,192 - ERROR - backup_safim.py:517 -   ORIGINAL :                 * C(cnt[3], three) % MOD \
+2025-06-05 14:53:23,192 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,192 - ERROR - backup_safim.py:516 - Line 77 DIFFERS:
+2025-06-05 14:53:23,192 - ERROR - backup_safim.py:517 -   ORIGINAL :                 * C(cnt[4], four) % MOD
+2025-06-05 14:53:23,192 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,192 - ERROR - backup_safim.py:516 - Line 78 DIFFERS:
+2025-06-05 14:53:23,192 - ERROR - backup_safim.py:517 -   ORIGINAL :             if ans >= MOD:
+2025-06-05 14:53:23,192 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,192 - ERROR - backup_safim.py:516 - Line 79 DIFFERS:
+2025-06-05 14:53:23,193 - ERROR - backup_safim.py:517 -   ORIGINAL :                 {{completion}}
+2025-06-05 14:53:23,193 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,193 - ERROR - backup_safim.py:516 - Line 80 DIFFERS:
+2025-06-05 14:53:23,193 - ERROR - backup_safim.py:517 -   ORIGINAL :             # print(f'add P({n},{n - two - 2*three - 3*four})*C({cnt[2]},{two})*C({cnt[3]},{three})*C({cnt[4]},{four}) {ans}')
+2025-06-05 14:53:23,193 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,193 - ERROR - backup_safim.py:516 - Line 81 DIFFERS:
+2025-06-05 14:53:23,193 - ERROR - backup_safim.py:517 -   ORIGINAL : print(ans)
+2025-06-05 14:53:23,193 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:23,193 - ERROR - backup_safim.py:521 - ------------------------------------------------------------
+
+
+2025-06-05 14:53:23,193 - INFO - backup_safim.py:413 - 
+================================================================================
+DEBUGGING PROBLEMATIC SAMPLE: block_completion_000732
+================================================================================
+2025-06-05 14:53:23,194 - INFO - backup_safim.py:416 - Task block_completion_000732: Original eval_prompt:
+x = input()
+for i in range(int(x)):
+    z = input()
+    if int(z) >= 1900:
+        print('Division 1')
+    elif int(z) >= 1600:
+        print('Division 2')
+    elif int(z) >= 1400:
+        {{completion}}
+    else:
+        print('Division 4')
+
+2025-06-05 14:53:23,253 - INFO - backup_safim.py:427 - Task block_completion_000732: Original model completion (full):
+2025-06-05 14:53:23,253 - INFO - backup_safim.py:428 - ------
+print('Division 3')
+
+------
+2025-06-05 14:53:23,254 - INFO - backup_safim.py:433 - 
+ORIGINAL FULL CODE (Prompt + Completion) FOR block_completion_000732:
+2025-06-05 14:53:23,254 - INFO - backup_safim.py:434 - ------------------------------------------------------------
+2025-06-05 14:53:23,254 - INFO - backup_safim.py:435 - x = input()
+for i in range(int(x)):
+    z = input()
+    if int(z) >= 1900:
+        print('Division 1')
+    elif int(z) >= 1600:
+        print('Division 2')
+    elif int(z) >= 1400:
+        print('Division 3')
+
+    else:
+        print('Division 4')
+
+2025-06-05 14:53:23,254 - INFO - backup_safim.py:436 - ------------------------------------------------------------
+2025-06-05 14:53:23,254 - INFO - backup_safim.py:445 - Task block_completion_000732: Original matches ground truth (implies all 1 tests passed).
+2025-06-05 14:53:23,254 - INFO - backup_safim.py:462 - Task block_completion_000732: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-05 14:53:23,254 - INFO - backup_safim.py:324 - Task block_completion_000732: Searching for adversarial example...
+2025-06-05 14:53:23,365 - INFO - backup_safim.py:355 - Task block_completion_000732: Attempt 1 - Model's adversarial completion (first 50 chars): 'print('Division 3')
+...'
+2025-06-05 14:53:23,396 - WARNING - backup_safim.py:138 - Task block_completion_000732_adv_0, Test 1/1: WRONG_ANSWER.
+2025-06-05 14:53:23,396 - INFO - backup_safim.py:371 - Task block_completion_000732: Found adversarial example after 1 reordering attempts (1 valid).
+2025-06-05 14:53:23,400 - INFO - backup_safim.py:372 -   Model's completion (adversarial) failed 1/1 tests on reordered code.
+2025-06-05 14:53:23,404 - INFO - backup_safim.py:478 - 
+ADVERSARIAL ATTACK SUCCEEDED for block_completion_000732:
+2025-06-05 14:53:23,408 - INFO - backup_safim.py:479 -   Original passed: True
+2025-06-05 14:53:23,411 - INFO - backup_safim.py:480 -   Adversarial completion (full):
+2025-06-05 14:53:23,413 - INFO - backup_safim.py:481 - ------
+print('Division 3')
+
+------
+2025-06-05 14:53:23,415 - INFO - backup_safim.py:482 -   COMPLETIONS ARE IDENTICAL
+2025-06-05 14:53:23,417 - INFO - backup_safim.py:485 -   Adversarial code FAILED tests (1 failed / 1 total). Status: FAILED_ALL_TESTS
+2025-06-05 14:53:23,419 - INFO - backup_safim.py:488 - 
+ADVERSARIAL FULL CODE (Perturbed Prompt + Completion) FOR block_completion_000732:
+2025-06-05 14:53:23,422 - INFO - backup_safim.py:489 - ------------------------------------------------------------
+2025-06-05 14:53:23,426 - INFO - backup_safim.py:490 - x = input()
+for i in range(int(x)):
+    z = input()
+    if (int(z) >= 1900):
+        print('Division 1')
+    else:
+        if (int(z) >= 1600):
+            print('Division 2')
+        else:
+            if (int(z) >= 1400):
+                print('Division 3')
+
+            else:
+                print('Division 4')
+2025-06-05 14:53:23,430 - INFO - backup_safim.py:491 - ------------------------------------------------------------
+2025-06-05 14:53:23,433 - ERROR - backup_safim.py:494 - 
+
+!!! CRITICAL ISSUE FOR block_completion_000732 !!!
+2025-06-05 14:53:23,437 - ERROR - backup_safim.py:495 - !!! IDENTICAL COMPLETION BUT DIFFERENT TEST RESULTS !!!
+2025-06-05 14:53:23,441 - ERROR - backup_safim.py:496 - ------------------------------------------------------------
+2025-06-05 14:53:23,444 - ERROR - backup_safim.py:497 - ORIGINAL PROMPT (led to PASSING code):
+2025-06-05 14:53:23,444 - ERROR - backup_safim.py:498 - vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+2025-06-05 14:53:23,444 - ERROR - backup_safim.py:499 - x = input()
+for i in range(int(x)):
+    z = input()
+    if int(z) >= 1900:
+        print('Division 1')
+    elif int(z) >= 1600:
+        print('Division 2')
+    elif int(z) >= 1400:
+        {{completion}}
+    else:
+        print('Division 4')
+
+2025-06-05 14:53:23,450 - ERROR - backup_safim.py:500 - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-06-05 14:53:23,451 - ERROR - backup_safim.py:501 - 
+ADVERSARIAL PROMPT (led to FAILING code with SAME completion):
+2025-06-05 14:53:23,453 - ERROR - backup_safim.py:502 - vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+2025-06-05 14:53:23,455 - ERROR - backup_safim.py:503 - x = input()
+for i in range(int(x)):
+    z = input()
+    if (int(z) >= 1900):
+        print('Division 1')
+    else:
+        if (int(z) >= 1600):
+            print('Division 2')
+        else:
+            if (int(z) >= 1400):
+                {{completion}}
+            else:
+                print('Division 4')
+2025-06-05 14:53:23,457 - ERROR - backup_safim.py:504 - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-06-05 14:53:23,459 - ERROR - backup_safim.py:506 - 
+LINE-BY-LINE PROMPT DIFFERENCES (Original vs Adversarial):
+2025-06-05 14:53:23,460 - ERROR - backup_safim.py:516 - Line 1 DIFFERS:
+2025-06-05 14:53:23,462 - ERROR - backup_safim.py:517 -   ORIGINAL : x = input()
+2025-06-05 14:53:23,464 - ERROR - backup_safim.py:518 -   ADVERSARY: x = input()
+2025-06-05 14:53:23,466 - ERROR - backup_safim.py:516 - Line 2 DIFFERS:
+2025-06-05 14:53:23,468 - ERROR - backup_safim.py:517 -   ORIGINAL : for i in range(int(x)):
+2025-06-05 14:53:23,471 - ERROR - backup_safim.py:518 -   ADVERSARY: for i in range(int(x)):
+2025-06-05 14:53:23,474 - ERROR - backup_safim.py:516 - Line 3 DIFFERS:
+2025-06-05 14:53:23,478 - ERROR - backup_safim.py:517 -   ORIGINAL :     z = input()
+2025-06-05 14:53:23,479 - ERROR - backup_safim.py:518 -   ADVERSARY:     z = input()
+2025-06-05 14:53:23,481 - ERROR - backup_safim.py:516 - Line 4 DIFFERS:
+2025-06-05 14:53:23,483 - ERROR - backup_safim.py:517 -   ORIGINAL :     if int(z) >= 1900:
+2025-06-05 14:53:23,487 - ERROR - backup_safim.py:518 -   ADVERSARY:     if (int(z) >= 1900):
+2025-06-05 14:53:23,488 - ERROR - backup_safim.py:516 - Line 5 DIFFERS:
+2025-06-05 14:53:23,490 - ERROR - backup_safim.py:517 -   ORIGINAL :         print('Division 1')
+2025-06-05 14:53:23,492 - ERROR - backup_safim.py:518 -   ADVERSARY:         print('Division 1')
+2025-06-05 14:53:23,493 - ERROR - backup_safim.py:516 - Line 6 DIFFERS:
+2025-06-05 14:53:23,498 - ERROR - backup_safim.py:517 -   ORIGINAL :     elif int(z) >= 1600:
+2025-06-05 14:53:23,501 - ERROR - backup_safim.py:518 -   ADVERSARY:     else:
+2025-06-05 14:53:23,504 - ERROR - backup_safim.py:516 - Line 7 DIFFERS:
+2025-06-05 14:53:23,505 - ERROR - backup_safim.py:517 -   ORIGINAL :         print('Division 2')
+2025-06-05 14:53:23,507 - ERROR - backup_safim.py:518 -   ADVERSARY:         if (int(z) >= 1600):
+2025-06-05 14:53:23,510 - ERROR - backup_safim.py:516 - Line 8 DIFFERS:
+2025-06-05 14:53:23,512 - ERROR - backup_safim.py:517 -   ORIGINAL :     elif int(z) >= 1400:
+2025-06-05 14:53:23,518 - ERROR - backup_safim.py:518 -   ADVERSARY:             print('Division 2')
+2025-06-05 14:53:23,518 - ERROR - backup_safim.py:516 - Line 9 DIFFERS:
+2025-06-05 14:53:23,518 - ERROR - backup_safim.py:517 -   ORIGINAL :         {{completion}}
+2025-06-05 14:53:23,520 - ERROR - backup_safim.py:518 -   ADVERSARY:         else:
+2025-06-05 14:53:23,522 - ERROR - backup_safim.py:516 - Line 10 DIFFERS:
+2025-06-05 14:53:23,525 - ERROR - backup_safim.py:517 -   ORIGINAL :     else:
+2025-06-05 14:53:23,526 - ERROR - backup_safim.py:518 -   ADVERSARY:             if (int(z) >= 1400):
+2025-06-05 14:53:23,528 - ERROR - backup_safim.py:516 - Line 11 DIFFERS:
+2025-06-05 14:53:23,532 - ERROR - backup_safim.py:517 -   ORIGINAL :         print('Division 4')
+2025-06-05 14:53:23,535 - ERROR - backup_safim.py:518 -   ADVERSARY:                 {{completion}}
+2025-06-05 14:53:23,540 - ERROR - backup_safim.py:516 - Line 12 DIFFERS:
+2025-06-05 14:53:23,544 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:53:23,547 - ERROR - backup_safim.py:518 -   ADVERSARY:             else:
+2025-06-05 14:53:23,551 - ERROR - backup_safim.py:516 - Line 13 DIFFERS:
+2025-06-05 14:53:23,554 - ERROR - backup_safim.py:517 -   ORIGINAL : [LINE MISSING IN ORIGINAL]
+2025-06-05 14:53:23,557 - ERROR - backup_safim.py:518 -   ADVERSARY:                 print('Division 4')
+2025-06-05 14:53:23,561 - ERROR - backup_safim.py:521 - ------------------------------------------------------------
+
+
+2025-06-05 14:53:23,564 - INFO - backup_safim.py:413 - 
+================================================================================
+DEBUGGING PROBLEMATIC SAMPLE: block_completion_000796
+================================================================================
+2025-06-05 14:53:23,567 - INFO - backup_safim.py:416 - Task block_completion_000796: Original eval_prompt:
+from collections import deque
+for _ in range(int(input())):
+    n = int(input())
+    l = deque(map(int, input().split()))
+    a, b = 0, 0
+    ans = 0
+    cur = 0
+    while l:
+        cur+=1
+        if a>=b:
+            b += l.pop()
+        else:
+            {{completion}}
+        if a==b:
+            ans = cur
+    print(ans)
+
+2025-06-05 14:53:23,579 - INFO - backup_safim.py:427 - Task block_completion_000796: Original model completion (full):
+2025-06-05 14:53:23,579 - INFO - backup_safim.py:428 - ------
+a += l.popleft()
+
+------
+2025-06-05 14:53:23,580 - INFO - backup_safim.py:433 - 
+ORIGINAL FULL CODE (Prompt + Completion) FOR block_completion_000796:
+2025-06-05 14:53:23,580 - INFO - backup_safim.py:434 - ------------------------------------------------------------
+2025-06-05 14:53:23,581 - INFO - backup_safim.py:435 - from collections import deque
+for _ in range(int(input())):
+    n = int(input())
+    l = deque(map(int, input().split()))
+    a, b = 0, 0
+    ans = 0
+    cur = 0
+    while l:
+        cur+=1
+        if a>=b:
+            b += l.pop()
+        else:
+            a += l.popleft()
+
+        if a==b:
+            ans = cur
+    print(ans)
+
+2025-06-05 14:53:23,583 - INFO - backup_safim.py:436 - ------------------------------------------------------------
+2025-06-05 14:53:23,585 - INFO - backup_safim.py:445 - Task block_completion_000796: Original matches ground truth (implies all 1 tests passed).
+2025-06-05 14:53:23,587 - INFO - backup_safim.py:462 - Task block_completion_000796: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-05 14:53:23,589 - INFO - backup_safim.py:324 - Task block_completion_000796: Searching for adversarial example...
+2025-06-05 14:53:23,793 - INFO - backup_safim.py:355 - Task block_completion_000796: Attempt 1 - Model's adversarial completion (first 50 chars): 'a += l.popleft()
+...'
+2025-06-05 14:53:23,835 - WARNING - backup_safim.py:138 - Task block_completion_000796_adv_0, Test 1/1: WRONG_ANSWER.
+2025-06-05 14:53:23,835 - INFO - backup_safim.py:371 - Task block_completion_000796: Found adversarial example after 1 reordering attempts (1 valid).
+2025-06-05 14:53:23,839 - INFO - backup_safim.py:372 -   Model's completion (adversarial) failed 1/1 tests on reordered code.
+2025-06-05 14:53:23,842 - INFO - backup_safim.py:478 - 
+ADVERSARIAL ATTACK SUCCEEDED for block_completion_000796:
+2025-06-05 14:53:23,846 - INFO - backup_safim.py:479 -   Original passed: True
+2025-06-05 14:53:23,849 - INFO - backup_safim.py:480 -   Adversarial completion (full):
+2025-06-05 14:53:23,852 - INFO - backup_safim.py:481 - ------
+a += l.popleft()
+
+------
+2025-06-05 14:53:23,856 - INFO - backup_safim.py:482 -   COMPLETIONS ARE IDENTICAL
+2025-06-05 14:53:23,859 - INFO - backup_safim.py:485 -   Adversarial code FAILED tests (1 failed / 1 total). Status: FAILED_ALL_TESTS
+2025-06-05 14:53:23,863 - INFO - backup_safim.py:488 - 
+ADVERSARIAL FULL CODE (Perturbed Prompt + Completion) FOR block_completion_000796:
+2025-06-05 14:53:23,867 - INFO - backup_safim.py:489 - ------------------------------------------------------------
+2025-06-05 14:53:23,871 - INFO - backup_safim.py:490 - from collections import deque
+for _ in range(int(input())):
+    n = int(input())
+    l = deque(map(int, input().split()))
+    (a, b) = (0, 0)
+    ans = 0
+    cur = 0
+    while l:
+        cur += 1
+        if (b == a):
+            ans = cur
+        if (a >= b):
+            b += l.pop()
+        else:
+            a += l.popleft()
+
+    print(ans)
+2025-06-05 14:53:23,876 - INFO - backup_safim.py:491 - ------------------------------------------------------------
+2025-06-05 14:53:23,879 - ERROR - backup_safim.py:494 - 
+
+!!! CRITICAL ISSUE FOR block_completion_000796 !!!
+2025-06-05 14:53:23,883 - ERROR - backup_safim.py:495 - !!! IDENTICAL COMPLETION BUT DIFFERENT TEST RESULTS !!!
+2025-06-05 14:53:23,884 - ERROR - backup_safim.py:496 - ------------------------------------------------------------
+2025-06-05 14:53:23,886 - ERROR - backup_safim.py:497 - ORIGINAL PROMPT (led to PASSING code):
+2025-06-05 14:53:23,888 - ERROR - backup_safim.py:498 - vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+2025-06-05 14:53:23,890 - ERROR - backup_safim.py:499 - from collections import deque
+for _ in range(int(input())):
+    n = int(input())
+    l = deque(map(int, input().split()))
+    a, b = 0, 0
+    ans = 0
+    cur = 0
+    while l:
+        cur+=1
+        if a>=b:
+            b += l.pop()
+        else:
+            {{completion}}
+        if a==b:
+            ans = cur
+    print(ans)
+
+2025-06-05 14:53:23,890 - ERROR - backup_safim.py:500 - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-06-05 14:53:23,893 - ERROR - backup_safim.py:501 - 
+ADVERSARIAL PROMPT (led to FAILING code with SAME completion):
+2025-06-05 14:53:23,897 - ERROR - backup_safim.py:502 - vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+2025-06-05 14:53:23,900 - ERROR - backup_safim.py:503 - from collections import deque
+for _ in range(int(input())):
+    n = int(input())
+    l = deque(map(int, input().split()))
+    (a, b) = (0, 0)
+    ans = 0
+    cur = 0
+    while l:
+        cur += 1
+        if (b == a):
+            ans = cur
+        if (a >= b):
+            b += l.pop()
+        else:
+            {{completion}}
+    print(ans)
+2025-06-05 14:53:23,904 - ERROR - backup_safim.py:504 - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-06-05 14:53:23,908 - ERROR - backup_safim.py:506 - 
+LINE-BY-LINE PROMPT DIFFERENCES (Original vs Adversarial):
+2025-06-05 14:53:23,911 - ERROR - backup_safim.py:516 - Line 1 DIFFERS:
+2025-06-05 14:53:23,912 - ERROR - backup_safim.py:517 -   ORIGINAL : from collections import deque
+2025-06-05 14:53:23,915 - ERROR - backup_safim.py:518 -   ADVERSARY: from collections import deque
+2025-06-05 14:53:23,918 - ERROR - backup_safim.py:516 - Line 2 DIFFERS:
+2025-06-05 14:53:23,920 - ERROR - backup_safim.py:517 -   ORIGINAL : for _ in range(int(input())):
+2025-06-05 14:53:23,922 - ERROR - backup_safim.py:518 -   ADVERSARY: for _ in range(int(input())):
+2025-06-05 14:53:23,923 - ERROR - backup_safim.py:516 - Line 3 DIFFERS:
+2025-06-05 14:53:23,925 - ERROR - backup_safim.py:517 -   ORIGINAL :     n = int(input())
+2025-06-05 14:53:23,927 - ERROR - backup_safim.py:518 -   ADVERSARY:     n = int(input())
+2025-06-05 14:53:23,929 - ERROR - backup_safim.py:516 - Line 4 DIFFERS:
+2025-06-05 14:53:23,930 - ERROR - backup_safim.py:517 -   ORIGINAL :     l = deque(map(int, input().split()))
+2025-06-05 14:53:23,932 - ERROR - backup_safim.py:518 -   ADVERSARY:     l = deque(map(int, input().split()))
+2025-06-05 14:53:23,936 - ERROR - backup_safim.py:516 - Line 5 DIFFERS:
+2025-06-05 14:53:23,939 - ERROR - backup_safim.py:517 -   ORIGINAL :     a, b = 0, 0
+2025-06-05 14:53:23,943 - ERROR - backup_safim.py:518 -   ADVERSARY:     (a, b) = (0, 0)
+2025-06-05 14:53:23,947 - ERROR - backup_safim.py:516 - Line 6 DIFFERS:
+2025-06-05 14:53:23,952 - ERROR - backup_safim.py:517 -   ORIGINAL :     ans = 0
+2025-06-05 14:53:23,952 - ERROR - backup_safim.py:518 -   ADVERSARY:     ans = 0
+2025-06-05 14:53:23,952 - ERROR - backup_safim.py:516 - Line 7 DIFFERS:
+2025-06-05 14:53:23,952 - ERROR - backup_safim.py:517 -   ORIGINAL :     cur = 0
+2025-06-05 14:53:23,952 - ERROR - backup_safim.py:518 -   ADVERSARY:     cur = 0
+2025-06-05 14:53:23,952 - ERROR - backup_safim.py:516 - Line 8 DIFFERS:
+2025-06-05 14:53:23,953 - ERROR - backup_safim.py:517 -   ORIGINAL :     while l:
+2025-06-05 14:53:23,953 - ERROR - backup_safim.py:518 -   ADVERSARY:     while l:
+2025-06-05 14:53:23,957 - ERROR - backup_safim.py:516 - Line 9 DIFFERS:
+2025-06-05 14:53:23,958 - ERROR - backup_safim.py:517 -   ORIGINAL :         cur+=1
+2025-06-05 14:53:23,960 - ERROR - backup_safim.py:518 -   ADVERSARY:         cur += 1
+2025-06-05 14:53:23,964 - ERROR - backup_safim.py:516 - Line 10 DIFFERS:
+2025-06-05 14:53:23,966 - ERROR - backup_safim.py:517 -   ORIGINAL :         if a>=b:
+2025-06-05 14:53:23,968 - ERROR - backup_safim.py:518 -   ADVERSARY:         if (b == a):
+2025-06-05 14:53:23,972 - ERROR - backup_safim.py:516 - Line 11 DIFFERS:
+2025-06-05 14:53:23,976 - ERROR - backup_safim.py:517 -   ORIGINAL :             b += l.pop()
+2025-06-05 14:53:23,980 - ERROR - backup_safim.py:518 -   ADVERSARY:             ans = cur
+2025-06-05 14:53:23,984 - ERROR - backup_safim.py:516 - Line 12 DIFFERS:
+2025-06-05 14:53:23,987 - ERROR - backup_safim.py:517 -   ORIGINAL :         else:
+2025-06-05 14:53:23,989 - ERROR - backup_safim.py:518 -   ADVERSARY:         if (a >= b):
+2025-06-05 14:53:23,991 - ERROR - backup_safim.py:516 - Line 13 DIFFERS:
+2025-06-05 14:53:23,992 - ERROR - backup_safim.py:517 -   ORIGINAL :             {{completion}}
+2025-06-05 14:53:23,994 - ERROR - backup_safim.py:518 -   ADVERSARY:             b += l.pop()
+2025-06-05 14:53:23,996 - ERROR - backup_safim.py:516 - Line 14 DIFFERS:
+2025-06-05 14:53:23,997 - ERROR - backup_safim.py:517 -   ORIGINAL :         if a==b:
+2025-06-05 14:53:23,999 - ERROR - backup_safim.py:518 -   ADVERSARY:         else:
+2025-06-05 14:53:24,001 - ERROR - backup_safim.py:516 - Line 15 DIFFERS:
+2025-06-05 14:53:24,002 - ERROR - backup_safim.py:517 -   ORIGINAL :             ans = cur
+2025-06-05 14:53:24,004 - ERROR - backup_safim.py:518 -   ADVERSARY:             {{completion}}
+2025-06-05 14:53:24,008 - ERROR - backup_safim.py:516 - Line 16 DIFFERS:
+2025-06-05 14:53:24,010 - ERROR - backup_safim.py:517 -   ORIGINAL :     print(ans)
+2025-06-05 14:53:24,012 - ERROR - backup_safim.py:518 -   ADVERSARY:     print(ans)
+2025-06-05 14:53:24,014 - ERROR - backup_safim.py:516 - Line 17 DIFFERS:
+2025-06-05 14:53:24,015 - ERROR - backup_safim.py:517 -   ORIGINAL : 
+2025-06-05 14:53:24,016 - ERROR - backup_safim.py:518 -   ADVERSARY: [LINE MISSING IN ADVERSARIAL]
+2025-06-05 14:53:24,018 - ERROR - backup_safim.py:521 - ------------------------------------------------------------
+
+
+2025-06-05 14:53:24,020 - INFO - backup_safim.py:413 - 
+================================================================================
+DEBUGGING PROBLEMATIC SAMPLE: block_completion_000799
+================================================================================
+2025-06-05 14:53:24,022 - INFO - backup_safim.py:416 - Task block_completion_000799: Original eval_prompt:
+def solve():
+ n=int(input())
+ a=[*map(int,input().split())]
+ b=a[:]
+ for i in range(n-1):a[i+1]+=a[i]
+ for i in range(n-1,0,-1):b[i-1]+=b[i]
+ l,r=0,n-1
+ sol=0
+ while r-l>=1:
+  if a[l]==b[r]:sol=l+n-r+1;l+=1
+  if a[l]<b[r]:l+=1
+  else:{{completion}}
+ return sol
+for _ in [0]*int(input()):print(solve())
+2025-06-05 14:53:24,060 - INFO - backup_safim.py:427 - Task block_completion_000799: Original model completion (full):
+2025-06-05 14:53:24,061 - INFO - backup_safim.py:428 - ------
+r-=1
+
+------
+2025-06-05 14:53:24,061 - INFO - backup_safim.py:433 - 
+ORIGINAL FULL CODE (Prompt + Completion) FOR block_completion_000799:
+2025-06-05 14:53:24,063 - INFO - backup_safim.py:434 - ------------------------------------------------------------
+2025-06-05 14:53:24,063 - INFO - backup_safim.py:435 - def solve():
+ n=int(input())
+ a=[*map(int,input().split())]
+ b=a[:]
+ for i in range(n-1):a[i+1]+=a[i]
+ for i in range(n-1,0,-1):b[i-1]+=b[i]
+ l,r=0,n-1
+ sol=0
+ while r-l>=1:
+  if a[l]==b[r]:sol=l+n-r+1;l+=1
+  if a[l]<b[r]:l+=1
+  else:r-=1
+
+ return sol
+for _ in [0]*int(input()):print(solve())
+2025-06-05 14:53:24,063 - INFO - backup_safim.py:436 - ------------------------------------------------------------
+2025-06-05 14:53:24,065 - INFO - backup_safim.py:445 - Task block_completion_000799: Original matches ground truth (implies all 1 tests passed).
+2025-06-05 14:53:24,069 - INFO - backup_safim.py:462 - Task block_completion_000799: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-05 14:53:24,072 - INFO - backup_safim.py:324 - Task block_completion_000799: Searching for adversarial example...
+2025-06-05 14:53:24,395 - INFO - backup_safim.py:355 - Task block_completion_000799: Attempt 1 - Model's adversarial completion (first 50 chars): 'r-=1
+...'
+2025-06-05 14:53:24,432 - WARNING - backup_safim.py:130 - Task block_completion_000799_adv_0, Test 1/1: RUNTIME_ERROR. Stderr: Traceback (most recent call last):
+  File "/tmp/tmpcg8sf1hl.py", line 22, in <module>
+    print(solve())
+          ^^^^^^^
+  File "/tmp/tmpcg8sf1hl.py", line 6, in solve
+    while ((r - l) >= 1):
+            ^
+UnboundLocalError: cannot access local variable 'r' where it is not associated with a valu
+2025-06-05 14:53:24,432 - INFO - backup_safim.py:371 - Task block_completion_000799: Found adversarial example after 1 reordering attempts (1 valid).
+2025-06-05 14:53:24,433 - INFO - backup_safim.py:372 -   Model's completion (adversarial) failed 1/1 tests on reordered code.
+2025-06-05 14:53:24,435 - INFO - backup_safim.py:478 - 
+ADVERSARIAL ATTACK SUCCEEDED for block_completion_000799:
+2025-06-05 14:53:24,437 - INFO - backup_safim.py:479 -   Original passed: True
+2025-06-05 14:53:24,438 - INFO - backup_safim.py:480 -   Adversarial completion (full):
+2025-06-05 14:53:24,442 - INFO - backup_safim.py:481 - ------
+r-=1
+
+------
+2025-06-05 14:53:24,446 - INFO - backup_safim.py:482 -   COMPLETIONS ARE IDENTICAL
+2025-06-05 14:53:24,450 - INFO - backup_safim.py:485 -   Adversarial code FAILED tests (1 failed / 1 total). Status: FAILED_ALL_TESTS
+2025-06-05 14:53:24,453 - INFO - backup_safim.py:488 - 
+ADVERSARIAL FULL CODE (Perturbed Prompt + Completion) FOR block_completion_000799:
+2025-06-05 14:53:24,457 - INFO - backup_safim.py:489 - ------------------------------------------------------------
+2025-06-05 14:53:24,461 - INFO - backup_safim.py:490 - def solve():
+    sol = 0
+    n = int(input())
+    a = [*map(int, input().split())]
+    b = a[:]
+    while ((r - l) >= 1):
+        if (a[l] < b[r]):
+            l += 1
+        else:
+            r-=1
+
+        if (b[r] == a[l]):
+            sol = (((n + l) - r) + 1)
+            l += 1
+    for i in range((n - 1), 0, (- 1)):
+        b[(i - 1)] += b[i]
+    for i in range((n - 1)):
+        a[(1 + i)] += a[i]
+    (l, r) = (0, (n - 1))
+    return sol
+for _ in (int(input()) * [0]):
+    print(solve())
+2025-06-05 14:53:24,463 - INFO - backup_safim.py:491 - ------------------------------------------------------------
+2025-06-05 14:53:24,466 - ERROR - backup_safim.py:494 - 
+
+!!! CRITICAL ISSUE FOR block_completion_000799 !!!
+2025-06-05 14:53:24,469 - ERROR - backup_safim.py:495 - !!! IDENTICAL COMPLETION BUT DIFFERENT TEST RESULTS !!!
+2025-06-05 14:53:24,473 - ERROR - backup_safim.py:496 - ------------------------------------------------------------
+2025-06-05 14:53:24,476 - ERROR - backup_safim.py:497 - ORIGINAL PROMPT (led to PASSING code):
+2025-06-05 14:53:24,478 - ERROR - backup_safim.py:498 - vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+2025-06-05 14:53:24,480 - ERROR - backup_safim.py:499 - def solve():
+ n=int(input())
+ a=[*map(int,input().split())]
+ b=a[:]
+ for i in range(n-1):a[i+1]+=a[i]
+ for i in range(n-1,0,-1):b[i-1]+=b[i]
+ l,r=0,n-1
+ sol=0
+ while r-l>=1:
+  if a[l]==b[r]:sol=l+n-r+1;l+=1
+  if a[l]<b[r]:l+=1
+  else:{{completion}}
+ return sol
+for _ in [0]*int(input()):print(solve())
+2025-06-05 14:53:24,484 - ERROR - backup_safim.py:500 - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-06-05 14:53:24,487 - ERROR - backup_safim.py:501 - 
+ADVERSARIAL PROMPT (led to FAILING code with SAME completion):
+2025-06-05 14:53:24,492 - ERROR - backup_safim.py:502 - vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+2025-06-05 14:53:24,495 - ERROR - backup_safim.py:503 - def solve():
+    sol = 0
+    n = int(input())
+    a = [*map(int, input().split())]
+    b = a[:]
+    while ((r - l) >= 1):
+        if (a[l] < b[r]):
+            l += 1
+        else:
+            {{completion}}
+        if (b[r] == a[l]):
+            sol = (((n + l) - r) + 1)
+            l += 1
+    for i in range((n - 1), 0, (- 1)):
+        b[(i - 1)] += b[i]
+    for i in range((n - 1)):
+        a[(1 + i)] += a[i]
+    (l, r) = (0, (n - 1))
+    return sol
+for _ in (int(input()) * [0]):
+    print(solve())
+2025-06-05 14:53:24,499 - ERROR - backup_safim.py:504 - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-06-05 14:53:24,502 - ERROR - backup_safim.py:506 - 
+LINE-BY-LINE PROMPT DIFFERENCES (Original vs Adversarial):
+2025-06-05 14:53:24,506 - ERROR - backup_safim.py:516 - Line 1 DIFFERS:
+2025-06-05 14:53:24,510 - ERROR - backup_safim.py:517 -   ORIGINAL : def solve():
+2025-06-05 14:53:24,515 - ERROR - backup_safim.py:518 -   ADVERSARY: def solve():
+2025-06-05 14:53:24,518 - ERROR - backup_safim.py:516 - Line 2 DIFFERS:
+2025-06-05 14:53:24,521 - ERROR - backup_safim.py:517 -   ORIGINAL :  n=int(input())
+2025-06-05 14:53:24,525 - ERROR - backup_safim.py:518 -   ADVERSARY:     sol = 0
+2025-06-05 14:53:24,527 - ERROR - backup_safim.py:516 - Line 3 DIFFERS:
+2025-06-05 14:53:24,527 - ERROR - backup_safim.py:517 -   ORIGINAL :  a=[*map(int,input().split())]
+2025-06-05 14:53:24,529 - ERROR - backup_safim.py:518 -   ADVERSARY:     n = int(input())
+2025-06-05 14:53:24,532 - ERROR - backup_safim.py:516 - Line 4 DIFFERS:
+2025-06-05 14:53:24,536 - ERROR - backup_safim.py:517 -   ORIGINAL :  b=a[:]
+2025-06-05 14:53:24,539 - ERROR - backup_safim.py:518 -   ADVERSARY:     a = [*map(int, input().split())]
+2025-06-05 14:53:24,543 - ERROR - backup_safim.py:516 - Line 5 DIFFERS:
+2025-06-05 14:53:24,546 - ERROR - backup_safim.py:517 -   ORIGINAL :  for i in range(n-1):a[i+1]+=a[i]
+2025-06-05 14:53:24,550 - ERROR - backup_safim.py:518 -   ADVERSARY:     b = a[:]
+2025-06-05 14:53:24,554 - ERROR - backup_safim.py:516 - Line 6 DIFFERS:
+2025-06-05 14:53:24,556 - ERROR - backup_safim.py:517 -   ORIGINAL :  for i in range(n-1,0,-1):b[i-1]+=b[i]
+2025-06-05 14:53:24,558 - ERROR - backup_safim.py:518 -   ADVERSARY:     while ((r - l) >= 1):
+2025-06-05 14:53:24,560 - ERROR - backup_safim.py:516 - Line 7 DIFFERS:
+2025-06-05 14:53:24,564 - ERROR - backup_safim.py:517 -   ORIGINAL :  l,r=0,n-1
+2025-06-05 14:53:24,568 - ERROR - backup_safim.py:518 -   ADVERSARY:         if (a[l] < b[r]):
+2025-06-05 14:53:24,572 - ERROR - backup_safim.py:516 - Line 8 DIFFERS:
+2025-06-05 14:53:24,576 - ERROR - backup_safim.py:517 -   ORIGINAL :  sol=0
+2025-06-05 14:53:24,579 - ERROR - backup_safim.py:518 -   ADVERSARY:             l += 1
+2025-06-05 14:53:24,581 - ERROR - backup_safim.py:516 - Line 9 DIFFERS:
+2025-06-05 14:53:24,583 - ERROR - backup_safim.py:517 -   ORIGINAL :  while r-l>=1:
+2025-06-05 14:53:24,585 - ERROR - backup_safim.py:518 -   ADVERSARY:         else:
+2025-06-05 14:53:24,589 - ERROR - backup_safim.py:516 - Line 10 DIFFERS:
+2025-06-05 14:53:24,591 - ERROR - backup_safim.py:517 -   ORIGINAL :   if a[l]==b[r]:sol=l+n-r+1;l+=1
+2025-06-05 14:53:24,593 - ERROR - backup_safim.py:518 -   ADVERSARY:             {{completion}}
+2025-06-05 14:53:24,596 - ERROR - backup_safim.py:516 - Line 11 DIFFERS:
+2025-06-05 14:53:24,600 - ERROR - backup_safim.py:517 -   ORIGINAL :   if a[l]<b[r]:l+=1
+2025-06-05 14:53:24,603 - ERROR - backup_safim.py:518 -   ADVERSARY:         if (b[r] == a[l]):
+2025-06-05 14:53:24,607 - ERROR - backup_safim.py:516 - Line 12 DIFFERS:
+2025-06-05 14:53:24,611 - ERROR - backup_safim.py:517 -   ORIGINAL :   else:{{completion}}
+2025-06-05 14:53:24,614 - ERROR - backup_safim.py:518 -   ADVERSARY:             sol = (((n + l) - r) + 1)
+2025-06-05 14:53:24,618 - ERROR - backup_safim.py:516 - Line 13 DIFFERS:
+2025-06-05 14:53:24,623 - ERROR - backup_safim.py:517 -   ORIGINAL :  return sol
+2025-06-05 14:53:24,627 - ERROR - backup_safim.py:518 -   ADVERSARY:             l += 1
+2025-06-05 14:53:24,631 - ERROR - backup_safim.py:516 - Line 14 DIFFERS:
+2025-06-05 14:53:24,632 - ERROR - backup_safim.py:517 -   ORIGINAL : for _ in [0]*int(input()):print(solve())
+2025-06-05 14:53:24,634 - ERROR - backup_safim.py:518 -   ADVERSARY:     for i in range((n - 1), 0, (- 1)):
+2025-06-05 14:53:24,638 - ERROR - backup_safim.py:516 - Line 15 DIFFERS:
+2025-06-05 14:53:24,640 - ERROR - backup_safim.py:517 -   ORIGINAL : [LINE MISSING IN ORIGINAL]
+2025-06-05 14:53:24,640 - ERROR - backup_safim.py:518 -   ADVERSARY:         b[(i - 1)] += b[i]
+2025-06-05 14:53:24,640 - ERROR - backup_safim.py:516 - Line 16 DIFFERS:
+2025-06-05 14:53:24,640 - ERROR - backup_safim.py:517 -   ORIGINAL : [LINE MISSING IN ORIGINAL]
+2025-06-05 14:53:24,640 - ERROR - backup_safim.py:518 -   ADVERSARY:     for i in range((n - 1)):
+2025-06-05 14:53:24,640 - ERROR - backup_safim.py:516 - Line 17 DIFFERS:
+2025-06-05 14:53:24,641 - ERROR - backup_safim.py:517 -   ORIGINAL : [LINE MISSING IN ORIGINAL]
+2025-06-05 14:53:24,641 - ERROR - backup_safim.py:518 -   ADVERSARY:         a[(1 + i)] += a[i]
+2025-06-05 14:53:24,641 - ERROR - backup_safim.py:516 - Line 18 DIFFERS:
+2025-06-05 14:53:24,643 - ERROR - backup_safim.py:517 -   ORIGINAL : [LINE MISSING IN ORIGINAL]
+2025-06-05 14:53:24,644 - ERROR - backup_safim.py:518 -   ADVERSARY:     (l, r) = (0, (n - 1))
+2025-06-05 14:53:24,646 - ERROR - backup_safim.py:516 - Line 19 DIFFERS:
+2025-06-05 14:53:24,648 - ERROR - backup_safim.py:517 -   ORIGINAL : [LINE MISSING IN ORIGINAL]
+2025-06-05 14:53:24,650 - ERROR - backup_safim.py:518 -   ADVERSARY:     return sol
+2025-06-05 14:53:24,652 - ERROR - backup_safim.py:516 - Line 20 DIFFERS:
+2025-06-05 14:53:24,653 - ERROR - backup_safim.py:517 -   ORIGINAL : [LINE MISSING IN ORIGINAL]
+2025-06-05 14:53:24,655 - ERROR - backup_safim.py:518 -   ADVERSARY: for _ in (int(input()) * [0]):
+2025-06-05 14:53:24,657 - ERROR - backup_safim.py:516 - Line 21 DIFFERS:
+2025-06-05 14:53:24,659 - ERROR - backup_safim.py:517 -   ORIGINAL : [LINE MISSING IN ORIGINAL]
+2025-06-05 14:53:24,661 - ERROR - backup_safim.py:518 -   ADVERSARY:     print(solve())
+2025-06-05 14:53:24,663 - ERROR - backup_safim.py:521 - ------------------------------------------------------------
+
+
+2025-06-05 14:53:24,689 - INFO - backup_safim.py:642 - Cache saved to ./model_cache.json (216 entries).
+2025-06-05 14:53:24,695 - INFO - backup_safim.py:647 - Debug results for 11 samples saved to: ./results_adversarial_debug_11.jsonl
+2025-06-05 14:53:24,696 - INFO - backup_safim.py:649 - 
+================================================================================
+SUMMARY OF 11 PROCESSED PROBLEMATIC SAMPLES
+================================================================================
+2025-06-05 14:53:24,697 - INFO - backup_safim.py:672 - 
+Task ID: block_completion_000075 - Not VULNERABLE or attack failed/skipped.
+2025-06-05 14:53:24,698 - INFO - backup_safim.py:673 -   Original Passed: True, Adversarial Status: ATTACK_FAILED (no_valid_reorderings_generated_or_gt_not_found_all_attempts)
+2025-06-05 14:53:24,700 - INFO - backup_safim.py:674 -   Adversarial Failure Reason: no_valid_reorderings_generated_or_gt_not_found_all_attempts
+2025-06-05 14:53:24,702 - ERROR - backup_safim.py:660 - 
+CRITICAL ISSUE CONFIRMED for Task ID: block_completion_000078
+2025-06-05 14:53:24,705 - ERROR - backup_safim.py:661 -   Original Passed: True
+2025-06-05 14:53:24,708 - ERROR - backup_safim.py:662 -   Adversarial Found (Vulnerable): True
+2025-06-05 14:53:24,711 - ERROR - backup_safim.py:663 -   Completions: IDENTICAL
+2025-06-05 14:53:24,714 - ERROR - backup_safim.py:664 -   Original Status: PASSED_GT_MATCH, Tests: 1/1
+2025-06-05 14:53:24,717 - ERROR - backup_safim.py:666 -   Adversarial Status: FAILED_ALL_TESTS, Tests: 0/1
+2025-06-05 14:53:24,721 - ERROR - backup_safim.py:667 -   This sample exhibits the 'identical completion, different outcome' problem.
+2025-06-05 14:53:24,726 - ERROR - backup_safim.py:660 - 
+CRITICAL ISSUE CONFIRMED for Task ID: block_completion_000079
+2025-06-05 14:53:24,727 - ERROR - backup_safim.py:661 -   Original Passed: True
+2025-06-05 14:53:24,729 - ERROR - backup_safim.py:662 -   Adversarial Found (Vulnerable): True
+2025-06-05 14:53:24,730 - ERROR - backup_safim.py:663 -   Completions: IDENTICAL
+2025-06-05 14:53:24,730 - ERROR - backup_safim.py:664 -   Original Status: PASSED_GT_MATCH, Tests: 1/1
+2025-06-05 14:53:24,734 - ERROR - backup_safim.py:666 -   Adversarial Status: FAILED_ALL_TESTS, Tests: 0/1
+2025-06-05 14:53:24,735 - ERROR - backup_safim.py:667 -   This sample exhibits the 'identical completion, different outcome' problem.
+2025-06-05 14:53:24,735 - ERROR - backup_safim.py:660 - 
+CRITICAL ISSUE CONFIRMED for Task ID: block_completion_000109
+2025-06-05 14:53:24,735 - ERROR - backup_safim.py:661 -   Original Passed: True
+2025-06-05 14:53:24,735 - ERROR - backup_safim.py:662 -   Adversarial Found (Vulnerable): True
+2025-06-05 14:53:24,735 - ERROR - backup_safim.py:663 -   Completions: IDENTICAL
+2025-06-05 14:53:24,735 - ERROR - backup_safim.py:664 -   Original Status: PASSED, Tests: 4/4
+2025-06-05 14:53:24,736 - ERROR - backup_safim.py:666 -   Adversarial Status: FAILED_ALL_TESTS, Tests: 0/4
+2025-06-05 14:53:24,736 - ERROR - backup_safim.py:667 -   This sample exhibits the 'identical completion, different outcome' problem.
+2025-06-05 14:53:24,736 - ERROR - backup_safim.py:660 - 
+CRITICAL ISSUE CONFIRMED for Task ID: block_completion_000432
+2025-06-05 14:53:24,736 - ERROR - backup_safim.py:661 -   Original Passed: True
+2025-06-05 14:53:24,736 - ERROR - backup_safim.py:662 -   Adversarial Found (Vulnerable): True
+2025-06-05 14:53:24,738 - ERROR - backup_safim.py:663 -   Completions: IDENTICAL
+2025-06-05 14:53:24,739 - ERROR - backup_safim.py:664 -   Original Status: PASSED_GT_MATCH, Tests: 1/1
+2025-06-05 14:53:24,741 - ERROR - backup_safim.py:666 -   Adversarial Status: FAILED_ALL_TESTS, Tests: 0/1
+2025-06-05 14:53:24,743 - ERROR - backup_safim.py:667 -   This sample exhibits the 'identical completion, different outcome' problem.
+2025-06-05 14:53:24,744 - ERROR - backup_safim.py:660 - 
+CRITICAL ISSUE CONFIRMED for Task ID: block_completion_000487
+2025-06-05 14:53:24,746 - ERROR - backup_safim.py:661 -   Original Passed: True
+2025-06-05 14:53:24,748 - ERROR - backup_safim.py:662 -   Adversarial Found (Vulnerable): True
+2025-06-05 14:53:24,749 - ERROR - backup_safim.py:663 -   Completions: IDENTICAL
+2025-06-05 14:53:24,751 - ERROR - backup_safim.py:664 -   Original Status: PASSED_GT_MATCH, Tests: 3/3
+2025-06-05 14:53:24,752 - ERROR - backup_safim.py:666 -   Adversarial Status: FAILED_ALL_TESTS, Tests: 0/3
+2025-06-05 14:53:24,754 - ERROR - backup_safim.py:667 -   This sample exhibits the 'identical completion, different outcome' problem.
+2025-06-05 14:53:24,755 - INFO - backup_safim.py:672 - 
+Task ID: block_completion_000488 - Not VULNERABLE or attack failed/skipped.
+2025-06-05 14:53:24,757 - INFO - backup_safim.py:673 -   Original Passed: True, Adversarial Status: ATTACK_FAILED (model_robust_all_valid_reorderings_passed)
+2025-06-05 14:53:24,760 - INFO - backup_safim.py:674 -   Adversarial Failure Reason: model_robust_all_valid_reorderings_passed
+2025-06-05 14:53:24,762 - ERROR - backup_safim.py:660 - 
+CRITICAL ISSUE CONFIRMED for Task ID: block_completion_000546
+2025-06-05 14:53:24,763 - ERROR - backup_safim.py:661 -   Original Passed: True
+2025-06-05 14:53:24,765 - ERROR - backup_safim.py:662 -   Adversarial Found (Vulnerable): True
+2025-06-05 14:53:24,766 - ERROR - backup_safim.py:663 -   Completions: IDENTICAL
+2025-06-05 14:53:24,768 - ERROR - backup_safim.py:664 -   Original Status: PASSED_GT_MATCH, Tests: 3/3
+2025-06-05 14:53:24,770 - ERROR - backup_safim.py:666 -   Adversarial Status: FAILED_ALL_TESTS, Tests: 0/3
+2025-06-05 14:53:24,770 - ERROR - backup_safim.py:667 -   This sample exhibits the 'identical completion, different outcome' problem.
+2025-06-05 14:53:24,772 - ERROR - backup_safim.py:660 - 
+CRITICAL ISSUE CONFIRMED for Task ID: block_completion_000732
+2025-06-05 14:53:24,775 - ERROR - backup_safim.py:661 -   Original Passed: True
+2025-06-05 14:53:24,778 - ERROR - backup_safim.py:662 -   Adversarial Found (Vulnerable): True
+2025-06-05 14:53:24,780 - ERROR - backup_safim.py:663 -   Completions: IDENTICAL
+2025-06-05 14:53:24,783 - ERROR - backup_safim.py:664 -   Original Status: PASSED_GT_MATCH, Tests: 1/1
+2025-06-05 14:53:24,787 - ERROR - backup_safim.py:666 -   Adversarial Status: FAILED_ALL_TESTS, Tests: 0/1
+2025-06-05 14:53:24,790 - ERROR - backup_safim.py:667 -   This sample exhibits the 'identical completion, different outcome' problem.
+2025-06-05 14:53:24,794 - ERROR - backup_safim.py:660 - 
+CRITICAL ISSUE CONFIRMED for Task ID: block_completion_000796
+2025-06-05 14:53:24,798 - ERROR - backup_safim.py:661 -   Original Passed: True
+2025-06-05 14:53:24,801 - ERROR - backup_safim.py:662 -   Adversarial Found (Vulnerable): True
+2025-06-05 14:53:24,805 - ERROR - backup_safim.py:663 -   Completions: IDENTICAL
+2025-06-05 14:53:24,808 - ERROR - backup_safim.py:664 -   Original Status: PASSED_GT_MATCH, Tests: 1/1
+2025-06-05 14:53:24,810 - ERROR - backup_safim.py:666 -   Adversarial Status: FAILED_ALL_TESTS, Tests: 0/1
+2025-06-05 14:53:24,812 - ERROR - backup_safim.py:667 -   This sample exhibits the 'identical completion, different outcome' problem.
+2025-06-05 14:53:24,814 - ERROR - backup_safim.py:660 - 
+CRITICAL ISSUE CONFIRMED for Task ID: block_completion_000799
+2025-06-05 14:53:24,816 - ERROR - backup_safim.py:661 -   Original Passed: True
+2025-06-05 14:53:24,817 - ERROR - backup_safim.py:662 -   Adversarial Found (Vulnerable): True
+2025-06-05 14:53:24,819 - ERROR - backup_safim.py:663 -   Completions: IDENTICAL
+2025-06-05 14:53:24,823 - ERROR - backup_safim.py:664 -   Original Status: PASSED_GT_MATCH, Tests: 1/1
+2025-06-05 14:53:24,826 - ERROR - backup_safim.py:666 -   Adversarial Status: FAILED_ALL_TESTS, Tests: 0/1
+2025-06-05 14:53:24,830 - ERROR - backup_safim.py:667 -   This sample exhibits the 'identical completion, different outcome' problem.
+2025-06-05 14:53:24,833 - ERROR - backup_safim.py:678 - 
+Total CRITICAL ISSUES (identical completion, different outcome): 9/11
+2025-06-05 14:53:24,837 - INFO - backup_safim.py:682 - 
+Detailed DEBUG log file saved to: safim_adversarial_debug_11_samples_less.txt
+2025-06-05 14:53:24,840 - INFO - backup_safim.py:683 - Review the console output for INFO/WARNING/ERROR messages and the log file for detailed DEBUG traces.

@@ -1,0 +1,6 @@
+2025-06-14 13:42:45,543 - INFO - adversarial_reordering_safim.py:476 - Log file will be saved to: ./safim_outputs/Log/deepseek_ai__deepseek_coder_6.7b_instruct.log
+2025-06-14 13:42:45,543 - INFO - adversarial_reordering_safim.py:477 - Results file will be saved to: ./safim_outputs/Results/deepseek_ai__deepseek_coder_6.7b_instruct.jsonl
+2025-06-14 13:42:45,543 - INFO - adversarial_reordering_safim.py:478 - Summary file will be saved to: ./safim_outputs/Summary/deepseek_ai__deepseek_coder_6.7b_instruct_summary.txt
+2025-06-14 13:42:45,543 - INFO - adversarial_reordering_safim.py:494 - Using default post-processors for 'block': ['truncate_line_until_block']
+2025-06-14 13:42:45,610 - INFO - adversarial_reordering_safim.py:502 - Loaded cache with 4690 entries from ./model_cache.json.
+2025-06-14 13:42:45,610 - INFO - adversarial_reordering_safim.py:507 - Building model: deepseek-ai--deepseek-coder-6.7b-instruct

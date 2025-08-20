@@ -1,0 +1,32 @@
+Model: deepseek-ai/deepseek-coder-6.7b-instruct
+Dataset: block
+Mode: infilling
+Post-processors: truncate_line_until_block
+Adversarial Attempts: 20
+Skip Adversarial: False
+
+Total samples processed: 805
+Samples with major evaluation errors (aborted eval for sample): 0
+
+Original Completion Performance (on 805 evaluable samples):
+  Passed (original prompt): 238 (29.57%)
+    Total unit tests (original): 1453
+    Tests passed (original): 618 (42.53%)
+
+Adversarial Attack Results:
+  Samples eligible for adversarial attack (original passed tests): 238
+  Vulnerable (attack succeeded): 27
+  Robust (attack attempted, no adversarial effect found): 208
+  Attack Setup Failed (placeholder/reordering issues prevented test): 3
+  Vulnerability Rate (among successfully setup and tested attacks): 11.49%
+  Robustness Rate (among successfully setup and tested attacks): 88.51%
+Adversarial attack skipped because original completion failed: 567
+Adversarial attack skipped for other reasons on original passes (e.g., manual, no GT/tests): 0
+    Specifically: Manually skipped: 0
+    Specifically: Skipped due to no GT/tests: 0
+    Specifically: Not applicable (non-Python/no tests): 0
+
+For VULNERABLE samples:
+  Total adversarial tests attempted: 57
+  Total adversarial tests failed: 47 (82.46%)
+  Average tests failed per vulnerable sample: 1.74 / 2.11

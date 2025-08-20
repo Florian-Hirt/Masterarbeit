@@ -1,0 +1,28 @@
+{
+  "4672": {
+    "total_reordering_attempts": 27,
+    "unique_reorderings_generated": 4,
+    "failed_reorderings": 0,
+    "transform_to_incomplete_failed": 0,
+    "evaluation_attempts_for_new_reorderings": 5,
+    "successful_llm_evaluations": 5,
+    "failed_llm_evaluations": 0,
+    "cache_hits_reordering_score": 22,
+    "cache_hits_reordering_failed_eval": 0,
+    "total_topo_sorts_generated": 27,
+    "unique_perturbations": 4
+  },
+  "4678": {
+    "total_reordering_attempts": 27,
+    "unique_reorderings_generated": 24,
+    "failed_reorderings": 0,
+    "transform_to_incomplete_failed": 0,
+    "evaluation_attempts_for_new_reorderings": 25,
+    "successful_llm_evaluations": 25,
+    "failed_llm_evaluations": 0,
+    "cache_hits_reordering_score": 2,
+    "cache_hits_reordering_failed_eval": 0,
+    "total_topo_sorts_generated": 27,
+    "unique_perturbations": 24
+  }
+}

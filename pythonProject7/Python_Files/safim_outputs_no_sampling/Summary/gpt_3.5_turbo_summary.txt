@@ -1,0 +1,25 @@
+Model: gpt-3.5-turbo
+Dataset: api
+Mode: instructed
+Post-processors: extract_code, truncate_api_call
+Adversarial Attempts: 20
+Skip Adversarial: False
+
+Total samples processed: 181
+Samples with major evaluation errors (aborted eval for sample): 0
+
+Original Completion Performance (on 181 evaluable samples):
+  Passed (original prompt): 37 (20.44%)
+
+Adversarial Attack Results:
+  Samples eligible for adversarial attack (original passed tests): 37
+  Vulnerable (attack succeeded): 0
+  Robust (attack attempted, no adversarial effect found): 0
+  Attack Setup Failed (placeholder/reordering issues prevented test): 0
+  Vulnerability Rate (among successfully setup and tested attacks): N/A (no attacks successfully set up and tested)
+  Robustness Rate (among successfully setup and tested attacks): N/A (no attacks successfully set up and tested)
+Adversarial attack skipped because original completion failed: 0
+Adversarial attack skipped for other reasons on original passes (e.g., manual, no GT/tests): 144
+    Specifically: Manually skipped: 0
+    Specifically: Skipped due to no GT/tests: 0
+    Specifically: Not applicable (non-Python/no tests): 181

@@ -59,7 +59,7 @@ class OGB_ASTWalker(ast.NodeVisitor):
         self.stack.pop()
 
 
-def py2graph_helper(code, attr2idx, type2idx, mask=True):
+def py2graph_helper(code, attr2idx, type2idx, mask=False):
     """Input: code: code snippet
 
     Mappers:

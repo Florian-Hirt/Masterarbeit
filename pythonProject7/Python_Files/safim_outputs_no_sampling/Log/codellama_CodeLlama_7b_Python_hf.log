@@ -1,0 +1,68 @@
+2025-06-13 21:10:40,237 - INFO - backup_safim2.py:480 - Log file will be saved to: ./safim_outputs/Log/codellama_CodeLlama_7b_Python_hf.log
+2025-06-13 21:10:40,238 - INFO - backup_safim2.py:481 - Results file will be saved to: ./safim_outputs/Results/codellama_CodeLlama_7b_Python_hf.jsonl
+2025-06-13 21:10:40,238 - INFO - backup_safim2.py:482 - Summary file will be saved to: ./safim_outputs/Summary/codellama_CodeLlama_7b_Python_hf_summary.txt
+2025-06-13 21:10:40,295 - INFO - backup_safim2.py:506 - Loaded cache with 3671 entries from ./model_cache.json.
+2025-06-13 21:10:40,295 - INFO - backup_safim2.py:511 - Building model: codellama/CodeLlama-7b-Python-hf
+2025-06-13 21:10:40,298 - DEBUG - connectionpool.py:1022 - Starting new HTTPS connection (1): huggingface.co:443
+2025-06-13 21:10:40,453 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "HEAD /codellama/CodeLlama-7b-Python-hf/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-06-13 21:10:40,617 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "GET /api/models/codellama/CodeLlama-7b-Python-hf/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-06-13 21:10:42,594 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "HEAD /codellama/CodeLlama-7b-Python-hf/resolve/main/config.json HTTP/1.1" 200 0
+2025-06-13 21:10:43,281 - INFO - modeling.py:991 - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2025-06-13 21:13:44,949 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "HEAD /codellama/CodeLlama-7b-Python-hf/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-06-13 21:13:45,083 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "HEAD /codellama/CodeLlama-7b-Python-hf/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-06-13 21:13:45,091 - INFO - backup_safim2.py:515 - Loading dataset: api
+2025-06-13 21:13:45,213 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "GET /api/datasets/gonglinyuan/safim HTTP/1.1" 200 2256
+2025-06-13 21:13:45,215 - DEBUG - connectionpool.py:1022 - Starting new HTTPS connection (1): s3.amazonaws.com:443
+2025-06-13 21:13:45,569 - DEBUG - connectionpool.py:475 - https://s3.amazonaws.com:443 "HEAD /datasets.huggingface.co/datasets/datasets/gonglinyuan/safim/gonglinyuan/safim.py HTTP/1.1" 404 0
+2025-06-13 21:13:45,723 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "GET /api/datasets/gonglinyuan/safim HTTP/1.1" 200 2256
+2025-06-13 21:13:45,726 - DEBUG - connectionpool.py:1022 - Starting new HTTPS connection (1): huggingface.co:443
+2025-06-13 21:13:45,885 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "HEAD /datasets/gonglinyuan/safim/resolve/be132cc15372e90b6f03a608e77f2d940e384edb/README.md HTTP/1.1" 200 0
+2025-06-13 21:13:45,894 - DEBUG - connectionpool.py:1022 - Starting new HTTPS connection (1): huggingface.co:443
+2025-06-13 21:13:46,044 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "HEAD /datasets/gonglinyuan/safim/resolve/be132cc15372e90b6f03a608e77f2d940e384edb/.huggingface.yaml HTTP/1.1" 404 0
+2025-06-13 21:13:46,161 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "GET /api/datasets/gonglinyuan/safim/revision/be132cc15372e90b6f03a608e77f2d940e384edb HTTP/1.1" 200 2256
+2025-06-13 21:13:46,341 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "GET /api/datasets/gonglinyuan/safim/tree/be132cc15372e90b6f03a608e77f2d940e384edb?recursive=False&expand=False HTTP/1.1" 200 1350
+2025-06-13 21:13:46,344 - DEBUG - connectionpool.py:1022 - Starting new HTTPS connection (1): huggingface.co:443
+2025-06-13 21:13:46,490 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "GET /api/datasets/gonglinyuan/safim/revision/be132cc15372e90b6f03a608e77f2d940e384edb HTTP/1.1" 200 2256
+2025-06-13 21:13:46,493 - DEBUG - connectionpool.py:1022 - Starting new HTTPS connection (1): huggingface.co:443
+2025-06-13 21:13:46,648 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "HEAD /datasets/gonglinyuan/safim/resolve/be132cc15372e90b6f03a608e77f2d940e384edb/dataset_infos.json HTTP/1.1" 404 0
+2025-06-13 21:13:46,652 - DEBUG - _api.py:254 - Attempting to acquire lock 123998513496336 on /ceph/ssd/students/hifl/hf_cache/datasets/_ceph_ssd_students_hifl_hf_cache_datasets_gonglinyuan___safim_api_0.0.0_be132cc15372e90b6f03a608e77f2d940e384edb.lock
+2025-06-13 21:13:46,654 - DEBUG - _api.py:257 - Lock 123998513496336 acquired on /ceph/ssd/students/hifl/hf_cache/datasets/_ceph_ssd_students_hifl_hf_cache_datasets_gonglinyuan___safim_api_0.0.0_be132cc15372e90b6f03a608e77f2d940e384edb.lock
+2025-06-13 21:13:46,656 - DEBUG - local.py:298 - open file: /ceph/ssd/students/hifl/hf_cache/datasets/gonglinyuan___safim/api/0.0.0/be132cc15372e90b6f03a608e77f2d940e384edb/dataset_info.json
+2025-06-13 21:13:46,657 - DEBUG - _api.py:286 - Attempting to release lock 123998513496336 on /ceph/ssd/students/hifl/hf_cache/datasets/_ceph_ssd_students_hifl_hf_cache_datasets_gonglinyuan___safim_api_0.0.0_be132cc15372e90b6f03a608e77f2d940e384edb.lock
+2025-06-13 21:13:46,657 - DEBUG - _api.py:289 - Lock 123998513496336 released on /ceph/ssd/students/hifl/hf_cache/datasets/_ceph_ssd_students_hifl_hf_cache_datasets_gonglinyuan___safim_api_0.0.0_be132cc15372e90b6f03a608e77f2d940e384edb.lock
+2025-06-13 21:13:46,659 - DEBUG - _api.py:254 - Attempting to acquire lock 123998261735888 on /ceph/ssd/students/hifl/hf_cache/datasets/gonglinyuan___safim/api/0.0.0/be132cc15372e90b6f03a608e77f2d940e384edb_builder.lock
+2025-06-13 21:13:46,660 - DEBUG - _api.py:257 - Lock 123998261735888 acquired on /ceph/ssd/students/hifl/hf_cache/datasets/gonglinyuan___safim/api/0.0.0/be132cc15372e90b6f03a608e77f2d940e384edb_builder.lock
+2025-06-13 21:13:46,660 - DEBUG - local.py:298 - open file: /ceph/ssd/students/hifl/hf_cache/datasets/gonglinyuan___safim/api/0.0.0/be132cc15372e90b6f03a608e77f2d940e384edb/dataset_info.json
+2025-06-13 21:13:46,661 - DEBUG - _api.py:286 - Attempting to release lock 123998261735888 on /ceph/ssd/students/hifl/hf_cache/datasets/gonglinyuan___safim/api/0.0.0/be132cc15372e90b6f03a608e77f2d940e384edb_builder.lock
+2025-06-13 21:13:46,661 - DEBUG - _api.py:289 - Lock 123998261735888 released on /ceph/ssd/students/hifl/hf_cache/datasets/gonglinyuan___safim/api/0.0.0/be132cc15372e90b6f03a608e77f2d940e384edb_builder.lock
+2025-06-13 21:13:46,679 - INFO - backup_safim2.py:520 - Using completion type: api
+2025-06-13 21:13:46,679 - INFO - backup_safim2.py:525 - Filtered to 181 Python samples
+2025-06-13 21:15:49,273 - INFO - backup_safim2.py:599 - Saved cache at sample 100
+2025-06-13 21:18:22,676 - INFO - backup_safim2.py:599 - Saved cache at sample 150
+2025-06-13 21:19:34,522 - INFO - backup_safim2.py:603 - Final cache saved with 3793 entries.
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:608 - Results saved to: ./safim_outputs/Results/codellama_CodeLlama_7b_Python_hf.jsonl
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:610 - 
+============================================================
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:611 - Results Summary:
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:612 - ============================================================
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:613 - Total samples processed: 122
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:614 - Samples with major evaluation errors (aborted eval for sample): 0
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:617 - 
+--- Original Completion Performance (on 122 evaluable samples) ---
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:619 - Passed (original prompt): 0 (0.00%)
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:627 - 
+--- Adversarial Attack Results ---
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:629 - Samples eligible for adversarial attack (original passed tests): 0
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:631 -   Vulnerable (attack succeeded): 0
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:632 -   Robust (attack attempted, no adversarial effect found): 0
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:633 -   Attack Setup Failed (placeholder/reordering issues prevented test): 0
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:640 -   Vulnerability Rate (among successfully setup and tested attacks): N/A (no attacks successfully set up and tested)
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:641 -   Robustness Rate (among successfully setup and tested attacks): N/A (no attacks successfully set up and tested)
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:643 - Adversarial attack skipped because original completion failed: 0
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:650 - Adversarial attack skipped for other reasons on original passes (e.g., manual, no GT/tests): 122
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:651 -     Specifically: Manually skipped: 0
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:652 -     Specifically: Skipped due to no GT/tests: 0
+2025-06-13 21:19:34,528 - INFO - backup_safim2.py:653 -     Specifically: Not applicable (non-Python/no tests): 122
+2025-06-13 21:19:34,532 - INFO - backup_safim2.py:710 - Summary saved to: ./safim_outputs/Summary/codellama_CodeLlama_7b_Python_hf_summary.txt
+2025-06-13 21:19:34,532 - INFO - backup_safim2.py:712 - 
+Log saved to: ./safim_outputs/Log/codellama_CodeLlama_7b_Python_hf.log

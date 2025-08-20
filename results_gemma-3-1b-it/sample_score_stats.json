@@ -1,0 +1,20 @@
+{
+  "4672": {
+    "min": 2,
+    "max": 2,
+    "mean": 2.0,
+    "median": 2,
+    "variance": 0.0,
+    "count": 27,
+    "valid_percentage": 100.0
+  },
+  "4678": {
+    "min": 2,
+    "max": 3,
+    "mean": 2.1481481481481484,
+    "median": 2,
+    "variance": 0.12620027434842251,
+    "count": 27,
+    "valid_percentage": 100.0
+  }
+}

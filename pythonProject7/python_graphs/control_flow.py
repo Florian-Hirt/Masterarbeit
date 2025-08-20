@@ -1109,6 +1109,31 @@ class ControlFlowVisitor(object):
         source=instruction_module.ITERATOR)
     return self.handle_Loop(node, target, current_block)
 
+# My modification
+
+  def visit_With(self, node, current_block):
+    """Visit a With node of the AST.
+
+    Blocks:
+      current_block: The block in which the with statement resides.
+    """
+    items_block = self.new_block(node=node, label='items')
+    current_block.add_exit(items_block)
+    items_block = self.visit_list(node.items, items_block)
+    
+    body_block = self.new_block(node=node, label='body')
+    items_block.add_exit(body_block, branch=True)
+    body_block = self.visit_list(node.body, body_block)
+    
+    after_block = self.new_block(node=node, label='after_block')
+    body_block.add_exit(after_block)
+    return after_block
+
+########################################
+########################################
+########################################
+
+
   def handle_Loop(self, node, loop_instruction, current_block):
     """A helper fn for For and While.
 

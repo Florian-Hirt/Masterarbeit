@@ -1,0 +1,38 @@
+2025-06-14 13:42:01,045 - INFO - adversarial_reordering_safim.py:476 - Log file will be saved to: ./safim_outputs/Log/gpt_3.5_turbo.log
+2025-06-14 13:42:01,046 - INFO - adversarial_reordering_safim.py:477 - Results file will be saved to: ./safim_outputs/Results/gpt_3.5_turbo.jsonl
+2025-06-14 13:42:01,046 - INFO - adversarial_reordering_safim.py:478 - Summary file will be saved to: ./safim_outputs/Summary/gpt_3.5_turbo_summary.txt
+2025-06-14 13:42:01,128 - INFO - adversarial_reordering_safim.py:502 - Loaded cache with 4631 entries from ./model_cache.json.
+2025-06-14 13:42:01,128 - INFO - adversarial_reordering_safim.py:507 - Building model: gpt-3.5-turbo
+2025-06-14 13:42:02,884 - INFO - adversarial_reordering_safim.py:511 - Loading dataset: api
+2025-06-14 13:42:04,882 - INFO - adversarial_reordering_safim.py:516 - Using completion type: api
+2025-06-14 13:42:04,882 - INFO - adversarial_reordering_safim.py:521 - Filtered to 181 Python samples
+2025-06-14 13:42:32,943 - INFO - adversarial_reordering_safim.py:593 - Saved cache at sample 50
+2025-06-14 13:42:37,778 - INFO - adversarial_reordering_safim.py:593 - Saved cache at sample 100
+2025-06-14 13:42:37,947 - INFO - adversarial_reordering_safim.py:593 - Saved cache at sample 150
+2025-06-14 13:42:38,127 - INFO - adversarial_reordering_safim.py:597 - Final cache saved with 4690 entries.
+2025-06-14 13:42:38,134 - INFO - adversarial_reordering_safim.py:602 - Results saved to: ./safim_outputs/Results/gpt_3.5_turbo.jsonl
+2025-06-14 13:42:38,134 - INFO - adversarial_reordering_safim.py:604 - 
+============================================================
+2025-06-14 13:42:38,134 - INFO - adversarial_reordering_safim.py:605 - Results Summary:
+2025-06-14 13:42:38,135 - INFO - adversarial_reordering_safim.py:606 - ============================================================
+2025-06-14 13:42:38,135 - INFO - adversarial_reordering_safim.py:607 - Total samples processed: 181
+2025-06-14 13:42:38,135 - INFO - adversarial_reordering_safim.py:608 - Samples with major evaluation errors (aborted eval for sample): 0
+2025-06-14 13:42:38,135 - INFO - adversarial_reordering_safim.py:611 - 
+--- Original Completion Performance (on 181 evaluable samples) ---
+2025-06-14 13:42:38,135 - INFO - adversarial_reordering_safim.py:613 - Passed (original prompt): 37 (20.44%)
+2025-06-14 13:42:38,135 - INFO - adversarial_reordering_safim.py:621 - 
+--- Adversarial Attack Results ---
+2025-06-14 13:42:38,135 - INFO - adversarial_reordering_safim.py:623 - Samples eligible for adversarial attack (original passed tests): 37
+2025-06-14 13:42:38,135 - INFO - adversarial_reordering_safim.py:625 -   Vulnerable (attack succeeded): 0
+2025-06-14 13:42:38,135 - INFO - adversarial_reordering_safim.py:626 -   Robust (attack attempted, no adversarial effect found): 0
+2025-06-14 13:42:38,135 - INFO - adversarial_reordering_safim.py:627 -   Attack Setup Failed (placeholder/reordering issues prevented test): 0
+2025-06-14 13:42:38,135 - INFO - adversarial_reordering_safim.py:634 -   Vulnerability Rate (among successfully setup and tested attacks): N/A (no attacks successfully set up and tested)
+2025-06-14 13:42:38,135 - INFO - adversarial_reordering_safim.py:635 -   Robustness Rate (among successfully setup and tested attacks): N/A (no attacks successfully set up and tested)
+2025-06-14 13:42:38,135 - INFO - adversarial_reordering_safim.py:637 - Adversarial attack skipped because original completion failed: 0
+2025-06-14 13:42:38,135 - INFO - adversarial_reordering_safim.py:644 - Adversarial attack skipped for other reasons on original passes (e.g., manual, no GT/tests): 144
+2025-06-14 13:42:38,135 - INFO - adversarial_reordering_safim.py:645 -     Specifically: Manually skipped: 0
+2025-06-14 13:42:38,135 - INFO - adversarial_reordering_safim.py:646 -     Specifically: Skipped due to no GT/tests: 0
+2025-06-14 13:42:38,135 - INFO - adversarial_reordering_safim.py:647 -     Specifically: Not applicable (non-Python/no tests): 181
+2025-06-14 13:42:38,139 - INFO - adversarial_reordering_safim.py:704 - Summary saved to: ./safim_outputs/Summary/gpt_3.5_turbo_summary.txt
+2025-06-14 13:42:38,139 - INFO - adversarial_reordering_safim.py:706 - 
+Log saved to: ./safim_outputs/Log/gpt_3.5_turbo.log

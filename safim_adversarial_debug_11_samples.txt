@@ -1,0 +1,2037 @@
+2025-06-04 17:27:12,052 - INFO - backup_safim.py:55 - ================================================================================
+2025-06-04 17:27:12,053 - INFO - backup_safim.py:56 - DEBUGGING 11 PROBLEMATIC SAMPLES
+2025-06-04 17:27:12,055 - INFO - backup_safim.py:57 - These samples have identical completions but different test results
+2025-06-04 17:27:12,056 - INFO - backup_safim.py:58 - ================================================================================
+2025-06-04 17:27:12,059 - INFO - backup_safim.py:627 - Using default post-processors for 'block': ['truncate_line_until_block']
+2025-06-04 17:27:12,064 - INFO - backup_safim.py:633 - Loaded cache with 216 entries from ./model_cache.json.
+2025-06-04 17:27:12,064 - INFO - backup_safim.py:636 - Building model: deepseek-ai/deepseek-coder-1.3b-instruct
+2025-06-04 17:27:12,068 - DEBUG - connectionpool.py:1022 - Starting new HTTPS connection (1): huggingface.co:443
+2025-06-04 17:27:12,266 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "HEAD /deepseek-ai/deepseek-coder-1.3b-instruct/resolve/main/tokenizer_config.json HTTP/1.1" 200 0
+2025-06-04 17:27:12,464 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "GET /api/models/deepseek-ai/deepseek-coder-1.3b-instruct/tree/main/additional_chat_templates?recursive=False&expand=False HTTP/1.1" 404 64
+2025-06-04 17:27:12,686 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "HEAD /deepseek-ai/deepseek-coder-1.3b-instruct/resolve/main/config.json HTTP/1.1" 200 0
+2025-06-04 17:27:16,583 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "HEAD /deepseek-ai/deepseek-coder-1.3b-instruct/resolve/main/generation_config.json HTTP/1.1" 200 0
+2025-06-04 17:27:16,709 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "HEAD /deepseek-ai/deepseek-coder-1.3b-instruct/resolve/main/custom_generate/generate.py HTTP/1.1" 404 0
+2025-06-04 17:27:17,289 - INFO - backup_safim.py:639 - Loading dataset: block
+2025-06-04 17:27:17,420 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "GET /api/datasets/gonglinyuan/safim HTTP/1.1" 200 2256
+2025-06-04 17:27:17,422 - DEBUG - connectionpool.py:1022 - Starting new HTTPS connection (1): s3.amazonaws.com:443
+2025-06-04 17:27:17,810 - DEBUG - connectionpool.py:475 - https://s3.amazonaws.com:443 "HEAD /datasets.huggingface.co/datasets/datasets/gonglinyuan/safim/gonglinyuan/safim.py HTTP/1.1" 404 0
+2025-06-04 17:27:17,929 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "GET /api/datasets/gonglinyuan/safim HTTP/1.1" 200 2256
+2025-06-04 17:27:17,934 - DEBUG - connectionpool.py:1022 - Starting new HTTPS connection (1): huggingface.co:443
+2025-06-04 17:27:18,112 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "HEAD /datasets/gonglinyuan/safim/resolve/be132cc15372e90b6f03a608e77f2d940e384edb/README.md HTTP/1.1" 200 0
+2025-06-04 17:27:18,126 - DEBUG - connectionpool.py:1022 - Starting new HTTPS connection (1): huggingface.co:443
+2025-06-04 17:27:18,270 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "HEAD /datasets/gonglinyuan/safim/resolve/be132cc15372e90b6f03a608e77f2d940e384edb/.huggingface.yaml HTTP/1.1" 404 0
+2025-06-04 17:27:18,393 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "GET /api/datasets/gonglinyuan/safim/revision/be132cc15372e90b6f03a608e77f2d940e384edb HTTP/1.1" 200 2256
+2025-06-04 17:27:18,565 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "GET /api/datasets/gonglinyuan/safim/tree/be132cc15372e90b6f03a608e77f2d940e384edb?recursive=False&expand=False HTTP/1.1" 200 1350
+2025-06-04 17:27:18,730 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "POST /api/datasets/gonglinyuan/safim/paths-info/be132cc15372e90b6f03a608e77f2d940e384edb HTTP/1.1" 200 536
+2025-06-04 17:27:18,734 - DEBUG - connectionpool.py:1022 - Starting new HTTPS connection (1): huggingface.co:443
+2025-06-04 17:27:18,883 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "GET /api/datasets/gonglinyuan/safim/revision/be132cc15372e90b6f03a608e77f2d940e384edb HTTP/1.1" 200 2256
+2025-06-04 17:27:18,888 - DEBUG - connectionpool.py:1022 - Starting new HTTPS connection (1): huggingface.co:443
+2025-06-04 17:27:19,039 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "HEAD /datasets/gonglinyuan/safim/resolve/be132cc15372e90b6f03a608e77f2d940e384edb/dataset_infos.json HTTP/1.1" 404 0
+2025-06-04 17:27:19,168 - DEBUG - connectionpool.py:475 - https://huggingface.co:443 "POST /api/datasets/gonglinyuan/safim/paths-info/be132cc15372e90b6f03a608e77f2d940e384edb HTTP/1.1" 200 536
+2025-06-04 17:27:19,171 - DEBUG - _api.py:254 - Attempting to acquire lock 138074011068304 on /ceph/ssd/students/hifl/hf_cache/datasets/_ceph_ssd_students_hifl_hf_cache_datasets_gonglinyuan___safim_block_0.0.0_be132cc15372e90b6f03a608e77f2d940e384edb.lock
+2025-06-04 17:27:19,172 - DEBUG - _api.py:257 - Lock 138074011068304 acquired on /ceph/ssd/students/hifl/hf_cache/datasets/_ceph_ssd_students_hifl_hf_cache_datasets_gonglinyuan___safim_block_0.0.0_be132cc15372e90b6f03a608e77f2d940e384edb.lock
+2025-06-04 17:27:19,173 - DEBUG - local.py:294 - open file: /ceph/ssd/students/hifl/hf_cache/datasets/gonglinyuan___safim/block/0.0.0/be132cc15372e90b6f03a608e77f2d940e384edb/dataset_info.json
+2025-06-04 17:27:19,175 - DEBUG - _api.py:286 - Attempting to release lock 138074011068304 on /ceph/ssd/students/hifl/hf_cache/datasets/_ceph_ssd_students_hifl_hf_cache_datasets_gonglinyuan___safim_block_0.0.0_be132cc15372e90b6f03a608e77f2d940e384edb.lock
+2025-06-04 17:27:19,177 - DEBUG - _api.py:289 - Lock 138074011068304 released on /ceph/ssd/students/hifl/hf_cache/datasets/_ceph_ssd_students_hifl_hf_cache_datasets_gonglinyuan___safim_block_0.0.0_be132cc15372e90b6f03a608e77f2d940e384edb.lock
+2025-06-04 17:27:19,204 - DEBUG - _api.py:254 - Attempting to acquire lock 138073856940496 on /ceph/ssd/students/hifl/hf_cache/datasets/gonglinyuan___safim/block/0.0.0/be132cc15372e90b6f03a608e77f2d940e384edb_builder.lock
+2025-06-04 17:27:19,205 - DEBUG - _api.py:257 - Lock 138073856940496 acquired on /ceph/ssd/students/hifl/hf_cache/datasets/gonglinyuan___safim/block/0.0.0/be132cc15372e90b6f03a608e77f2d940e384edb_builder.lock
+2025-06-04 17:27:19,210 - DEBUG - local.py:294 - open file: /ceph/ssd/students/hifl/hf_cache/datasets/gonglinyuan___safim/block/0.0.0/be132cc15372e90b6f03a608e77f2d940e384edb/dataset_info.json
+2025-06-04 17:27:19,212 - DEBUG - _api.py:286 - Attempting to release lock 138073856940496 on /ceph/ssd/students/hifl/hf_cache/datasets/gonglinyuan___safim/block/0.0.0/be132cc15372e90b6f03a608e77f2d940e384edb_builder.lock
+2025-06-04 17:27:19,214 - DEBUG - _api.py:289 - Lock 138073856940496 released on /ceph/ssd/students/hifl/hf_cache/datasets/gonglinyuan___safim/block/0.0.0/be132cc15372e90b6f03a608e77f2d940e384edb_builder.lock
+2025-06-04 17:27:19,715 - INFO - backup_safim.py:643 - Using completion type: block
+2025-06-04 17:27:19,722 - INFO - backup_safim.py:647 - Filtered to 11 problematic samples for debugging
+2025-06-04 17:27:19,722 - INFO - backup_safim.py:656 - 
+################################################################################
+2025-06-04 17:27:19,722 - INFO - backup_safim.py:657 - Processing sample 1/11: block_completion_000075
+2025-06-04 17:27:19,722 - INFO - backup_safim.py:658 - ################################################################################
+2025-06-04 17:27:19,722 - INFO - backup_safim.py:429 - 
+================================================================================
+2025-06-04 17:27:19,722 - INFO - backup_safim.py:430 - DEBUGGING PROBLEMATIC SAMPLE: block_completion_000075
+2025-06-04 17:27:19,722 - INFO - backup_safim.py:431 - ================================================================================
+2025-06-04 17:27:19,747 - INFO - backup_safim.py:444 - Task block_completion_000075: Original completion: update(i - 1 , 1)
+...
+2025-06-04 17:27:19,747 - INFO - backup_safim.py:450 - 
+ORIGINAL FULL CODE FOR block_completion_000075:
+2025-06-04 17:27:19,747 - INFO - backup_safim.py:451 - ------------------------------------------------------------
+2025-06-04 17:27:19,749 - INFO - backup_safim.py:452 - from sys import stdin
+input = stdin.readline
+
+inp = lambda : list(map(int,input().split()))
+
+def update(i , t):
+
+    global ans
+
+    if(i + 1 < n and a[i] == a[i + 1]):
+        ans += t * (i + 1)
+    else:
+        ans += t * (n - i) * (i + 1)
+
+    return ans
+
+def answer():
+
+    global ans
+
+    ans = 0
+    for i in range(n):
+
+        update(i , 1)
+
+
+    for q in range(m):
+        i , x = inp()
+        i -= 1
+
+        if(i >= 0):update(i - 1 , -1)
+        update(i , -1)
+
+        a[i] = x
+        if(i >= 0):update(i - 1 , 1)
+
+        update(i , 1)
+
+        print(ans)
+
+        
+for T in range(1):
+
+    n , m = inp()
+    a = inp()
+    
+    answer()
+
+2025-06-04 17:27:19,751 - INFO - backup_safim.py:453 - ------------------------------------------------------------
+2025-06-04 17:27:19,753 - INFO - backup_safim.py:463 - Task block_completion_000075: Original matches ground truth (implies all 1 tests passed).
+2025-06-04 17:27:19,755 - INFO - backup_safim.py:481 - Task block_completion_000075: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-04 17:27:19,757 - INFO - backup_safim.py:334 - Searching for adversarial example for task block_completion_000075
+2025-06-04 17:27:19,759 - DEBUG - backup_safim.py:342 - Task block_completion_000075: Adversarial reordering attempt 1/1
+2025-06-04 17:27:19,760 - DEBUG - backup_safim.py:241 - Task block_completion_000075: Original eval_prompt:
+from sys import stdin
+input = stdin.readline
+
+inp = lambda : list(map(int,input().split()))
+
+def update(i , t):
+
+    global ans
+
+    if(i + 1 < n and a[i] == a[i + 1]):
+        ans += t * (i + 1)
+    else:
+        ans += t * (n - i) * (i + 1)
+
+    return ans
+
+def answer():
+
+    global ans
+
+    ans = 0
+    for i in range(n):
+
+        update(i , 1)
+
+
+    for q in range(m):
+        i , x = inp()
+        i -= 1
+
+        if(i >= 0):update(i - 1 , -1)
+        update(i , -1)
+
+        a[i] = x
+        if(i >= 0):{{completion}}
+        update(i , 1)
+
+        print(ans)
+
+        
+for T in range(1):
+
+    n , m = inp()
+    a = inp()
+    
+    answer()
+
+2025-06-04 17:27:19,762 - DEBUG - backup_safim.py:242 - Task block_completion_000075: Original ground_truth:
+update(i - 1 , 1)
+2025-06-04 17:27:19,763 - DEBUG - backup_safim.py:244 - Task block_completion_000075: Original full code for perturbation:
+from sys import stdin
+input = stdin.readline
+
+inp = lambda : list(map(int,input().split()))
+
+def update(i , t):
+
+    global ans
+
+    if(i + 1 < n and a[i] == a[i + 1]):
+        ans += t * (i + 1)
+    else:
+        ans += t * (n - i) * (i + 1)
+
+    return ans
+
+def answer():
+
+    global ans
+
+    ans = 0
+    for i in range(n):
+
+        update(i , 1)
+
+
+    for q in range(m):
+        i , x = inp()
+        i -= 1
+
+        if(i >= 0):update(i - 1 , -1)
+        update(i , -1)
+
+        a[i] = x
+        if(i >= 0):update(i - 1 , 1)
+        update(i , 1)
+
+        print(ans)
+
+        
+for T in range(1):
+
+    n , m = inp()
+    a = inp()
+    
+    answer()
+
+2025-06-04 17:27:19,771 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:27:19,771 - DEBUG - dataflow_parser.py:856 - Function is builtin. (list)
+2025-06-04 17:27:19,771 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:27:19,773 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:27:19,775 - DEBUG - dataflow_parser.py:856 - Cannot statically determine the function being called. (inp)
+2025-06-04 17:27:19,776 - DEBUG - dataflow_parser.py:856 - Cannot statically determine the function being called. (inp)
+2025-06-04 17:27:19,778 - DEBUG - dataflow_parser.py:856 - Function is builtin. (map)
+2025-06-04 17:27:19,780 - DEBUG - dataflow_parser.py:856 - Cannot statically determine the function being called. (inp)
+2025-06-04 17:27:19,782 - DEBUG - dataflow_parser.py:856 - Function is builtin. (print)
+2025-06-04 17:27:19,783 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (input().split)
+2025-06-04 17:27:19,785 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:27:20,336 - ERROR - backup_safim.py:301 - Reordering process failed: 'NoneType' object has no attribute 'debug'
+Traceback (most recent call last):
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/backup_safim.py", line 247, in generate_adversarial_reordering
+    reordered_full_code, _ = perturbation(
+                             ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1633, in perturbation
+    reconstructed_ast = reorder_module_statements(reconstructed_ast, usage_map,logger=logger)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1116, in reorder_module_statements
+    mod_collector.visit(stmt)
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 418, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 976, in visit_ImportFrom
+    self.logger.debug(f"ModCollector: Visiting ImportFrom")
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'debug'
+2025-06-04 17:27:20,338 - DEBUG - backup_safim.py:347 - Task block_completion_000075: Attempt 1 - reordered_prompt was None (GT not found or syntax error in reordered code).
+2025-06-04 17:27:20,340 - INFO - backup_safim.py:404 - No adversarial example found for block_completion_000075 after 1 reordering attempts.
+2025-06-04 17:27:20,342 - INFO - backup_safim.py:405 -   Overall attempts: 1, Valid reorderings generated: 0, Model passed on valid reorderings: 0
+2025-06-04 17:27:20,344 - INFO - backup_safim.py:406 -   Final failure reason: gt_not_found_or_syntax_err_all_attempts
+2025-06-04 17:27:20,344 - INFO - backup_safim.py:656 - 
+################################################################################
+2025-06-04 17:27:20,346 - INFO - backup_safim.py:657 - Processing sample 2/11: block_completion_000078
+2025-06-04 17:27:20,348 - INFO - backup_safim.py:658 - ################################################################################
+2025-06-04 17:27:20,350 - INFO - backup_safim.py:429 - 
+================================================================================
+2025-06-04 17:27:20,352 - INFO - backup_safim.py:430 - DEBUGGING PROBLEMATIC SAMPLE: block_completion_000078
+2025-06-04 17:27:20,353 - INFO - backup_safim.py:431 - ================================================================================
+2025-06-04 17:27:20,365 - INFO - backup_safim.py:444 - Task block_completion_000078: Original completion: c -= w[ix-1]
+...
+2025-06-04 17:27:20,365 - INFO - backup_safim.py:450 - 
+ORIGINAL FULL CODE FOR block_completion_000078:
+2025-06-04 17:27:20,365 - INFO - backup_safim.py:451 - ------------------------------------------------------------
+2025-06-04 17:27:20,367 - INFO - backup_safim.py:452 - import time, sys
+
+n, m = [int(i) for i in sys.stdin.readline().split()]
+a = [int(i) for i in sys.stdin.readline().split()]
+t1 = time.time()
+w = [(i+1)*(n-i-1) for i in range(n-1)]
+c = sum([w[i] if a[i+1] != a[i] else 0 for i in range(n-1)])
+for _ in range(m):
+    ix, x = [int(i) for i in sys.stdin.readline().split()]
+    ix -= 1
+    if ix != 0:
+        if a[ix] == a[ix-1] != x:
+            c += w[ix-1]
+        elif a[ix] != a[ix-1] == x:
+            c -= w[ix-1]
+
+    if ix != n-1:
+        if a[ix] == a[ix+1] != x:
+            c += w[ix]
+        elif a[ix] != a[ix+1] == x:
+            c -= w[ix]
+    a[ix] = x
+
+    sys.stdout.write(str(c+(n*(n+1))//2) + '\n')
+2025-06-04 17:27:20,369 - INFO - backup_safim.py:453 - ------------------------------------------------------------
+2025-06-04 17:27:20,371 - INFO - backup_safim.py:463 - Task block_completion_000078: Original matches ground truth (implies all 1 tests passed).
+2025-06-04 17:27:20,373 - INFO - backup_safim.py:481 - Task block_completion_000078: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-04 17:27:20,373 - INFO - backup_safim.py:334 - Searching for adversarial example for task block_completion_000078
+2025-06-04 17:27:20,373 - DEBUG - backup_safim.py:342 - Task block_completion_000078: Adversarial reordering attempt 1/1
+2025-06-04 17:27:20,373 - DEBUG - backup_safim.py:241 - Task block_completion_000078: Original eval_prompt:
+import time, sys
+
+n, m = [int(i) for i in sys.stdin.readline().split()]
+a = [int(i) for i in sys.stdin.readline().split()]
+t1 = time.time()
+w = [(i+1)*(n-i-1) for i in range(n-1)]
+c = sum([w[i] if a[i+1] != a[i] else 0 for i in range(n-1)])
+for _ in range(m):
+    ix, x = [int(i) for i in sys.stdin.readline().split()]
+    ix -= 1
+    if ix != 0:
+        if a[ix] == a[ix-1] != x:
+            c += w[ix-1]
+        elif a[ix] != a[ix-1] == x:
+            {{completion}}
+    if ix != n-1:
+        if a[ix] == a[ix+1] != x:
+            c += w[ix]
+        elif a[ix] != a[ix+1] == x:
+            c -= w[ix]
+    a[ix] = x
+
+    sys.stdout.write(str(c+(n*(n+1))//2) + '\n')
+2025-06-04 17:27:20,373 - DEBUG - backup_safim.py:242 - Task block_completion_000078: Original ground_truth:
+c -= w[ix-1]
+2025-06-04 17:27:20,373 - DEBUG - backup_safim.py:244 - Task block_completion_000078: Original full code for perturbation:
+import time, sys
+
+n, m = [int(i) for i in sys.stdin.readline().split()]
+a = [int(i) for i in sys.stdin.readline().split()]
+t1 = time.time()
+w = [(i+1)*(n-i-1) for i in range(n-1)]
+c = sum([w[i] if a[i+1] != a[i] else 0 for i in range(n-1)])
+for _ in range(m):
+    ix, x = [int(i) for i in sys.stdin.readline().split()]
+    ix -= 1
+    if ix != 0:
+        if a[ix] == a[ix-1] != x:
+            c += w[ix-1]
+        elif a[ix] != a[ix-1] == x:
+            c -= w[ix-1]
+    if ix != n-1:
+        if a[ix] == a[ix+1] != x:
+            c += w[ix]
+        elif a[ix] != a[ix+1] == x:
+            c -= w[ix]
+    a[ix] = x
+
+    sys.stdout.write(str(c+(n*(n+1))//2) + '\n')
+2025-06-04 17:27:20,380 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (time.time)
+2025-06-04 17:27:20,381 - DEBUG - dataflow_parser.py:856 - Function is builtin. (sum)
+2025-06-04 17:27:20,382 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:27:20,384 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:27:20,385 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:27:20,386 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (sys.stdout.write)
+2025-06-04 17:27:20,387 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (sys.stdin.readline().split)
+2025-06-04 17:27:20,387 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (sys.stdin.readline().split)
+2025-06-04 17:27:20,387 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:27:20,396 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:27:20,405 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:27:20,410 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (sys.stdin.readline().split)
+2025-06-04 17:27:20,414 - DEBUG - dataflow_parser.py:856 - Function is builtin. (str)
+2025-06-04 17:27:20,420 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (sys.stdin.readline)
+2025-06-04 17:27:20,423 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (sys.stdin.readline)
+2025-06-04 17:27:20,425 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (sys.stdin.readline)
+2025-06-04 17:27:21,863 - ERROR - backup_safim.py:301 - Reordering process failed: 'NoneType' object has no attribute 'debug'
+Traceback (most recent call last):
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/backup_safim.py", line 247, in generate_adversarial_reordering
+    reordered_full_code, _ = perturbation(
+                             ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1633, in perturbation
+    reconstructed_ast = reorder_module_statements(reconstructed_ast, usage_map,logger=logger)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1116, in reorder_module_statements
+    mod_collector.visit(stmt)
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 418, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 969, in visit_Import
+    self.logger.debug(f"ModCollector: Visiting Import")
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'debug'
+2025-06-04 17:27:21,863 - DEBUG - backup_safim.py:347 - Task block_completion_000078: Attempt 1 - reordered_prompt was None (GT not found or syntax error in reordered code).
+2025-06-04 17:27:21,866 - INFO - backup_safim.py:404 - No adversarial example found for block_completion_000078 after 1 reordering attempts.
+2025-06-04 17:27:21,867 - INFO - backup_safim.py:405 -   Overall attempts: 1, Valid reorderings generated: 0, Model passed on valid reorderings: 0
+2025-06-04 17:27:21,869 - INFO - backup_safim.py:406 -   Final failure reason: gt_not_found_or_syntax_err_all_attempts
+2025-06-04 17:27:21,869 - INFO - backup_safim.py:656 - 
+################################################################################
+2025-06-04 17:27:21,869 - INFO - backup_safim.py:657 - Processing sample 3/11: block_completion_000079
+2025-06-04 17:27:21,869 - INFO - backup_safim.py:658 - ################################################################################
+2025-06-04 17:27:21,869 - INFO - backup_safim.py:429 - 
+================================================================================
+2025-06-04 17:27:21,869 - INFO - backup_safim.py:430 - DEBUGGING PROBLEMATIC SAMPLE: block_completion_000079
+2025-06-04 17:27:21,871 - INFO - backup_safim.py:431 - ================================================================================
+2025-06-04 17:27:21,883 - INFO - backup_safim.py:444 - Task block_completion_000079: Original completion: c -= w[ix]
+...
+2025-06-04 17:27:21,883 - INFO - backup_safim.py:450 - 
+ORIGINAL FULL CODE FOR block_completion_000079:
+2025-06-04 17:27:21,883 - INFO - backup_safim.py:451 - ------------------------------------------------------------
+2025-06-04 17:27:21,885 - INFO - backup_safim.py:452 - import time, sys
+
+n, m = [int(i) for i in sys.stdin.readline().split()]
+a = [int(i) for i in sys.stdin.readline().split()]
+t1 = time.time()
+w = [(i+1)*(n-i-1) for i in range(n-1)]
+c = sum([w[i] if a[i+1] != a[i] else 0 for i in range(n-1)])
+for _ in range(m):
+    ix, x = [int(i) for i in sys.stdin.readline().split()]
+    ix -= 1
+    if ix != 0:
+        if a[ix] == a[ix-1] != x:
+            c += w[ix-1]
+        elif a[ix] != a[ix-1] == x:
+            c -= w[ix-1]
+    if ix != n-1:
+        if a[ix] == a[ix+1] != x:
+            c += w[ix]
+        elif a[ix] != a[ix+1] == x:
+            c -= w[ix]
+
+    a[ix] = x
+
+    sys.stdout.write(str(c+(n*(n+1))//2) + '\n')
+2025-06-04 17:27:21,886 - INFO - backup_safim.py:453 - ------------------------------------------------------------
+2025-06-04 17:27:21,888 - INFO - backup_safim.py:463 - Task block_completion_000079: Original matches ground truth (implies all 1 tests passed).
+2025-06-04 17:27:21,890 - INFO - backup_safim.py:481 - Task block_completion_000079: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-04 17:27:21,891 - INFO - backup_safim.py:334 - Searching for adversarial example for task block_completion_000079
+2025-06-04 17:27:21,893 - DEBUG - backup_safim.py:342 - Task block_completion_000079: Adversarial reordering attempt 1/1
+2025-06-04 17:27:21,895 - DEBUG - backup_safim.py:241 - Task block_completion_000079: Original eval_prompt:
+import time, sys
+
+n, m = [int(i) for i in sys.stdin.readline().split()]
+a = [int(i) for i in sys.stdin.readline().split()]
+t1 = time.time()
+w = [(i+1)*(n-i-1) for i in range(n-1)]
+c = sum([w[i] if a[i+1] != a[i] else 0 for i in range(n-1)])
+for _ in range(m):
+    ix, x = [int(i) for i in sys.stdin.readline().split()]
+    ix -= 1
+    if ix != 0:
+        if a[ix] == a[ix-1] != x:
+            c += w[ix-1]
+        elif a[ix] != a[ix-1] == x:
+            c -= w[ix-1]
+    if ix != n-1:
+        if a[ix] == a[ix+1] != x:
+            c += w[ix]
+        elif a[ix] != a[ix+1] == x:
+            {{completion}}
+    a[ix] = x
+
+    sys.stdout.write(str(c+(n*(n+1))//2) + '\n')
+2025-06-04 17:27:21,895 - DEBUG - backup_safim.py:242 - Task block_completion_000079: Original ground_truth:
+c -= w[ix]
+2025-06-04 17:27:21,895 - DEBUG - backup_safim.py:244 - Task block_completion_000079: Original full code for perturbation:
+import time, sys
+
+n, m = [int(i) for i in sys.stdin.readline().split()]
+a = [int(i) for i in sys.stdin.readline().split()]
+t1 = time.time()
+w = [(i+1)*(n-i-1) for i in range(n-1)]
+c = sum([w[i] if a[i+1] != a[i] else 0 for i in range(n-1)])
+for _ in range(m):
+    ix, x = [int(i) for i in sys.stdin.readline().split()]
+    ix -= 1
+    if ix != 0:
+        if a[ix] == a[ix-1] != x:
+            c += w[ix-1]
+        elif a[ix] != a[ix-1] == x:
+            c -= w[ix-1]
+    if ix != n-1:
+        if a[ix] == a[ix+1] != x:
+            c += w[ix]
+        elif a[ix] != a[ix+1] == x:
+            c -= w[ix]
+    a[ix] = x
+
+    sys.stdout.write(str(c+(n*(n+1))//2) + '\n')
+2025-06-04 17:27:21,902 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (time.time)
+2025-06-04 17:27:21,903 - DEBUG - dataflow_parser.py:856 - Function is builtin. (sum)
+2025-06-04 17:27:21,903 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:27:21,903 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:27:21,903 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:27:21,903 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (sys.stdout.write)
+2025-06-04 17:27:21,903 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (sys.stdin.readline().split)
+2025-06-04 17:27:21,903 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (sys.stdin.readline().split)
+2025-06-04 17:27:21,903 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:27:21,904 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:27:21,904 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:27:21,904 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (sys.stdin.readline().split)
+2025-06-04 17:27:21,904 - DEBUG - dataflow_parser.py:856 - Function is builtin. (str)
+2025-06-04 17:27:21,904 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (sys.stdin.readline)
+2025-06-04 17:27:21,904 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (sys.stdin.readline)
+2025-06-04 17:27:21,904 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (sys.stdin.readline)
+2025-06-04 17:27:23,341 - ERROR - backup_safim.py:301 - Reordering process failed: 'NoneType' object has no attribute 'debug'
+Traceback (most recent call last):
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/backup_safim.py", line 247, in generate_adversarial_reordering
+    reordered_full_code, _ = perturbation(
+                             ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1633, in perturbation
+    reconstructed_ast = reorder_module_statements(reconstructed_ast, usage_map,logger=logger)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1116, in reorder_module_statements
+    mod_collector.visit(stmt)
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 418, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 969, in visit_Import
+    self.logger.debug(f"ModCollector: Visiting Import")
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'debug'
+2025-06-04 17:27:23,342 - DEBUG - backup_safim.py:347 - Task block_completion_000079: Attempt 1 - reordered_prompt was None (GT not found or syntax error in reordered code).
+2025-06-04 17:27:23,344 - INFO - backup_safim.py:404 - No adversarial example found for block_completion_000079 after 1 reordering attempts.
+2025-06-04 17:27:23,344 - INFO - backup_safim.py:405 -   Overall attempts: 1, Valid reorderings generated: 0, Model passed on valid reorderings: 0
+2025-06-04 17:27:23,344 - INFO - backup_safim.py:406 -   Final failure reason: gt_not_found_or_syntax_err_all_attempts
+2025-06-04 17:27:23,346 - INFO - backup_safim.py:656 - 
+################################################################################
+2025-06-04 17:27:23,347 - INFO - backup_safim.py:657 - Processing sample 4/11: block_completion_000109
+2025-06-04 17:27:23,349 - INFO - backup_safim.py:658 - ################################################################################
+2025-06-04 17:27:23,351 - INFO - backup_safim.py:429 - 
+================================================================================
+2025-06-04 17:27:23,353 - INFO - backup_safim.py:430 - DEBUGGING PROBLEMATIC SAMPLE: block_completion_000109
+2025-06-04 17:27:23,354 - INFO - backup_safim.py:431 - ================================================================================
+2025-06-04 17:27:23,612 - INFO - backup_safim.py:444 - Task block_completion_000109: Original completion: continue
+        if len(G[v]) == 0:
+            co...
+2025-06-04 17:27:23,612 - INFO - backup_safim.py:450 - 
+ORIGINAL FULL CODE FOR block_completion_000109:
+2025-06-04 17:27:23,612 - INFO - backup_safim.py:451 - ------------------------------------------------------------
+2025-06-04 17:27:23,613 - INFO - backup_safim.py:452 - 
+
+
+
+import sys
+input=sys.stdin.readline #文字列入力はするな！！
+
+
+
+########################################
+from heapq import heappush, heappop
+B=10**5+10
+def dijkstra( G, dist, INF=10**11):
+    """
+    https://tjkendev.github.io/procon-library/python/graph/dijkstra.html
+    O((|E|+|V|)log|V|)
+    V: 頂点数
+    G[v] = [(nod, cost)]:
+        頂点vから遷移可能な頂点(nod)とそのコスト(cost)
+    s: 始点の頂点"""
+
+    N=len(dist)
+    hp=[]
+    for i in range(N):
+        heappush(hp,dist[i]*B+i)
+    while hp:
+        cv=heappop(hp)
+        c, v = cv//B,cv%B
+        if dist[v] < c:
+            continue
+        if len(G[v]) == 0:
+            continue
+
+        for u, cost in G[v]:
+            if dist[v] + cost < dist[u]:
+                dist[u] = dist[v] + cost
+                heappush(hp, dist[u]*B+u)
+    return dist
+##################################################
+
+
+
+
+#########################################
+from collections import deque
+class Convex_Hull_Trick():
+
+    #https://tjkendev.github.io/procon-library/python/convex_hull_trick/deque.html
+    #追加する傾きが単調かつqueryのxが単調
+    #単調性なしが良いならこちらへ(queryのxは先読み) https://judge.yosupo.jp/submission/30579
+
+    def __init__(self):
+        self.deq=deque()
+    def check(self,f1, f2, f3):
+        return (f2[0] - f1[0]) * (f3[1] - f2[1]) >= (f2[1] - f1[1]) * (f3[0] - f2[0])
+    def f(self,f1, x):
+        return f1[0] * x + f1[1]
+
+    # add f_i(x) = a*x + b
+    def add_line(self,a, b):
+        f1 = (a, b)
+        while len(self.deq) >= 2 and self.check(self.deq[-2], self.deq[-1], f1):
+            self.deq.pop()
+        self.deq.append(f1)
+
+    # min f_i(x)
+    def query(self,x):
+        while len(self.deq) >= 2 and self.f(self.deq[0], x) >= self.f(self.deq[1], x):
+            self.deq.popleft()
+        return self.f(self.deq[0], x)
+
+##################################
+
+
+n,m,k=map(int,input().split())
+root=[[] for i in range(n+2)]
+for i in range(m):
+    a,b,c=map(int,input().split())
+    root[a].append((b,c))
+    root[b].append((a,c))
+dp=[10**11]*(n+1)
+dp[1]=0
+dp=dijkstra(root,dp)
+for iii in range(k):
+    newdp=[10**11]*(n+1)
+    cht=Convex_Hull_Trick()
+    for i in range(1,n+1):
+        cht.add_line(-2*i,dp[i]+i**2)
+    for i in range(1,n+1):
+        newdp[i]=cht.query(i)+i**2
+
+
+    dp=newdp[:]
+    dp=dijkstra(root,dp)
+print(*dp[1:])
+
+
+
+
+
+2025-06-04 17:27:23,615 - INFO - backup_safim.py:453 - ------------------------------------------------------------
+2025-06-04 17:27:23,620 - DEBUG - backup_safim.py:98 - Task block_completion_000109, Test 1/4: Running with input: '3 1 2
+1 3 1'
+2025-06-04 17:27:23,644 - DEBUG - backup_safim.py:98 - Task block_completion_000109, Test 2/4: Running with input: '4 3 1
+1 2 3
+2 4 5
+3 4 7'
+2025-06-04 17:27:23,667 - DEBUG - backup_safim.py:98 - Task block_completion_000109, Test 3/4: Running with input: '2 1 1
+2 1 893746473'
+2025-06-04 17:27:23,689 - DEBUG - backup_safim.py:98 - Task block_completion_000109, Test 4/4: Running with input: '5 5 2
+2 1 33
+1 5 93
+5 3 48
+2 3 21
+4 2 1'
+2025-06-04 17:27:23,712 - INFO - backup_safim.py:473 - Task block_completion_000109: Original passed (4/4 tests)
+2025-06-04 17:27:23,712 - INFO - backup_safim.py:481 - Task block_completion_000109: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-04 17:27:23,712 - INFO - backup_safim.py:334 - Searching for adversarial example for task block_completion_000109
+2025-06-04 17:27:23,713 - DEBUG - backup_safim.py:342 - Task block_completion_000109: Adversarial reordering attempt 1/1
+2025-06-04 17:27:23,715 - DEBUG - backup_safim.py:241 - Task block_completion_000109: Original eval_prompt:
+
+
+
+
+import sys
+input=sys.stdin.readline #文字列入力はするな！！
+
+
+
+########################################
+from heapq import heappush, heappop
+B=10**5+10
+def dijkstra( G, dist, INF=10**11):
+    """
+    https://tjkendev.github.io/procon-library/python/graph/dijkstra.html
+    O((|E|+|V|)log|V|)
+    V: 頂点数
+    G[v] = [(nod, cost)]:
+        頂点vから遷移可能な頂点(nod)とそのコスト(cost)
+    s: 始点の頂点"""
+
+    N=len(dist)
+    hp=[]
+    for i in range(N):
+        heappush(hp,dist[i]*B+i)
+    while hp:
+        cv=heappop(hp)
+        c, v = cv//B,cv%B
+        if dist[v] < c:
+            {{completion}}
+        for u, cost in G[v]:
+            if dist[v] + cost < dist[u]:
+                dist[u] = dist[v] + cost
+                heappush(hp, dist[u]*B+u)
+    return dist
+##################################################
+
+
+
+
+#########################################
+from collections import deque
+class Convex_Hull_Trick():
+
+    #https://tjkendev.github.io/procon-library/python/convex_hull_trick/deque.html
+    #追加する傾きが単調かつqueryのxが単調
+    #単調性なしが良いならこちらへ(queryのxは先読み) https://judge.yosupo.jp/submission/30579
+
+    def __init__(self):
+        self.deq=deque()
+    def check(self,f1, f2, f3):
+        return (f2[0] - f1[0]) * (f3[1] - f2[1]) >= (f2[1] - f1[1]) * (f3[0] - f2[0])
+    def f(self,f1, x):
+        return f1[0] * x + f1[1]
+
+    # add f_i(x) = a*x + b
+    def add_line(self,a, b):
+        f1 = (a, b)
+        while len(self.deq) >= 2 and self.check(self.deq[-2], self.deq[-1], f1):
+            self.deq.pop()
+        self.deq.append(f1)
+
+    # min f_i(x)
+    def query(self,x):
+        while len(self.deq) >= 2 and self.f(self.deq[0], x) >= self.f(self.deq[1], x):
+            self.deq.popleft()
+        return self.f(self.deq[0], x)
+
+##################################
+
+
+n,m,k=map(int,input().split())
+root=[[] for i in range(n+2)]
+for i in range(m):
+    a,b,c=map(int,input().split())
+    root[a].append((b,c))
+    root[b].append((a,c))
+dp=[10**11]*(n+1)
+dp[1]=0
+dp=dijkstra(root,dp)
+for iii in range(k):
+    newdp=[10**11]*(n+1)
+    cht=Convex_Hull_Trick()
+    for i in range(1,n+1):
+        cht.add_line(-2*i,dp[i]+i**2)
+    for i in range(1,n+1):
+        newdp[i]=cht.query(i)+i**2
+
+
+    dp=newdp[:]
+    dp=dijkstra(root,dp)
+print(*dp[1:])
+
+
+
+
+
+2025-06-04 17:27:23,717 - DEBUG - backup_safim.py:242 - Task block_completion_000109: Original ground_truth:
+continue
+2025-06-04 17:27:23,720 - DEBUG - backup_safim.py:244 - Task block_completion_000109: Original full code for perturbation:
+
+
+
+
+import sys
+input=sys.stdin.readline #文字列入力はするな！！
+
+
+
+########################################
+from heapq import heappush, heappop
+B=10**5+10
+def dijkstra( G, dist, INF=10**11):
+    """
+    https://tjkendev.github.io/procon-library/python/graph/dijkstra.html
+    O((|E|+|V|)log|V|)
+    V: 頂点数
+    G[v] = [(nod, cost)]:
+        頂点vから遷移可能な頂点(nod)とそのコスト(cost)
+    s: 始点の頂点"""
+
+    N=len(dist)
+    hp=[]
+    for i in range(N):
+        heappush(hp,dist[i]*B+i)
+    while hp:
+        cv=heappop(hp)
+        c, v = cv//B,cv%B
+        if dist[v] < c:
+            continue
+        for u, cost in G[v]:
+            if dist[v] + cost < dist[u]:
+                dist[u] = dist[v] + cost
+                heappush(hp, dist[u]*B+u)
+    return dist
+##################################################
+
+
+
+
+#########################################
+from collections import deque
+class Convex_Hull_Trick():
+
+    #https://tjkendev.github.io/procon-library/python/convex_hull_trick/deque.html
+    #追加する傾きが単調かつqueryのxが単調
+    #単調性なしが良いならこちらへ(queryのxは先読み) https://judge.yosupo.jp/submission/30579
+
+    def __init__(self):
+        self.deq=deque()
+    def check(self,f1, f2, f3):
+        return (f2[0] - f1[0]) * (f3[1] - f2[1]) >= (f2[1] - f1[1]) * (f3[0] - f2[0])
+    def f(self,f1, x):
+        return f1[0] * x + f1[1]
+
+    # add f_i(x) = a*x + b
+    def add_line(self,a, b):
+        f1 = (a, b)
+        while len(self.deq) >= 2 and self.check(self.deq[-2], self.deq[-1], f1):
+            self.deq.pop()
+        self.deq.append(f1)
+
+    # min f_i(x)
+    def query(self,x):
+        while len(self.deq) >= 2 and self.f(self.deq[0], x) >= self.f(self.deq[1], x):
+            self.deq.popleft()
+        return self.f(self.deq[0], x)
+
+##################################
+
+
+n,m,k=map(int,input().split())
+root=[[] for i in range(n+2)]
+for i in range(m):
+    a,b,c=map(int,input().split())
+    root[a].append((b,c))
+    root[b].append((a,c))
+dp=[10**11]*(n+1)
+dp[1]=0
+dp=dijkstra(root,dp)
+for iii in range(k):
+    newdp=[10**11]*(n+1)
+    cht=Convex_Hull_Trick()
+    for i in range(1,n+1):
+        cht.add_line(-2*i,dp[i]+i**2)
+    for i in range(1,n+1):
+        newdp[i]=cht.query(i)+i**2
+
+
+    dp=newdp[:]
+    dp=dijkstra(root,dp)
+print(*dp[1:])
+
+
+
+
+
+2025-06-04 17:27:23,741 - DEBUG - dataflow_parser.py:856 - Function is builtin. (map)
+2025-06-04 17:27:23,741 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:27:23,742 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:27:23,744 - DEBUG - dataflow_parser.py:856 - Function is builtin. (print)
+2025-06-04 17:27:23,745 - DEBUG - dataflow_parser.py:856 - Function is builtin. (len)
+2025-06-04 17:27:23,747 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:27:23,747 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (input().split)
+2025-06-04 17:27:23,747 - DEBUG - dataflow_parser.py:856 - Function is builtin. (map)
+2025-06-04 17:27:23,749 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (root[a].append)
+2025-06-04 17:27:23,749 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (root[b].append)
+2025-06-04 17:27:23,749 - DEBUG - dataflow_parser.py:856 - Cannot statically determine the function being called. (Convex_Hull_Trick)
+2025-06-04 17:27:23,749 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:27:23,750 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:27:23,750 - DEBUG - dataflow_parser.py:856 - Cannot statically determine the function being called. (heappush)
+2025-06-04 17:27:23,750 - DEBUG - dataflow_parser.py:856 - Cannot statically determine the function being called. (heappop)
+2025-06-04 17:27:23,750 - DEBUG - dataflow_parser.py:856 - Cannot statically determine the function being called. (deque)
+2025-06-04 17:27:23,750 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (self.deq.append)
+2025-06-04 17:27:23,750 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (self.f)
+2025-06-04 17:27:23,750 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:27:23,751 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (input().split)
+2025-06-04 17:27:23,751 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (cht.add_line)
+2025-06-04 17:27:23,751 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (self.check)
+2025-06-04 17:27:23,751 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (self.deq.pop)
+2025-06-04 17:27:23,751 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (self.deq.popleft)
+2025-06-04 17:27:23,751 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:27:23,751 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (cht.query)
+2025-06-04 17:27:23,751 - DEBUG - dataflow_parser.py:856 - Cannot statically determine the function being called. (heappush)
+2025-06-04 17:27:23,751 - DEBUG - dataflow_parser.py:856 - Function is builtin. (len)
+2025-06-04 17:27:23,751 - DEBUG - dataflow_parser.py:856 - Function is builtin. (len)
+2025-06-04 17:27:23,751 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (self.f)
+2025-06-04 17:27:23,751 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (self.f)
+2025-06-04 17:27:23,767 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:28:00,509 - ERROR - backup_safim.py:301 - Reordering process failed: 'NoneType' object has no attribute 'debug'
+Traceback (most recent call last):
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/backup_safim.py", line 247, in generate_adversarial_reordering
+    reordered_full_code, _ = perturbation(
+                             ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1633, in perturbation
+    reconstructed_ast = reorder_module_statements(reconstructed_ast, usage_map,logger=logger)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1116, in reorder_module_statements
+    mod_collector.visit(stmt)
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 418, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 969, in visit_Import
+    self.logger.debug(f"ModCollector: Visiting Import")
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'debug'
+2025-06-04 17:28:00,511 - DEBUG - backup_safim.py:347 - Task block_completion_000109: Attempt 1 - reordered_prompt was None (GT not found or syntax error in reordered code).
+2025-06-04 17:28:00,512 - INFO - backup_safim.py:404 - No adversarial example found for block_completion_000109 after 1 reordering attempts.
+2025-06-04 17:28:00,513 - INFO - backup_safim.py:405 -   Overall attempts: 1, Valid reorderings generated: 0, Model passed on valid reorderings: 0
+2025-06-04 17:28:00,515 - INFO - backup_safim.py:406 -   Final failure reason: gt_not_found_or_syntax_err_all_attempts
+2025-06-04 17:28:00,515 - INFO - backup_safim.py:656 - 
+################################################################################
+2025-06-04 17:28:00,518 - INFO - backup_safim.py:657 - Processing sample 5/11: block_completion_000432
+2025-06-04 17:28:00,520 - INFO - backup_safim.py:658 - ################################################################################
+2025-06-04 17:28:00,522 - INFO - backup_safim.py:429 - 
+================================================================================
+2025-06-04 17:28:00,524 - INFO - backup_safim.py:430 - DEBUGGING PROBLEMATIC SAMPLE: block_completion_000432
+2025-06-04 17:28:00,526 - INFO - backup_safim.py:431 - ================================================================================
+2025-06-04 17:28:00,530 - INFO - backup_safim.py:444 - Task block_completion_000432: Original completion: print("NO")
+
+...
+2025-06-04 17:28:00,530 - INFO - backup_safim.py:450 - 
+ORIGINAL FULL CODE FOR block_completion_000432:
+2025-06-04 17:28:00,530 - INFO - backup_safim.py:451 - ------------------------------------------------------------
+2025-06-04 17:28:00,532 - INFO - backup_safim.py:452 - for t in range(int(input())):
+    
+    n=int(input())
+    a=list(map(int,input().split()))
+    i=n-1
+    while(a[i]==0 and i!=0):
+        i-=1 
+    while(i>0):
+        if a[i]>=0:
+            print("NO")
+            break
+        a[i-1]+=a[i]
+        i-=1
+    else:
+        if a[i]==0:
+            print("YES")
+        else:
+            print("NO")
+
+
+
+2025-06-04 17:28:00,534 - INFO - backup_safim.py:453 - ------------------------------------------------------------
+2025-06-04 17:28:00,535 - INFO - backup_safim.py:463 - Task block_completion_000432: Original matches ground truth (implies all 1 tests passed).
+2025-06-04 17:28:00,537 - INFO - backup_safim.py:481 - Task block_completion_000432: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-04 17:28:00,539 - INFO - backup_safim.py:334 - Searching for adversarial example for task block_completion_000432
+2025-06-04 17:28:00,541 - DEBUG - backup_safim.py:342 - Task block_completion_000432: Adversarial reordering attempt 1/1
+2025-06-04 17:28:00,543 - DEBUG - backup_safim.py:241 - Task block_completion_000432: Original eval_prompt:
+for t in range(int(input())):
+    
+    n=int(input())
+    a=list(map(int,input().split()))
+    i=n-1
+    while(a[i]==0 and i!=0):
+        i-=1 
+    while(i>0):
+        if a[i]>=0:
+            print("NO")
+            break
+        a[i-1]+=a[i]
+        i-=1
+    else:
+        if a[i]==0:
+            print("YES")
+        else:
+            {{completion}}
+
+2025-06-04 17:28:00,544 - DEBUG - backup_safim.py:242 - Task block_completion_000432: Original ground_truth:
+print("NO")
+2025-06-04 17:28:00,546 - DEBUG - backup_safim.py:244 - Task block_completion_000432: Original full code for perturbation:
+for t in range(int(input())):
+    
+    n=int(input())
+    a=list(map(int,input().split()))
+    i=n-1
+    while(a[i]==0 and i!=0):
+        i-=1 
+    while(i>0):
+        if a[i]>=0:
+            print("NO")
+            break
+        a[i-1]+=a[i]
+        i-=1
+    else:
+        if a[i]==0:
+            print("YES")
+        else:
+            print("NO")
+
+2025-06-04 17:28:00,552 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:28:00,552 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:28:00,554 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:28:00,556 - DEBUG - dataflow_parser.py:856 - Function is builtin. (list)
+2025-06-04 17:28:00,557 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:28:00,559 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:28:00,561 - DEBUG - dataflow_parser.py:856 - Function is builtin. (map)
+2025-06-04 17:28:00,562 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (input().split)
+2025-06-04 17:28:00,563 - DEBUG - dataflow_parser.py:856 - Function is builtin. (print)
+2025-06-04 17:28:00,565 - DEBUG - dataflow_parser.py:856 - Function is builtin. (print)
+2025-06-04 17:28:00,566 - DEBUG - dataflow_parser.py:856 - Function is builtin. (print)
+2025-06-04 17:28:00,568 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:28:00,656 - ERROR - backup_safim.py:301 - Reordering process failed: 'NoneType' object has no attribute 'debug'
+Traceback (most recent call last):
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/backup_safim.py", line 247, in generate_adversarial_reordering
+    reordered_full_code, _ = perturbation(
+                             ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1633, in perturbation
+    reconstructed_ast = reorder_module_statements(reconstructed_ast, usage_map,logger=logger)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1116, in reorder_module_statements
+    mod_collector.visit(stmt)
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 418, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 428, in generic_visit
+    self.visit(value)
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 418, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 985, in visit_Call
+    self.logger.debug(f"ModCollector: Visiting Call: {astunparse.unparse(node).strip()}")
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'debug'
+2025-06-04 17:28:00,656 - DEBUG - backup_safim.py:347 - Task block_completion_000432: Attempt 1 - reordered_prompt was None (GT not found or syntax error in reordered code).
+2025-06-04 17:28:00,658 - INFO - backup_safim.py:404 - No adversarial example found for block_completion_000432 after 1 reordering attempts.
+2025-06-04 17:28:00,660 - INFO - backup_safim.py:405 -   Overall attempts: 1, Valid reorderings generated: 0, Model passed on valid reorderings: 0
+2025-06-04 17:28:00,661 - INFO - backup_safim.py:406 -   Final failure reason: gt_not_found_or_syntax_err_all_attempts
+2025-06-04 17:28:00,663 - INFO - backup_safim.py:656 - 
+################################################################################
+2025-06-04 17:28:00,664 - INFO - backup_safim.py:657 - Processing sample 6/11: block_completion_000487
+2025-06-04 17:28:00,666 - INFO - backup_safim.py:658 - ################################################################################
+2025-06-04 17:28:00,668 - INFO - backup_safim.py:429 - 
+================================================================================
+2025-06-04 17:28:00,670 - INFO - backup_safim.py:430 - DEBUGGING PROBLEMATIC SAMPLE: block_completion_000487
+2025-06-04 17:28:00,672 - INFO - backup_safim.py:431 - ================================================================================
+2025-06-04 17:28:00,688 - INFO - backup_safim.py:444 - Task block_completion_000487: Original completion: d = min(d, a[j])
+...
+2025-06-04 17:28:00,688 - INFO - backup_safim.py:450 - 
+ORIGINAL FULL CODE FOR block_completion_000487:
+2025-06-04 17:28:00,688 - INFO - backup_safim.py:451 - ------------------------------------------------------------
+2025-06-04 17:28:00,690 - INFO - backup_safim.py:452 - input = __import__('sys').stdin.readline
+
+
+n = int(input())
+a = list(map(int, input().split())) + [n+1]
+
+
+ans = 0
+cache = {}
+for i in range(n):
+    u = 0
+    d = n+1
+    
+    keys = []
+    j = i
+    while j+1 <= n:
+        key = (j, u, d)
+        v = cache.get(key, -1)
+        if v != -1:
+            j = v
+            break
+        
+        keys.append(key)
+        # greedy
+        if u < a[j] < d: # if can insert to both
+            if a[j] < a[j+1]:
+                u = max(u, a[j])
+            elif a[j] > a[j+1]:
+                d = min(d, a[j])
+
+        elif u < a[j]: # if only can insert to increasing subsequence
+            u = a[j]
+        elif d > a[j]: # if only can insert to decreasing subsequence
+            d = a[j]
+        else:
+            break
+
+        j += 1
+    
+    for key in keys:
+        cache[key] = j
+
+    ans += j - i
+    # print(f'at {i} max {j} ans {ans}', u, d)
+
+# print(f'count={len(cache)}')
+print(ans)
+
+2025-06-04 17:28:00,692 - INFO - backup_safim.py:453 - ------------------------------------------------------------
+2025-06-04 17:28:00,694 - INFO - backup_safim.py:463 - Task block_completion_000487: Original matches ground truth (implies all 3 tests passed).
+2025-06-04 17:28:00,695 - INFO - backup_safim.py:481 - Task block_completion_000487: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-04 17:28:00,695 - INFO - backup_safim.py:334 - Searching for adversarial example for task block_completion_000487
+2025-06-04 17:28:00,695 - DEBUG - backup_safim.py:342 - Task block_completion_000487: Adversarial reordering attempt 1/1
+2025-06-04 17:28:00,695 - DEBUG - backup_safim.py:241 - Task block_completion_000487: Original eval_prompt:
+input = __import__('sys').stdin.readline
+
+
+n = int(input())
+a = list(map(int, input().split())) + [n+1]
+
+
+ans = 0
+cache = {}
+for i in range(n):
+    u = 0
+    d = n+1
+    
+    keys = []
+    j = i
+    while j+1 <= n:
+        key = (j, u, d)
+        v = cache.get(key, -1)
+        if v != -1:
+            j = v
+            break
+        
+        keys.append(key)
+        # greedy
+        if u < a[j] < d: # if can insert to both
+            if a[j] < a[j+1]:
+                u = max(u, a[j])
+            elif a[j] > a[j+1]:
+                {{completion}}
+        elif u < a[j]: # if only can insert to increasing subsequence
+            u = a[j]
+        elif d > a[j]: # if only can insert to decreasing subsequence
+            d = a[j]
+        else:
+            break
+
+        j += 1
+    
+    for key in keys:
+        cache[key] = j
+
+    ans += j - i
+    # print(f'at {i} max {j} ans {ans}', u, d)
+
+# print(f'count={len(cache)}')
+print(ans)
+
+2025-06-04 17:28:00,695 - DEBUG - backup_safim.py:242 - Task block_completion_000487: Original ground_truth:
+d = min(d, a[j])
+2025-06-04 17:28:00,695 - DEBUG - backup_safim.py:244 - Task block_completion_000487: Original full code for perturbation:
+input = __import__('sys').stdin.readline
+
+
+n = int(input())
+a = list(map(int, input().split())) + [n+1]
+
+
+ans = 0
+cache = {}
+for i in range(n):
+    u = 0
+    d = n+1
+    
+    keys = []
+    j = i
+    while j+1 <= n:
+        key = (j, u, d)
+        v = cache.get(key, -1)
+        if v != -1:
+            j = v
+            break
+        
+        keys.append(key)
+        # greedy
+        if u < a[j] < d: # if can insert to both
+            if a[j] < a[j+1]:
+                u = max(u, a[j])
+            elif a[j] > a[j+1]:
+                d = min(d, a[j])
+        elif u < a[j]: # if only can insert to increasing subsequence
+            u = a[j]
+        elif d > a[j]: # if only can insert to decreasing subsequence
+            d = a[j]
+        else:
+            break
+
+        j += 1
+    
+    for key in keys:
+        cache[key] = j
+
+    ans += j - i
+    # print(f'at {i} max {j} ans {ans}', u, d)
+
+# print(f'count={len(cache)}')
+print(ans)
+
+2025-06-04 17:28:00,705 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:28:00,705 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:28:00,707 - DEBUG - dataflow_parser.py:856 - Function is builtin. (print)
+2025-06-04 17:28:00,709 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:28:00,711 - DEBUG - dataflow_parser.py:856 - Function is builtin. (list)
+2025-06-04 17:28:00,722 - DEBUG - dataflow_parser.py:856 - Function is builtin. (__import__)
+2025-06-04 17:28:00,737 - DEBUG - dataflow_parser.py:856 - Function is builtin. (map)
+2025-06-04 17:28:00,744 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (cache.get)
+2025-06-04 17:28:00,749 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (keys.append)
+2025-06-04 17:28:00,752 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (input().split)
+2025-06-04 17:28:00,754 - DEBUG - dataflow_parser.py:856 - Function is builtin. (max)
+2025-06-04 17:28:00,756 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:28:00,758 - DEBUG - dataflow_parser.py:856 - Function is builtin. (min)
+2025-06-04 17:28:02,768 - ERROR - backup_safim.py:301 - Reordering process failed: 'NoneType' object has no attribute 'debug'
+Traceback (most recent call last):
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/backup_safim.py", line 247, in generate_adversarial_reordering
+    reordered_full_code, _ = perturbation(
+                             ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1633, in perturbation
+    reconstructed_ast = reorder_module_statements(reconstructed_ast, usage_map,logger=logger)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1116, in reorder_module_statements
+    mod_collector.visit(stmt)
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 418, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 926, in visit_Assign
+    self.logger.debug(f"ModCollector: Visiting Assign: {astunparse.unparse(node).strip()}")
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'debug'
+2025-06-04 17:28:02,769 - DEBUG - backup_safim.py:347 - Task block_completion_000487: Attempt 1 - reordered_prompt was None (GT not found or syntax error in reordered code).
+2025-06-04 17:28:02,770 - INFO - backup_safim.py:404 - No adversarial example found for block_completion_000487 after 1 reordering attempts.
+2025-06-04 17:28:02,770 - INFO - backup_safim.py:405 -   Overall attempts: 1, Valid reorderings generated: 0, Model passed on valid reorderings: 0
+2025-06-04 17:28:02,772 - INFO - backup_safim.py:406 -   Final failure reason: gt_not_found_or_syntax_err_all_attempts
+2025-06-04 17:28:02,774 - INFO - backup_safim.py:656 - 
+################################################################################
+2025-06-04 17:28:02,776 - INFO - backup_safim.py:657 - Processing sample 7/11: block_completion_000488
+2025-06-04 17:28:02,781 - INFO - backup_safim.py:658 - ################################################################################
+2025-06-04 17:28:02,787 - INFO - backup_safim.py:429 - 
+================================================================================
+2025-06-04 17:28:02,789 - INFO - backup_safim.py:430 - DEBUGGING PROBLEMATIC SAMPLE: block_completion_000488
+2025-06-04 17:28:02,791 - INFO - backup_safim.py:431 - ================================================================================
+2025-06-04 17:28:02,810 - INFO - backup_safim.py:444 - Task block_completion_000488: Original completion: d = min(d, a[j])
+...
+2025-06-04 17:28:02,810 - INFO - backup_safim.py:450 - 
+ORIGINAL FULL CODE FOR block_completion_000488:
+2025-06-04 17:28:02,810 - INFO - backup_safim.py:451 - ------------------------------------------------------------
+2025-06-04 17:28:02,812 - INFO - backup_safim.py:452 - input = __import__('sys').stdin.readline
+
+
+n = int(input())
+a = list(map(int, input().split())) + [n+1]
+
+cache = {}
+def check(i, u, d):
+    keys = []
+    j = i
+    while j+1 <= n:
+        key = (j, u, d)
+        v = cache.get(key, -1)
+        if v != -1:
+            j = v
+            break
+        
+        keys.append(key)
+        if u < a[j] < d: # if can insert to both
+            if a[j] < a[j+1]:
+                u = max(u, a[j])
+            elif a[j] > a[j+1]:
+                d = min(d, a[j])
+
+        elif u < a[j]: # if only can insert to increasing subsequence
+            u = a[j]
+        elif d > a[j]: # if only can insert to decreasing subsequence
+            d = a[j]
+        else:
+            break
+
+        j += 1
+    
+    for key in keys:
+        cache[key] = j
+    
+    return j
+
+ans = 0
+for i in range(n):
+    u = 0
+    d = n+1
+    j = check(i, u, d)
+    ans += j - i
+    # print(f'at {i} max {j} ans {ans}', u, d)
+
+# print(f'count={count}')
+print(ans)
+
+2025-06-04 17:28:02,814 - INFO - backup_safim.py:453 - ------------------------------------------------------------
+2025-06-04 17:28:02,816 - INFO - backup_safim.py:463 - Task block_completion_000488: Original matches ground truth (implies all 3 tests passed).
+2025-06-04 17:28:02,817 - INFO - backup_safim.py:481 - Task block_completion_000488: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-04 17:28:02,817 - INFO - backup_safim.py:334 - Searching for adversarial example for task block_completion_000488
+2025-06-04 17:28:02,818 - DEBUG - backup_safim.py:342 - Task block_completion_000488: Adversarial reordering attempt 1/1
+2025-06-04 17:28:02,818 - DEBUG - backup_safim.py:241 - Task block_completion_000488: Original eval_prompt:
+input = __import__('sys').stdin.readline
+
+
+n = int(input())
+a = list(map(int, input().split())) + [n+1]
+
+cache = {}
+def check(i, u, d):
+    keys = []
+    j = i
+    while j+1 <= n:
+        key = (j, u, d)
+        v = cache.get(key, -1)
+        if v != -1:
+            j = v
+            break
+        
+        keys.append(key)
+        if u < a[j] < d: # if can insert to both
+            if a[j] < a[j+1]:
+                u = max(u, a[j])
+            elif a[j] > a[j+1]:
+                {{completion}}
+        elif u < a[j]: # if only can insert to increasing subsequence
+            u = a[j]
+        elif d > a[j]: # if only can insert to decreasing subsequence
+            d = a[j]
+        else:
+            break
+
+        j += 1
+    
+    for key in keys:
+        cache[key] = j
+    
+    return j
+
+ans = 0
+for i in range(n):
+    u = 0
+    d = n+1
+    j = check(i, u, d)
+    ans += j - i
+    # print(f'at {i} max {j} ans {ans}', u, d)
+
+# print(f'count={count}')
+print(ans)
+
+2025-06-04 17:28:02,818 - DEBUG - backup_safim.py:242 - Task block_completion_000488: Original ground_truth:
+d = min(d, a[j])
+2025-06-04 17:28:02,818 - DEBUG - backup_safim.py:244 - Task block_completion_000488: Original full code for perturbation:
+input = __import__('sys').stdin.readline
+
+
+n = int(input())
+a = list(map(int, input().split())) + [n+1]
+
+cache = {}
+def check(i, u, d):
+    keys = []
+    j = i
+    while j+1 <= n:
+        key = (j, u, d)
+        v = cache.get(key, -1)
+        if v != -1:
+            j = v
+            break
+        
+        keys.append(key)
+        if u < a[j] < d: # if can insert to both
+            if a[j] < a[j+1]:
+                u = max(u, a[j])
+            elif a[j] > a[j+1]:
+                d = min(d, a[j])
+        elif u < a[j]: # if only can insert to increasing subsequence
+            u = a[j]
+        elif d > a[j]: # if only can insert to decreasing subsequence
+            d = a[j]
+        else:
+            break
+
+        j += 1
+    
+    for key in keys:
+        cache[key] = j
+    
+    return j
+
+ans = 0
+for i in range(n):
+    u = 0
+    d = n+1
+    j = check(i, u, d)
+    ans += j - i
+    # print(f'at {i} max {j} ans {ans}', u, d)
+
+# print(f'count={count}')
+print(ans)
+
+2025-06-04 17:28:02,825 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:28:02,826 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:28:02,828 - DEBUG - dataflow_parser.py:856 - Function is builtin. (print)
+2025-06-04 17:28:02,829 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:28:02,831 - DEBUG - dataflow_parser.py:856 - Function is builtin. (list)
+2025-06-04 17:28:02,833 - DEBUG - dataflow_parser.py:856 - Function is builtin. (__import__)
+2025-06-04 17:28:02,835 - DEBUG - dataflow_parser.py:856 - Function is builtin. (map)
+2025-06-04 17:28:02,836 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (cache.get)
+2025-06-04 17:28:02,838 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (keys.append)
+2025-06-04 17:28:02,840 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (input().split)
+2025-06-04 17:28:02,842 - DEBUG - dataflow_parser.py:856 - Function is builtin. (max)
+2025-06-04 17:28:02,843 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:28:02,845 - DEBUG - dataflow_parser.py:856 - Function is builtin. (min)
+2025-06-04 17:28:06,432 - ERROR - backup_safim.py:301 - Reordering process failed: 'NoneType' object has no attribute 'debug'
+Traceback (most recent call last):
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/backup_safim.py", line 247, in generate_adversarial_reordering
+    reordered_full_code, _ = perturbation(
+                             ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1633, in perturbation
+    reconstructed_ast = reorder_module_statements(reconstructed_ast, usage_map,logger=logger)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1116, in reorder_module_statements
+    mod_collector.visit(stmt)
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 418, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 428, in generic_visit
+    self.visit(value)
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 418, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 985, in visit_Call
+    self.logger.debug(f"ModCollector: Visiting Call: {astunparse.unparse(node).strip()}")
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'debug'
+2025-06-04 17:28:06,433 - DEBUG - backup_safim.py:347 - Task block_completion_000488: Attempt 1 - reordered_prompt was None (GT not found or syntax error in reordered code).
+2025-06-04 17:28:06,434 - INFO - backup_safim.py:404 - No adversarial example found for block_completion_000488 after 1 reordering attempts.
+2025-06-04 17:28:06,434 - INFO - backup_safim.py:405 -   Overall attempts: 1, Valid reorderings generated: 0, Model passed on valid reorderings: 0
+2025-06-04 17:28:06,436 - INFO - backup_safim.py:406 -   Final failure reason: gt_not_found_or_syntax_err_all_attempts
+2025-06-04 17:28:06,439 - INFO - backup_safim.py:656 - 
+################################################################################
+2025-06-04 17:28:06,443 - INFO - backup_safim.py:657 - Processing sample 8/11: block_completion_000546
+2025-06-04 17:28:06,443 - INFO - backup_safim.py:658 - ################################################################################
+2025-06-04 17:28:06,443 - INFO - backup_safim.py:429 - 
+================================================================================
+2025-06-04 17:28:06,443 - INFO - backup_safim.py:430 - DEBUGGING PROBLEMATIC SAMPLE: block_completion_000546
+2025-06-04 17:28:06,443 - INFO - backup_safim.py:431 - ================================================================================
+2025-06-04 17:28:06,477 - INFO - backup_safim.py:444 - Task block_completion_000546: Original completion: ans -= MOD
+...
+2025-06-04 17:28:06,477 - INFO - backup_safim.py:450 - 
+ORIGINAL FULL CODE FOR block_completion_000546:
+2025-06-04 17:28:06,477 - INFO - backup_safim.py:451 - ------------------------------------------------------------
+2025-06-04 17:28:06,478 - INFO - backup_safim.py:452 - input = __import__('sys').stdin.readline
+
+
+MOD = 998244353
+
+fact = [1]
+invfact = [1]
+
+for i in range(1, 101):
+    fact.append(fact[-1] * i % MOD)
+    invfact.append(pow(fact[-1], MOD-2, MOD))
+
+
+def C(n, k):
+    if k < 0 or k > n:
+        return 0
+    return fact[n] * invfact[k] % MOD * invfact[n-k] % MOD
+
+
+def P(n, k):
+    if k < 0 or k > n:
+        return 0
+    return fact[n] * invfact[n-k] % MOD
+
+
+n = int(input())
+coords = []
+for _ in range(n):
+    x, y = map(int, input().split())
+    coords.append((x, y))
+
+min_dist = [10**9] * n
+dist = [[-1] * n for _ in range(n)]
+for u in range(n):
+    for v in range(n):
+        dist[u][v] = abs(coords[u][0] - coords[v][0]) + abs(coords[u][1] - coords[v][1])
+        if u != v:
+            min_dist[u] = min(min_dist[u], dist[u][v])
+
+cnt = [0, 0, 0, 0, 0]
+vis = [False]*n
+for u in sorted(range(n), key=lambda x: min_dist[x]):
+    if vis[u]:
+        continue
+
+    vis[u] = True
+    seen = [False]*n
+    seen[u] = True    
+    ptr = 0
+    found = [u]
+    while ptr < len(found):
+        v = found[ptr]
+        ptr += 1
+        for w in range(n):
+            if not seen[w] and dist[v][w] == min_dist[v]:
+                seen[w] = True
+                found.append(w)
+    
+    ok = all(dist[found[i]][found[j]] == min_dist[u] for i in range(len(found)) for j in range(i+1, len(found)))
+    if len(found) == 1 or not ok:
+        cnt[1] += 1
+    else:
+        # print('found', found, ok)
+        cnt[len(found)] += 1
+        for u in found:
+            vis[u] = True
+
+
+# print('cnt', cnt[1:])
+
+ans = 0
+for two in range(cnt[2] + 1):
+    for three in range(cnt[3] + 1):
+        for four in range(cnt[4] + 1):
+            ans += P(n, n - two - 2*three - 3*four) * C(cnt[2], two) % MOD \
+                * C(cnt[3], three) % MOD \
+                * C(cnt[4], four) % MOD
+            if ans >= MOD:
+                ans -= MOD
+
+            # print(f'add P({n},{n - two - 2*three - 3*four})*C({cnt[2]},{two})*C({cnt[3]},{three})*C({cnt[4]},{four}) {ans}')
+print(ans)
+2025-06-04 17:28:06,480 - INFO - backup_safim.py:453 - ------------------------------------------------------------
+2025-06-04 17:28:06,483 - INFO - backup_safim.py:463 - Task block_completion_000546: Original matches ground truth (implies all 3 tests passed).
+2025-06-04 17:28:06,485 - INFO - backup_safim.py:481 - Task block_completion_000546: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-04 17:28:06,487 - INFO - backup_safim.py:334 - Searching for adversarial example for task block_completion_000546
+2025-06-04 17:28:06,488 - DEBUG - backup_safim.py:342 - Task block_completion_000546: Adversarial reordering attempt 1/1
+2025-06-04 17:28:06,488 - DEBUG - backup_safim.py:241 - Task block_completion_000546: Original eval_prompt:
+input = __import__('sys').stdin.readline
+
+
+MOD = 998244353
+
+fact = [1]
+invfact = [1]
+
+for i in range(1, 101):
+    fact.append(fact[-1] * i % MOD)
+    invfact.append(pow(fact[-1], MOD-2, MOD))
+
+
+def C(n, k):
+    if k < 0 or k > n:
+        return 0
+    return fact[n] * invfact[k] % MOD * invfact[n-k] % MOD
+
+
+def P(n, k):
+    if k < 0 or k > n:
+        return 0
+    return fact[n] * invfact[n-k] % MOD
+
+
+n = int(input())
+coords = []
+for _ in range(n):
+    x, y = map(int, input().split())
+    coords.append((x, y))
+
+min_dist = [10**9] * n
+dist = [[-1] * n for _ in range(n)]
+for u in range(n):
+    for v in range(n):
+        dist[u][v] = abs(coords[u][0] - coords[v][0]) + abs(coords[u][1] - coords[v][1])
+        if u != v:
+            min_dist[u] = min(min_dist[u], dist[u][v])
+
+cnt = [0, 0, 0, 0, 0]
+vis = [False]*n
+for u in sorted(range(n), key=lambda x: min_dist[x]):
+    if vis[u]:
+        continue
+
+    vis[u] = True
+    seen = [False]*n
+    seen[u] = True    
+    ptr = 0
+    found = [u]
+    while ptr < len(found):
+        v = found[ptr]
+        ptr += 1
+        for w in range(n):
+            if not seen[w] and dist[v][w] == min_dist[v]:
+                seen[w] = True
+                found.append(w)
+    
+    ok = all(dist[found[i]][found[j]] == min_dist[u] for i in range(len(found)) for j in range(i+1, len(found)))
+    if len(found) == 1 or not ok:
+        cnt[1] += 1
+    else:
+        # print('found', found, ok)
+        cnt[len(found)] += 1
+        for u in found:
+            vis[u] = True
+
+
+# print('cnt', cnt[1:])
+
+ans = 0
+for two in range(cnt[2] + 1):
+    for three in range(cnt[3] + 1):
+        for four in range(cnt[4] + 1):
+            ans += P(n, n - two - 2*three - 3*four) * C(cnt[2], two) % MOD \
+                * C(cnt[3], three) % MOD \
+                * C(cnt[4], four) % MOD
+            if ans >= MOD:
+                {{completion}}
+            # print(f'add P({n},{n - two - 2*three - 3*four})*C({cnt[2]},{two})*C({cnt[3]},{three})*C({cnt[4]},{four}) {ans}')
+print(ans)
+2025-06-04 17:28:06,490 - DEBUG - backup_safim.py:242 - Task block_completion_000546: Original ground_truth:
+ans -= MOD
+2025-06-04 17:28:06,491 - DEBUG - backup_safim.py:244 - Task block_completion_000546: Original full code for perturbation:
+input = __import__('sys').stdin.readline
+
+
+MOD = 998244353
+
+fact = [1]
+invfact = [1]
+
+for i in range(1, 101):
+    fact.append(fact[-1] * i % MOD)
+    invfact.append(pow(fact[-1], MOD-2, MOD))
+
+
+def C(n, k):
+    if k < 0 or k > n:
+        return 0
+    return fact[n] * invfact[k] % MOD * invfact[n-k] % MOD
+
+
+def P(n, k):
+    if k < 0 or k > n:
+        return 0
+    return fact[n] * invfact[n-k] % MOD
+
+
+n = int(input())
+coords = []
+for _ in range(n):
+    x, y = map(int, input().split())
+    coords.append((x, y))
+
+min_dist = [10**9] * n
+dist = [[-1] * n for _ in range(n)]
+for u in range(n):
+    for v in range(n):
+        dist[u][v] = abs(coords[u][0] - coords[v][0]) + abs(coords[u][1] - coords[v][1])
+        if u != v:
+            min_dist[u] = min(min_dist[u], dist[u][v])
+
+cnt = [0, 0, 0, 0, 0]
+vis = [False]*n
+for u in sorted(range(n), key=lambda x: min_dist[x]):
+    if vis[u]:
+        continue
+
+    vis[u] = True
+    seen = [False]*n
+    seen[u] = True    
+    ptr = 0
+    found = [u]
+    while ptr < len(found):
+        v = found[ptr]
+        ptr += 1
+        for w in range(n):
+            if not seen[w] and dist[v][w] == min_dist[v]:
+                seen[w] = True
+                found.append(w)
+    
+    ok = all(dist[found[i]][found[j]] == min_dist[u] for i in range(len(found)) for j in range(i+1, len(found)))
+    if len(found) == 1 or not ok:
+        cnt[1] += 1
+    else:
+        # print('found', found, ok)
+        cnt[len(found)] += 1
+        for u in found:
+            vis[u] = True
+
+
+# print('cnt', cnt[1:])
+
+ans = 0
+for two in range(cnt[2] + 1):
+    for three in range(cnt[3] + 1):
+        for four in range(cnt[4] + 1):
+            ans += P(n, n - two - 2*three - 3*four) * C(cnt[2], two) % MOD \
+                * C(cnt[3], three) % MOD \
+                * C(cnt[4], four) % MOD
+            if ans >= MOD:
+                ans -= MOD
+            # print(f'add P({n},{n - two - 2*three - 3*four})*C({cnt[2]},{two})*C({cnt[3]},{three})*C({cnt[4]},{four}) {ans}')
+print(ans)
+2025-06-04 17:28:06,530 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:28:06,530 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:28:06,532 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:28:06,534 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:28:06,536 - DEBUG - dataflow_parser.py:856 - Function is builtin. (sorted)
+2025-06-04 17:28:06,537 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:28:06,538 - DEBUG - dataflow_parser.py:856 - Function is builtin. (print)
+2025-06-04 17:28:06,538 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (fact.append)
+2025-06-04 17:28:06,538 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (invfact.append)
+2025-06-04 17:28:06,538 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:28:06,538 - DEBUG - dataflow_parser.py:856 - Function is builtin. (map)
+2025-06-04 17:28:06,538 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (coords.append)
+2025-06-04 17:28:06,538 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:28:06,539 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:28:06,539 - DEBUG - dataflow_parser.py:856 - Function is builtin. (all)
+2025-06-04 17:28:06,539 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:28:06,540 - DEBUG - dataflow_parser.py:856 - Function is builtin. (__import__)
+2025-06-04 17:28:06,542 - DEBUG - dataflow_parser.py:856 - Function is builtin. (pow)
+2025-06-04 17:28:06,543 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (input().split)
+2025-06-04 17:28:06,545 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:28:06,545 - DEBUG - dataflow_parser.py:856 - Function is builtin. (len)
+2025-06-04 17:28:06,545 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:28:06,545 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:28:06,546 - DEBUG - dataflow_parser.py:856 - Function is builtin. (abs)
+2025-06-04 17:28:06,546 - DEBUG - dataflow_parser.py:856 - Function is builtin. (abs)
+2025-06-04 17:28:06,546 - DEBUG - dataflow_parser.py:856 - Function is builtin. (min)
+2025-06-04 17:28:06,546 - DEBUG - dataflow_parser.py:856 - Function is builtin. (len)
+2025-06-04 17:28:06,546 - DEBUG - dataflow_parser.py:856 - Function is builtin. (len)
+2025-06-04 17:28:06,547 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:28:06,547 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (found.append)
+2025-06-04 17:28:06,547 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:28:06,547 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:28:06,547 - DEBUG - dataflow_parser.py:856 - Function is builtin. (len)
+2025-06-04 17:28:06,548 - DEBUG - dataflow_parser.py:856 - Function is builtin. (len)
+2025-06-04 17:31:28,428 - ERROR - backup_safim.py:301 - Reordering process failed: 'NoneType' object has no attribute 'debug'
+Traceback (most recent call last):
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/backup_safim.py", line 247, in generate_adversarial_reordering
+    reordered_full_code, _ = perturbation(
+                             ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1633, in perturbation
+    reconstructed_ast = reorder_module_statements(reconstructed_ast, usage_map,logger=logger)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1116, in reorder_module_statements
+    mod_collector.visit(stmt)
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 418, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 926, in visit_Assign
+    self.logger.debug(f"ModCollector: Visiting Assign: {astunparse.unparse(node).strip()}")
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'debug'
+2025-06-04 17:31:28,430 - DEBUG - backup_safim.py:347 - Task block_completion_000546: Attempt 1 - reordered_prompt was None (GT not found or syntax error in reordered code).
+2025-06-04 17:31:28,432 - INFO - backup_safim.py:404 - No adversarial example found for block_completion_000546 after 1 reordering attempts.
+2025-06-04 17:31:28,434 - INFO - backup_safim.py:405 -   Overall attempts: 1, Valid reorderings generated: 0, Model passed on valid reorderings: 0
+2025-06-04 17:31:28,436 - INFO - backup_safim.py:406 -   Final failure reason: gt_not_found_or_syntax_err_all_attempts
+2025-06-04 17:31:28,438 - INFO - backup_safim.py:656 - 
+################################################################################
+2025-06-04 17:31:28,440 - INFO - backup_safim.py:657 - Processing sample 9/11: block_completion_000732
+2025-06-04 17:31:28,440 - INFO - backup_safim.py:658 - ################################################################################
+2025-06-04 17:31:28,440 - INFO - backup_safim.py:429 - 
+================================================================================
+2025-06-04 17:31:28,440 - INFO - backup_safim.py:430 - DEBUGGING PROBLEMATIC SAMPLE: block_completion_000732
+2025-06-04 17:31:28,440 - INFO - backup_safim.py:431 - ================================================================================
+2025-06-04 17:31:28,451 - INFO - backup_safim.py:444 - Task block_completion_000732: Original completion: print('Division 3')
+...
+2025-06-04 17:31:28,451 - INFO - backup_safim.py:450 - 
+ORIGINAL FULL CODE FOR block_completion_000732:
+2025-06-04 17:31:28,451 - INFO - backup_safim.py:451 - ------------------------------------------------------------
+2025-06-04 17:31:28,453 - INFO - backup_safim.py:452 - x = input()
+for i in range(int(x)):
+    z = input()
+    if int(z) >= 1900:
+        print('Division 1')
+    elif int(z) >= 1600:
+        print('Division 2')
+    elif int(z) >= 1400:
+        print('Division 3')
+
+    else:
+        print('Division 4')
+
+2025-06-04 17:31:28,455 - INFO - backup_safim.py:453 - ------------------------------------------------------------
+2025-06-04 17:31:28,457 - INFO - backup_safim.py:463 - Task block_completion_000732: Original matches ground truth (implies all 1 tests passed).
+2025-06-04 17:31:28,458 - INFO - backup_safim.py:481 - Task block_completion_000732: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-04 17:31:28,461 - INFO - backup_safim.py:334 - Searching for adversarial example for task block_completion_000732
+2025-06-04 17:31:28,463 - DEBUG - backup_safim.py:342 - Task block_completion_000732: Adversarial reordering attempt 1/1
+2025-06-04 17:31:28,465 - DEBUG - backup_safim.py:241 - Task block_completion_000732: Original eval_prompt:
+x = input()
+for i in range(int(x)):
+    z = input()
+    if int(z) >= 1900:
+        print('Division 1')
+    elif int(z) >= 1600:
+        print('Division 2')
+    elif int(z) >= 1400:
+        {{completion}}
+    else:
+        print('Division 4')
+
+2025-06-04 17:31:28,467 - DEBUG - backup_safim.py:242 - Task block_completion_000732: Original ground_truth:
+print('Division 3')
+2025-06-04 17:31:28,467 - DEBUG - backup_safim.py:244 - Task block_completion_000732: Original full code for perturbation:
+x = input()
+for i in range(int(x)):
+    z = input()
+    if int(z) >= 1900:
+        print('Division 1')
+    elif int(z) >= 1600:
+        print('Division 2')
+    elif int(z) >= 1400:
+        print('Division 3')
+    else:
+        print('Division 4')
+
+2025-06-04 17:31:28,470 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:31:28,471 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:31:28,472 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:31:28,474 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:31:28,476 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:31:28,479 - DEBUG - dataflow_parser.py:856 - Function is builtin. (print)
+2025-06-04 17:31:28,480 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:31:28,482 - DEBUG - dataflow_parser.py:856 - Function is builtin. (print)
+2025-06-04 17:31:28,482 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:31:28,482 - DEBUG - dataflow_parser.py:856 - Function is builtin. (print)
+2025-06-04 17:31:28,482 - DEBUG - dataflow_parser.py:856 - Function is builtin. (print)
+2025-06-04 17:31:28,498 - ERROR - backup_safim.py:301 - Reordering process failed: 'NoneType' object has no attribute 'debug'
+Traceback (most recent call last):
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/backup_safim.py", line 247, in generate_adversarial_reordering
+    reordered_full_code, _ = perturbation(
+                             ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1633, in perturbation
+    reconstructed_ast = reorder_module_statements(reconstructed_ast, usage_map,logger=logger)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1116, in reorder_module_statements
+    mod_collector.visit(stmt)
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 418, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 926, in visit_Assign
+    self.logger.debug(f"ModCollector: Visiting Assign: {astunparse.unparse(node).strip()}")
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'debug'
+2025-06-04 17:31:28,499 - DEBUG - backup_safim.py:347 - Task block_completion_000732: Attempt 1 - reordered_prompt was None (GT not found or syntax error in reordered code).
+2025-06-04 17:31:28,502 - INFO - backup_safim.py:404 - No adversarial example found for block_completion_000732 after 1 reordering attempts.
+2025-06-04 17:31:28,502 - INFO - backup_safim.py:405 -   Overall attempts: 1, Valid reorderings generated: 0, Model passed on valid reorderings: 0
+2025-06-04 17:31:28,504 - INFO - backup_safim.py:406 -   Final failure reason: gt_not_found_or_syntax_err_all_attempts
+2025-06-04 17:31:28,505 - INFO - backup_safim.py:656 - 
+################################################################################
+2025-06-04 17:31:28,507 - INFO - backup_safim.py:657 - Processing sample 10/11: block_completion_000796
+2025-06-04 17:31:28,509 - INFO - backup_safim.py:658 - ################################################################################
+2025-06-04 17:31:28,511 - INFO - backup_safim.py:429 - 
+================================================================================
+2025-06-04 17:31:28,512 - INFO - backup_safim.py:430 - DEBUGGING PROBLEMATIC SAMPLE: block_completion_000796
+2025-06-04 17:31:28,515 - INFO - backup_safim.py:431 - ================================================================================
+2025-06-04 17:31:28,522 - INFO - backup_safim.py:444 - Task block_completion_000796: Original completion: a += l.popleft()
+...
+2025-06-04 17:31:28,522 - INFO - backup_safim.py:450 - 
+ORIGINAL FULL CODE FOR block_completion_000796:
+2025-06-04 17:31:28,522 - INFO - backup_safim.py:451 - ------------------------------------------------------------
+2025-06-04 17:31:28,523 - INFO - backup_safim.py:452 - from collections import deque
+for _ in range(int(input())):
+    n = int(input())
+    l = deque(map(int, input().split()))
+    a, b = 0, 0
+    ans = 0
+    cur = 0
+    while l:
+        cur+=1
+        if a>=b:
+            b += l.pop()
+        else:
+            a += l.popleft()
+
+        if a==b:
+            ans = cur
+    print(ans)
+
+2025-06-04 17:31:28,525 - INFO - backup_safim.py:453 - ------------------------------------------------------------
+2025-06-04 17:31:28,527 - INFO - backup_safim.py:463 - Task block_completion_000796: Original matches ground truth (implies all 1 tests passed).
+2025-06-04 17:31:28,529 - INFO - backup_safim.py:481 - Task block_completion_000796: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-04 17:31:28,531 - INFO - backup_safim.py:334 - Searching for adversarial example for task block_completion_000796
+2025-06-04 17:31:28,532 - DEBUG - backup_safim.py:342 - Task block_completion_000796: Adversarial reordering attempt 1/1
+2025-06-04 17:31:28,534 - DEBUG - backup_safim.py:241 - Task block_completion_000796: Original eval_prompt:
+from collections import deque
+for _ in range(int(input())):
+    n = int(input())
+    l = deque(map(int, input().split()))
+    a, b = 0, 0
+    ans = 0
+    cur = 0
+    while l:
+        cur+=1
+        if a>=b:
+            b += l.pop()
+        else:
+            {{completion}}
+        if a==b:
+            ans = cur
+    print(ans)
+
+2025-06-04 17:31:28,536 - DEBUG - backup_safim.py:242 - Task block_completion_000796: Original ground_truth:
+a += l.popleft()
+2025-06-04 17:31:28,539 - DEBUG - backup_safim.py:244 - Task block_completion_000796: Original full code for perturbation:
+from collections import deque
+for _ in range(int(input())):
+    n = int(input())
+    l = deque(map(int, input().split()))
+    a, b = 0, 0
+    ans = 0
+    cur = 0
+    while l:
+        cur+=1
+        if a>=b:
+            b += l.pop()
+        else:
+            a += l.popleft()
+        if a==b:
+            ans = cur
+    print(ans)
+
+2025-06-04 17:31:28,547 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:31:28,547 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:31:28,552 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:31:28,556 - DEBUG - dataflow_parser.py:856 - Cannot statically determine the function being called. (deque)
+2025-06-04 17:31:28,559 - DEBUG - dataflow_parser.py:856 - Function is builtin. (print)
+2025-06-04 17:31:28,561 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:31:28,563 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:31:28,566 - DEBUG - dataflow_parser.py:856 - Function is builtin. (map)
+2025-06-04 17:31:28,566 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (input().split)
+2025-06-04 17:31:28,566 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (l.pop)
+2025-06-04 17:31:28,566 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (l.popleft)
+2025-06-04 17:31:28,566 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:31:28,624 - ERROR - backup_safim.py:301 - Reordering process failed: 'NoneType' object has no attribute 'debug'
+Traceback (most recent call last):
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/backup_safim.py", line 247, in generate_adversarial_reordering
+    reordered_full_code, _ = perturbation(
+                             ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1633, in perturbation
+    reconstructed_ast = reorder_module_statements(reconstructed_ast, usage_map,logger=logger)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1116, in reorder_module_statements
+    mod_collector.visit(stmt)
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 418, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 976, in visit_ImportFrom
+    self.logger.debug(f"ModCollector: Visiting ImportFrom")
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'debug'
+2025-06-04 17:31:28,624 - DEBUG - backup_safim.py:347 - Task block_completion_000796: Attempt 1 - reordered_prompt was None (GT not found or syntax error in reordered code).
+2025-06-04 17:31:28,626 - INFO - backup_safim.py:404 - No adversarial example found for block_completion_000796 after 1 reordering attempts.
+2025-06-04 17:31:28,628 - INFO - backup_safim.py:405 -   Overall attempts: 1, Valid reorderings generated: 0, Model passed on valid reorderings: 0
+2025-06-04 17:31:28,628 - INFO - backup_safim.py:406 -   Final failure reason: gt_not_found_or_syntax_err_all_attempts
+2025-06-04 17:31:28,630 - INFO - backup_safim.py:656 - 
+################################################################################
+2025-06-04 17:31:28,631 - INFO - backup_safim.py:657 - Processing sample 11/11: block_completion_000799
+2025-06-04 17:31:28,633 - INFO - backup_safim.py:658 - ################################################################################
+2025-06-04 17:31:28,633 - INFO - backup_safim.py:429 - 
+================================================================================
+2025-06-04 17:31:28,635 - INFO - backup_safim.py:430 - DEBUGGING PROBLEMATIC SAMPLE: block_completion_000799
+2025-06-04 17:31:28,637 - INFO - backup_safim.py:431 - ================================================================================
+2025-06-04 17:31:28,655 - INFO - backup_safim.py:444 - Task block_completion_000799: Original completion: r-=1
+...
+2025-06-04 17:31:28,656 - INFO - backup_safim.py:450 - 
+ORIGINAL FULL CODE FOR block_completion_000799:
+2025-06-04 17:31:28,656 - INFO - backup_safim.py:451 - ------------------------------------------------------------
+2025-06-04 17:31:28,658 - INFO - backup_safim.py:452 - def solve():
+ n=int(input())
+ a=[*map(int,input().split())]
+ b=a[:]
+ for i in range(n-1):a[i+1]+=a[i]
+ for i in range(n-1,0,-1):b[i-1]+=b[i]
+ l,r=0,n-1
+ sol=0
+ while r-l>=1:
+  if a[l]==b[r]:sol=l+n-r+1;l+=1
+  if a[l]<b[r]:l+=1
+  else:r-=1
+
+ return sol
+for _ in [0]*int(input()):print(solve())
+2025-06-04 17:31:28,660 - INFO - backup_safim.py:453 - ------------------------------------------------------------
+2025-06-04 17:31:28,662 - INFO - backup_safim.py:463 - Task block_completion_000799: Original matches ground truth (implies all 1 tests passed).
+2025-06-04 17:31:28,664 - INFO - backup_safim.py:481 - Task block_completion_000799: Attempting adversarial attack as original passed and not globally skipped...
+2025-06-04 17:31:28,666 - INFO - backup_safim.py:334 - Searching for adversarial example for task block_completion_000799
+2025-06-04 17:31:28,666 - DEBUG - backup_safim.py:342 - Task block_completion_000799: Adversarial reordering attempt 1/1
+2025-06-04 17:31:28,668 - DEBUG - backup_safim.py:241 - Task block_completion_000799: Original eval_prompt:
+def solve():
+ n=int(input())
+ a=[*map(int,input().split())]
+ b=a[:]
+ for i in range(n-1):a[i+1]+=a[i]
+ for i in range(n-1,0,-1):b[i-1]+=b[i]
+ l,r=0,n-1
+ sol=0
+ while r-l>=1:
+  if a[l]==b[r]:sol=l+n-r+1;l+=1
+  if a[l]<b[r]:l+=1
+  else:{{completion}}
+ return sol
+for _ in [0]*int(input()):print(solve())
+2025-06-04 17:31:28,670 - DEBUG - backup_safim.py:242 - Task block_completion_000799: Original ground_truth:
+r-=1
+2025-06-04 17:31:28,672 - DEBUG - backup_safim.py:244 - Task block_completion_000799: Original full code for perturbation:
+def solve():
+ n=int(input())
+ a=[*map(int,input().split())]
+ b=a[:]
+ for i in range(n-1):a[i+1]+=a[i]
+ for i in range(n-1,0,-1):b[i-1]+=b[i]
+ l,r=0,n-1
+ sol=0
+ while r-l>=1:
+  if a[l]==b[r]:sol=l+n-r+1;l+=1
+  if a[l]<b[r]:l+=1
+  else:r-=1
+ return sol
+for _ in [0]*int(input()):print(solve())
+2025-06-04 17:31:28,678 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:31:28,678 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:31:28,680 - DEBUG - dataflow_parser.py:856 - Function is builtin. (range)
+2025-06-04 17:31:28,682 - DEBUG - dataflow_parser.py:856 - Function is builtin. (int)
+2025-06-04 17:31:28,690 - DEBUG - dataflow_parser.py:856 - Function is builtin. (print)
+2025-06-04 17:31:28,697 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:31:28,700 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:31:28,701 - DEBUG - dataflow_parser.py:856 - Function is builtin. (map)
+2025-06-04 17:31:28,703 - DEBUG - dataflow_parser.py:916 - Cannot statically determine the function being called. (input().split)
+2025-06-04 17:31:28,705 - DEBUG - dataflow_parser.py:856 - Function is builtin. (input)
+2025-06-04 17:31:29,128 - ERROR - backup_safim.py:301 - Reordering process failed: 'NoneType' object has no attribute 'debug'
+Traceback (most recent call last):
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/backup_safim.py", line 247, in generate_adversarial_reordering
+    reordered_full_code, _ = perturbation(
+                             ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1633, in perturbation
+    reconstructed_ast = reorder_module_statements(reconstructed_ast, usage_map,logger=logger)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 1116, in reorder_module_statements
+    mod_collector.visit(stmt)
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 418, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 428, in generic_visit
+    self.visit(value)
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 418, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 428, in generic_visit
+    self.visit(value)
+  File "/nfs/homedirs/hifl/Masterarbeit/conda_env/lib/python3.11/ast.py", line 418, in visit
+    return visitor(node)
+           ^^^^^^^^^^^^^
+  File "/nfs/homedirs/hifl/Masterarbeit/pythonProject7/Python_Files/perturbation.py", line 985, in visit_Call
+    self.logger.debug(f"ModCollector: Visiting Call: {astunparse.unparse(node).strip()}")
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'debug'
+2025-06-04 17:31:29,128 - DEBUG - backup_safim.py:347 - Task block_completion_000799: Attempt 1 - reordered_prompt was None (GT not found or syntax error in reordered code).
+2025-06-04 17:31:29,132 - INFO - backup_safim.py:404 - No adversarial example found for block_completion_000799 after 1 reordering attempts.
+2025-06-04 17:31:29,135 - INFO - backup_safim.py:405 -   Overall attempts: 1, Valid reorderings generated: 0, Model passed on valid reorderings: 0
+2025-06-04 17:31:29,138 - INFO - backup_safim.py:406 -   Final failure reason: gt_not_found_or_syntax_err_all_attempts
+2025-06-04 17:31:29,157 - INFO - backup_safim.py:675 - Cache saved to ./model_cache.json (216 entries).
+2025-06-04 17:31:29,163 - INFO - backup_safim.py:681 - Debug results saved to: ./results_adversarial_debug_11.jsonl
+2025-06-04 17:31:29,163 - INFO - backup_safim.py:684 - 
+================================================================================
+2025-06-04 17:31:29,163 - INFO - backup_safim.py:685 - SUMMARY OF 11 PROBLEMATIC SAMPLES
+2025-06-04 17:31:29,166 - INFO - backup_safim.py:686 - ================================================================================
+2025-06-04 17:31:29,169 - INFO - backup_safim.py:695 - 
+Detailed log file saved to: safim_adversarial_debug_11_samples.txt
