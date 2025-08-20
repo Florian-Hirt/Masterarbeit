@@ -1,0 +1,27 @@
+[submodule "ExecEval"]
+	path = ExecEval
+	url = https://github.com/ntunlp/ExecEval
+[submodule "pythonProject7_Python_Files_safim"]
+	path = pythonProject7/Python_Files/safim
+	url = https://github.com/gonglinyuan/safim.git
+[submodule "pythonProject7_digraph_transformer"]
+	path = pythonProject7/digraph_transformer
+	url = https://github.com/google-deepmind/digraph_transformer.git
+[submodule "pythonProject7_python-graphs"]
+	path = pythonProject7/python-graphs
+	url = https://github.com/google-research/python-graphs.git
+[submodule "pythonProject7_third_party_CodeScope"]
+	path = pythonProject7/third_party/CodeScope
+	url = https://github.com/WeixiangYAN/CodeScope.git
+[submodule "tree-sitter-c-sharp"]
+	path = tree-sitter-c-sharp
+	url = https://github.com/tree-sitter/tree-sitter-c-sharp
+[submodule "tree-sitter-cpp"]
+	path = tree-sitter-cpp
+	url = https://github.com/tree-sitter/tree-sitter-cpp
+[submodule "tree-sitter-java"]
+	path = tree-sitter-java
+	url = https://github.com/tree-sitter/tree-sitter-java
+[submodule "tree-sitter-python"]
+	path = tree-sitter-python
+	url = https://github.com/tree-sitter/tree-sitter-python
