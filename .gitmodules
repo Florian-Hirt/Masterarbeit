@@ -3,7 +3,8 @@
 	url = https://github.com/ntunlp/ExecEval
 [submodule "pythonProject7_Python_Files_safim"]
 	path = pythonProject7/Python_Files/safim
-	url = https://github.com/gonglinyuan/safim.git
+	url = https://github.com/Florian-Hirt/safim.git
+	branch = florian-changes
 [submodule "pythonProject7_digraph_transformer"]
 	path = pythonProject7/digraph_transformer
 	url = https://github.com/google-deepmind/digraph_transformer.git
