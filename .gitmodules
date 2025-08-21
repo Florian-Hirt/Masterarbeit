@@ -1,5 +1,5 @@
 [submodule "ExecEval"]
-	path = ExecEval
+	path = third_party/ExecEval
 	url = https://github.com/ntunlp/ExecEval
 [submodule "pythonProject7_Python_Files_safim"]
 	path = pythonProject7/Python_Files/safim
@@ -21,14 +21,14 @@
 	url = https://github.com/WeixiangYAN/CodeScope.git
 	ignore = untracked
 [submodule "tree-sitter-c-sharp"]
-	path = tree-sitter-c-sharp
+	path = third_party/tree-sitter-c-sharp
 	url = https://github.com/tree-sitter/tree-sitter-c-sharp
 [submodule "tree-sitter-cpp"]
-	path = tree-sitter-cpp
+	path = third_party/tree-sitter-cpp
 	url = https://github.com/tree-sitter/tree-sitter-cpp
 [submodule "tree-sitter-java"]
-	path = tree-sitter-java
+	path = third_party/tree-sitter-java
 	url = https://github.com/tree-sitter/tree-sitter-java
 [submodule "tree-sitter-python"]
-	path = tree-sitter-python
+	path = third_party/tree-sitter-python
 	url = https://github.com/tree-sitter/tree-sitter-python
