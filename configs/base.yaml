@@ -1,0 +1,9 @@
+experiment_name: demo
+seed: 42
+data:
+  input_path: data/demo.jsonl
+  output_dir: results/demo
+model:
+  name: "gemma-3-1b-it"
+attack:
+  type: "reordering"
