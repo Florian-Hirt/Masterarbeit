@@ -49,3 +49,8 @@ pythonProject7/code2/mapping/graphidx2code.json
 pythonProject7/code2/mapping/graphidx2code.json.gz
 pythonProject7/code2/raw/edge.csv.gz
 **/sample_histograms/
+data/*
+!data/.gitkeep
+/data/*
+!/data/.gitkeep
+!/data/evaluations/.gitkeep
