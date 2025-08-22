@@ -1,5 +1,0 @@
-{"id": "dummy_sample_0", "source_code": "def func_0():\n  x = 0 + 1\n  y = x * 2\n  return y\n\nprint(func_0())", "human_summarization": "This is a dummy function 0 that calculates a value."}
-{"id": "dummy_sample_1", "source_code": "def func_1():\n  x = 1 + 1\n  y = x * 2\n  return y\n\nprint(func_1())", "human_summarization": "This is a dummy function 1 that calculates a value."}
-{"id": "dummy_sample_2", "source_code": "def func_2():\n  x = 2 + 1\n  y = x * 2\n  return y\n\nprint(func_2())", "human_summarization": "This is a dummy function 2 that calculates a value."}
-{"id": "dummy_sample_3", "source_code": "def func_3():\n  x = 3 + 1\n  y = x * 2\n  return y\n\nprint(func_3())", "human_summarization": "This is a dummy function 3 that calculates a value."}
-{"id": "dummy_sample_4", "source_code": "def func_4():\n  x = 4 + 1\n  y = x * 2\n  return y\n\nprint(func_4())", "human_summarization": "This is a dummy function 4 that calculates a value."}
