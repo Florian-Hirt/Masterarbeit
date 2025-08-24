@@ -6,7 +6,7 @@ import argparse
 import re
 
 
-from perturbation import perturbation
+from .perturbation import perturbation
 import lib2to3.refactor
 
 FIXERS = lib2to3.refactor.get_fixers_from_package("lib2to3.fixes")

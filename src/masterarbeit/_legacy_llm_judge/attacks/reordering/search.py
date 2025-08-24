@@ -10,7 +10,7 @@ import astunparse
 
 
 # Import existing modules
-from perturbation import (
+from .perturbation import (
     non_deterministic_topological_sort, neighborhood_topological_sort,
     graph_to_ast)
 
