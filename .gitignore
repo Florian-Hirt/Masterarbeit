@@ -55,3 +55,6 @@ data/*
 !/data/.gitkeep
 !/data/evaluations/.gitkeep
 !/data/evaluations/
+/build/
+/tree-sitter-*
+/evaluation_log.txt

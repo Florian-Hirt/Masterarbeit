@@ -13,7 +13,7 @@ import traceback
 
 
 # Import existing modules
-from code_completion_generation import incomplete_code_transform
+from masterarbeit.pipelines.code_completion_generation import incomplete_code_transform
 from masterarbeit.analysis.visualization import analyze_score_distributions, generate_per_sample_histograms, generate_histogram_grid, analyze_adversarial_vs_normal_scores
 from masterarbeit.attacks.reordering.search import AdversarialReorderingSearch
 from masterarbeit.metrics.adversarial import LLMEvaluator

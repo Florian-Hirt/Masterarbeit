@@ -18,7 +18,7 @@ from safim.ast_utils import ErrorCheckVisitor, get_parser
 from safim.evaluate import syntax_match
 
 # Import adversarial attack modules
-from perturbation import perturbation, PERTURBATION_PLACEHOLDER_STR_RAW, NodeFinder
+from masterarbeit.attacks.reordering.perturbation import perturbation, PERTURBATION_PLACEHOLDER_STR_RAW, NodeFinder
 
 logger = logging.getLogger(__name__)
 
@@ -205,7 +205,7 @@ def find_adversarial_example(
     unit_tests = sample.get("unit_tests", [])
 
     logger.debug(f"Task {task_id}: Pre-normalizing ground truth for matching: '{ground_truth[:100]}...'")
-    gt_normalizer = NodeFinder(ground_truth, logger_instance=logger) # from perturbation import NodeFinder
+    gt_normalizer = NodeFinder(ground_truth, logger_instance=logger) # from masterarbeit.attacks.reordering.perturbation import NodeFinder
     precomputed_gt_strings = gt_normalizer.target_strings_normalized
     precomputed_gt_types = gt_normalizer.target_node_types
 

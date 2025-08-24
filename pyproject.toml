@@ -12,7 +12,7 @@ license = { text = "MIT" }
 authors = [{ name = "Florian Hirt" }]
 dependencies = [
   "numpy", "pandas", "matplotlib", "scikit-learn",
-  "tqdm", "pyyaml", "regex", "networkx", "tree_sitter",
+  "tqdm", "pyyaml", "regex", "networkx", "tree_sitter==0.20.1",
 ]
 
 [project.scripts]
